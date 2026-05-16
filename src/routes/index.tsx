@@ -72,10 +72,8 @@ function StarField() {
           }}
         />
       ))}
-      {/* Orbit rings */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full border border-steel/20 animate-orbit" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1100px] h-[1100px] rounded-full border border-steel/10" />
-      {/* Floating planet */}
       <div className="absolute -right-32 -bottom-32 w-[500px] h-[500px] rounded-full bg-gradient-to-br from-steel/40 to-navy/30 blur-3xl animate-drift" />
       <div className="absolute -left-32 top-20 w-[400px] h-[400px] rounded-full bg-gradient-to-tr from-steel/30 to-deep/20 blur-3xl animate-drift" style={{ animationDelay: "3s" }} />
     </div>
@@ -317,26 +315,6 @@ function Contact() {
           <textarea name="message" required rows={5} placeholder="Tell us about your project…" className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:border-deep transition resize-none" />
           <button type="submit" disabled={sending} className="w-full px-6 py-3.5 rounded-lg bg-deep text-white font-medium hover:bg-navy transition-all hover:-translate-y-0.5">
             {sent ? "Thanks — we'll be in touch ✦" : sending ? "Sending…" : "Send Message"}
-          </button>
-        </form>
-        <p className="mt-6 text-center text-foreground/70">
-          Or email us directly at{" "}
-          <a href="mailto:hello@astrolabs.uk" className="text-deep font-medium hover:underline">hello@astrolabs.uk</a>
-        </p>
-      </div>
-    </section>
-  );
-}
-          className="space-y-4 bg-white p-8 rounded-2xl border border-border"
-        >
-          <div className="grid sm:grid-cols-2 gap-4">
-            <input required placeholder="Your name" className="px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:border-deep transition" />
-            <input required placeholder="Business name" className="px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:border-deep transition" />
-          </div>
-          <input required type="email" placeholder="Email address" className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:border-deep transition" />
-          <textarea required rows={5} placeholder="Tell us about your project…" className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:border-deep transition resize-none" />
-          <button type="submit" className="w-full px-6 py-3.5 rounded-lg bg-deep text-white font-medium hover:bg-navy transition-all hover:-translate-y-0.5">
-            {sent ? "Thanks — we'll be in touch ✦" : "Send Message"}
           </button>
         </form>
         <p className="mt-6 text-center text-foreground/70">
