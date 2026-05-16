@@ -232,7 +232,7 @@ function Portfolio() {
             </div>
             <div className="p-7">
               <h3 className="font-display font-bold text-2xl text-navy">Good Vibes Café</h3>
-              <p className="mt-2 text-foreground/70">Maidstone's favourite indie café — a warm, inviting site that matches the vibe of the shop.</p>
+              <p className="mt-2 text-foreground/70">First Portfolio Website Design</p>
               <a href="https://good-vibes.astrolabs.uk" target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-deep text-white text-sm font-medium hover:bg-navy transition-colors">
                 Visit Site →
               </a>
@@ -250,9 +250,9 @@ function Portfolio() {
               <div className="flex items-center gap-2 mb-2">
                 <span className="px-2.5 py-0.5 rounded-full bg-steel/20 text-navy text-xs font-medium">Coming Soon</span>
               </div>
-              <h3 className="font-display font-bold text-2xl text-navy">Project 02</h3>
-              <p className="mt-2 text-foreground/70">Our next client build is in the works. Could it be yours? Get in touch to find out.</p>
-              <button disabled className="mt-5 inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-muted text-foreground/50 text-sm font-medium cursor-not-allowed">
+              <h3 className="font-display font-bold text-2xl text-navy">Puddings Maidstone</h3>
+              <p className="mt-2 text-foreground/70">Second Portfolio Website Design</p>
+              <a href="https://puddings.astrolabs.uk" target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-deep text-white text-sm font-medium hover:bg-navy transition-colors">
                 Visit Site →
               </button>
             </div>
