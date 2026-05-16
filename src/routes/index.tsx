@@ -122,9 +122,33 @@ function SectionHeading({ eyebrow, title }: { eyebrow: string; title: string }) 
 
 function About() {
   const stats = [
-    { num: "2", label: "Sites Launched", icon: "🚀" },
-    { num: "3", label: "Pricing Plans", icon: "💼" },
-    { num: "1", label: "Year Support Included", icon: "🛡️" },
+    {
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+          <path d="M12 2L2 7l10 5 10-5-10-5z" />
+          <path d="M2 17l10 5 10-5" />
+          <path d="M2 12l10 5 10-5" />
+        </svg>
+      ),
+      num: "2", label: "Sites Launched",
+    },
+    {
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+          <rect x="2" y="7" width="20" height="14" rx="2" />
+          <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+        </svg>
+      ),
+      num: "3", label: "Pricing Plans",
+    },
+    {
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+        </svg>
+      ),
+      num: "1", label: "Year Support Included",
+    },
   ];
   return (
     <section id="about" className="py-28 px-6">
@@ -136,7 +160,7 @@ function About() {
         <div className="mt-16 grid sm:grid-cols-3 gap-6">
           {stats.map((s) => (
             <div key={s.label} className="p-8 rounded-2xl bg-white border border-border hover:border-steel transition-all hover:-translate-y-1 text-center">
-              <div className="text-3xl mb-3">{s.icon}</div>
+              <div className="mb-3 flex justify-center text-deep">{s.icon}</div>
               <div className="font-display font-bold text-5xl text-deep">{s.num}</div>
               <div className="mt-2 text-sm text-foreground/70">{s.label}</div>
             </div>
