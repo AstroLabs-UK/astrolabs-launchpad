@@ -287,14 +287,46 @@ function Pricing() {
 
 function Contact() {
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSending(true);
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    await fetch("https://formspree.io/f/xpqnaarq", {
+      method: "POST",
+      body: data,
+      headers: { Accept: "application/json" },
+    });
+    setSent(true);
+    setSending(false);
+    form.reset();
+  };
+
   return (
     <section id="contact" className="py-28 px-6">
       <div className="max-w-2xl mx-auto">
         <SectionHeading eyebrow="Contact" title="Let's Build Something" />
-        <form
-          action="https://formspree.io/f/xpqnaarq"
-          method="POST"
-          onSubmit={() => setSent(true)}
+        <form onSubmit={handleSubmit} className="space-y-4 bg-white p-8 rounded-2xl border border-border">
+          <div className="grid sm:grid-cols-2 gap-4">
+            <input name="name" required placeholder="Your name" className="px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:border-deep transition" />
+            <input name="business" required placeholder="Business name" className="px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:border-deep transition" />
+          </div>
+          <input name="email" required type="email" placeholder="Email address" className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:border-deep transition" />
+          <textarea name="message" required rows={5} placeholder="Tell us about your project…" className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:border-deep transition resize-none" />
+          <button type="submit" disabled={sending} className="w-full px-6 py-3.5 rounded-lg bg-deep text-white font-medium hover:bg-navy transition-all hover:-translate-y-0.5">
+            {sent ? "Thanks — we'll be in touch ✦" : sending ? "Sending…" : "Send Message"}
+          </button>
+        </form>
+        <p className="mt-6 text-center text-foreground/70">
+          Or email us directly at{" "}
+          <a href="mailto:hello@astrolabs.uk" className="text-deep font-medium hover:underline">hello@astrolabs.uk</a>
+        </p>
+      </div>
+    </section>
+  );
+}
           className="space-y-4 bg-white p-8 rounded-2xl border border-border"
         >
           <div className="grid sm:grid-cols-2 gap-4">
