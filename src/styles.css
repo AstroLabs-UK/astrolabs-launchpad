@@ -96,3 +96,4 @@
 .animate-twinkle { animation: twinkle 3s ease-in-out infinite; }
 .animate-orbit { animation: orbit 60s linear infinite; }
 .animate-fade-up { animation: fade-up 0.8s ease-out both; }
+[data-lovable-badge] { display: none !important; }
