@@ -292,10 +292,9 @@ function Contact() {
       <div className="max-w-2xl mx-auto">
         <SectionHeading eyebrow="Contact" title="Let's Build Something" />
         <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            setSent(true);
-          }}
+          action="https://formspree.io/f/xpqnaarq"
+          method="POST"
+          onSubmit={() => setSent(true)}
           className="space-y-4 bg-white p-8 rounded-2xl border border-border"
         >
           <div className="grid sm:grid-cols-2 gap-4">
