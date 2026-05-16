@@ -149,9 +149,34 @@ function About() {
 
 function Services() {
   const items = [
-    { icon: "🎨", title: "Design", desc: "Custom websites built to reflect your brand and stand out from the crowd." },
-    { icon: "🚀", title: "Hosting", desc: "Fast, reliable, free hosting on our end — no extra invoices to worry about." },
-    { icon: "🛠️", title: "Support", desc: "1 year of bug fixes and updates included with every build." },
+    {
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+          <path d="M12 19l7-7-7-7M5 19l7-7-7-7" />
+        </svg>
+      ),
+      title: "Design",
+      desc: "Custom websites built to reflect your brand and stand out from the crowd.",
+    },
+    {
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+          <rect x="2" y="3" width="20" height="14" rx="2" />
+          <path d="M8 21h8M12 17v4" />
+        </svg>
+      ),
+      title: "Hosting",
+      desc: "Fast, reliable, free hosting on our end — no extra invoices to worry about.",
+    },
+    {
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+          <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+        </svg>
+      ),
+      title: "Support",
+      desc: "1 year of bug fixes and updates included with every build.",
+    },
   ];
   return (
     <section id="services" className="py-28 px-6 bg-white">
@@ -160,7 +185,7 @@ function Services() {
         <div className="grid md:grid-cols-3 gap-6">
           {items.map((s) => (
             <div key={s.title} className="group p-8 rounded-2xl bg-background border border-border hover:bg-deep hover:border-deep transition-all duration-300 hover:-translate-y-1">
-              <div className="text-4xl mb-5">{s.icon}</div>
+              <div className="mb-5 text-deep group-hover:text-white transition-colors">{s.icon}</div>
               <h3 className="font-display font-bold text-2xl text-navy group-hover:text-white transition-colors">{s.title}</h3>
               <p className="mt-3 text-foreground/70 group-hover:text-white/80 leading-relaxed transition-colors">{s.desc}</p>
             </div>
