@@ -233,7 +233,7 @@ function Portfolio() {
             <div className="p-7">
               <h3 className="font-display font-bold text-2xl text-navy">Good Vibes Café</h3>
               <p className="mt-2 text-foreground/70">Maidstone's favourite indie café — a warm, inviting site that matches the vibe of the shop.</p>
-              <a href="https://goodvibes.astrolabs.uk" target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-deep text-white text-sm font-medium hover:bg-navy transition-colors">
+              <a href="https://good-vibes.astrolabs.uk" target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-deep text-white text-sm font-medium hover:bg-navy transition-colors">
                 Visit Site →
               </a>
             </div>
