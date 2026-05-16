@@ -122,33 +122,9 @@ function SectionHeading({ eyebrow, title }: { eyebrow: string; title: string }) 
 
 function About() {
   const stats = [
-    {
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-          <path d="M12 2L2 7l10 5 10-5-10-5z" />
-          <path d="M2 17l10 5 10-5" />
-          <path d="M2 12l10 5 10-5" />
-        </svg>
-      ),
-      num: "2", label: "Sites Launched",
-    },
-    {
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-          <rect x="2" y="7" width="20" height="14" rx="2" />
-          <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
-        </svg>
-      ),
-      num: "3", label: "Pricing Plans",
-    },
-    {
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-        </svg>
-      ),
-      num: "1", label: "Year Support Included",
-    },
+    { num: "2", label: "Sites Launched", icon: "🚀" },
+    { num: "3", label: "Pricing Plans", icon: "💼" },
+    { num: "1", label: "Year Support Included", icon: "🛡️" },
   ];
   return (
     <section id="about" className="py-28 px-6">
@@ -160,7 +136,7 @@ function About() {
         <div className="mt-16 grid sm:grid-cols-3 gap-6">
           {stats.map((s) => (
             <div key={s.label} className="p-8 rounded-2xl bg-white border border-border hover:border-steel transition-all hover:-translate-y-1 text-center">
-              <div className="mb-3 flex justify-center text-deep">{s.icon}</div>
+              <div className="text-3xl mb-3">{s.icon}</div>
               <div className="font-display font-bold text-5xl text-deep">{s.num}</div>
               <div className="mt-2 text-sm text-foreground/70">{s.label}</div>
             </div>
@@ -173,34 +149,9 @@ function About() {
 
 function Services() {
   const items = [
-    {
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-          <path d="M12 19l7-7-7-7M5 19l7-7-7-7" />
-        </svg>
-      ),
-      title: "Design",
-      desc: "Custom websites built to reflect your brand and stand out from the crowd.",
-    },
-    {
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-          <rect x="2" y="3" width="20" height="14" rx="2" />
-          <path d="M8 21h8M12 17v4" />
-        </svg>
-      ),
-      title: "Hosting",
-      desc: "Fast, reliable, free hosting on our end — no extra invoices to worry about.",
-    },
-    {
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-          <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
-        </svg>
-      ),
-      title: "Support",
-      desc: "1 year of bug fixes and updates included with every build.",
-    },
+    { icon: "🎨", title: "Design", desc: "Custom websites built to reflect your brand and stand out from the crowd." },
+    { icon: "🚀", title: "Hosting", desc: "Fast, reliable, free hosting on our end — no extra invoices to worry about." },
+    { icon: "🛠️", title: "Support", desc: "1 year of bug fixes and updates included with every build." },
   ];
   return (
     <section id="services" className="py-28 px-6 bg-white">
@@ -209,7 +160,7 @@ function Services() {
         <div className="grid md:grid-cols-3 gap-6">
           {items.map((s) => (
             <div key={s.title} className="group p-8 rounded-2xl bg-background border border-border hover:bg-deep hover:border-deep transition-all duration-300 hover:-translate-y-1">
-              <div className="mb-5 text-deep group-hover:text-white transition-colors">{s.icon}</div>
+              <div className="text-4xl mb-5">{s.icon}</div>
               <h3 className="font-display font-bold text-2xl text-navy group-hover:text-white transition-colors">{s.title}</h3>
               <p className="mt-3 text-foreground/70 group-hover:text-white/80 leading-relaxed transition-colors">{s.desc}</p>
             </div>
@@ -232,8 +183,8 @@ function Portfolio() {
             </div>
             <div className="p-7">
               <h3 className="font-display font-bold text-2xl text-navy">Good Vibes Café</h3>
-              <p className="mt-2 text-foreground/70">First Portfolio Website Design</p>
-              <a href="https://good-vibes.astrolabs.uk" target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-deep text-white text-sm font-medium hover:bg-navy transition-colors">
+              <p className="mt-2 text-foreground/70">Maidstone's favourite indie café — a warm, inviting site that matches the vibe of the shop.</p>
+              <a href="https://goodvibes.astrolabs.uk" target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-deep text-white text-sm font-medium hover:bg-navy transition-colors">
                 Visit Site →
               </a>
             </div>
@@ -250,9 +201,9 @@ function Portfolio() {
               <div className="flex items-center gap-2 mb-2">
                 <span className="px-2.5 py-0.5 rounded-full bg-steel/20 text-navy text-xs font-medium">Coming Soon</span>
               </div>
-              <h3 className="font-display font-bold text-2xl text-navy">Puddings Maidstone</h3>
-              <p className="mt-2 text-foreground/70">Second Portfolio Website Design</p>
-              <a href="https://puddings.astrolabs.uk" target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-deep text-white text-sm font-medium hover:bg-navy transition-colors">
+              <h3 className="font-display font-bold text-2xl text-navy">Project 02</h3>
+              <p className="mt-2 text-foreground/70">Our next client build is in the works. Could it be yours? Get in touch to find out.</p>
+              <button disabled className="mt-5 inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-muted text-foreground/50 text-sm font-medium cursor-not-allowed">
                 Visit Site →
               </button>
             </div>
