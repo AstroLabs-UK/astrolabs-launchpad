@@ -80,20 +80,83 @@
   50% { transform: translate(20px, -15px); }
 }
 @keyframes twinkle {
-  0%, 100% { opacity: 0.3; }
+  0%, 100% { opacity: 0.25; }
   50% { opacity: 1; }
 }
 @keyframes orbit {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+@keyframes orbit-slow {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
 }
 @keyframes fade-up {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
+@keyframes shimmer-sweep {
+  0% { background-position: -200% 0; }
+  60%, 100% { background-position: 200% 0; }
+}
+@keyframes badge-glow {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--navy) 25%, transparent), 0 0 12px -2px color-mix(in oklab, var(--steel) 30%, transparent); }
+  50% { box-shadow: 0 0 0 3px color-mix(in oklab, var(--steel) 18%, transparent), 0 0 22px 0 color-mix(in oklab, var(--navy) 35%, transparent); }
+}
+@keyframes star-glow {
+  0%, 100% { opacity: 0.6; box-shadow: 0 0 4px 1px color-mix(in oklab, var(--navy) 50%, transparent); }
+  50% { opacity: 1; box-shadow: 0 0 10px 2px color-mix(in oklab, var(--navy) 70%, transparent); }
+}
+@keyframes comet-sweep {
+  0% { transform: translateX(-120%) skewX(-20deg); }
+  100% { transform: translateX(220%) skewX(-20deg); }
+}
 
 .animate-drift { animation: drift 12s ease-in-out infinite; }
 .animate-twinkle { animation: twinkle 3s ease-in-out infinite; }
 .animate-orbit { animation: orbit 60s linear infinite; }
+.animate-orbit-slow { animation: orbit-slow 120s linear infinite; }
 .animate-fade-up { animation: fade-up 0.8s ease-out both; }
+.animate-badge-glow { animation: badge-glow 3.5s ease-in-out infinite; }
+.animate-star-glow { animation: star-glow 4s ease-in-out infinite; }
+
+/* Hero vignette: subtle navy radial darkening from edges */
+.hero-vignette::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 35%, color-mix(in oklab, var(--navy) 14%, transparent) 85%, color-mix(in oklab, var(--navy) 24%, transparent) 100%);
+  z-index: 0;
+}
+
+/* Shimmer sweep on the "AstroLabs" word */
+.text-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--navy) 0%,
+    var(--navy) 40%,
+    color-mix(in oklab, var(--navy) 55%, white) 50%,
+    var(--navy) 60%,
+    var(--navy) 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer-sweep 4.5s ease-in-out infinite;
+}
+
+/* Comet hover sweep for primary button */
+.btn-comet { position: relative; overflow: hidden; isolation: isolate; }
+.btn-comet::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 40%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+  transform: translateX(-120%) skewX(-20deg);
+  pointer-events: none;
+}
+.btn-comet:hover::after { animation: comet-sweep 0.9s ease-out; }
 [data-lovable-badge] { display: none !important; }

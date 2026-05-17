@@ -96,12 +96,24 @@ function Navbar() {
 }
 
 function StarField() {
-  const stars = Array.from({ length: 40 }, (_, i) => ({
+  const stars = Array.from({ length: 55 }, (_, i) => {
+    const r = Math.random();
+    const size = r < 0.4 ? 1 : r < 0.8 ? 1.5 : 2;
+    return {
+      id: i,
+      top: Math.random() * 100,
+      left: Math.random() * 100,
+      size,
+      delay: Math.random() * 4,
+      duration: 2.5 + Math.random() * 3.5,
+    };
+  });
+  const brightStars = Array.from({ length: 7 }, (_, i) => ({
     id: i,
-    top: Math.random() * 100,
-    left: Math.random() * 100,
-    size: Math.random() * 2 + 1,
-    delay: Math.random() * 3,
+    top: 10 + Math.random() * 80,
+    left: 5 + Math.random() * 90,
+    delay: Math.random() * 4,
+    duration: 3 + Math.random() * 2,
   }));
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -115,11 +127,27 @@ function StarField() {
             width: `${s.size}px`,
             height: `${s.size}px`,
             animationDelay: `${s.delay}s`,
+            animationDuration: `${s.duration}s`,
+          }}
+        />
+      ))}
+      {brightStars.map((s) => (
+        <span
+          key={`b-${s.id}`}
+          className="absolute rounded-full bg-navy animate-star-glow"
+          style={{
+            top: `${s.top}%`,
+            left: `${s.left}%`,
+            width: "3px",
+            height: "3px",
+            animationDelay: `${s.delay}s`,
+            animationDuration: `${s.duration}s`,
           }}
         />
       ))}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full border border-steel/20 animate-orbit" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1100px] h-[1100px] rounded-full border border-steel/10" />
+      <div className="absolute top-[55%] left-[62%] -translate-x-1/2 -translate-y-1/2 w-[1400px] h-[1400px] rounded-full border border-navy/10 animate-orbit-slow" />
       <div className="absolute -right-32 -bottom-32 w-[500px] h-[500px] rounded-full bg-gradient-to-br from-steel/40 to-navy/30 blur-3xl animate-drift" />
       <div className="absolute -left-32 top-20 w-[400px] h-[400px] rounded-full bg-gradient-to-tr from-steel/30 to-deep/20 blur-3xl animate-drift" style={{ animationDelay: "3s" }} />
     </div>
@@ -128,15 +156,15 @@ function StarField() {
 
 function Hero() {
   return (
-    <section id="top" className="relative min-h-screen flex items-center pt-16 overflow-hidden">
+    <section id="top" className="relative min-h-screen flex items-center pt-16 overflow-hidden hero-vignette">
       <StarField />
-      <div className="relative max-w-5xl mx-auto px-6 text-center animate-fade-up">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-steel/15 border border-steel/30 text-navy text-xs font-medium mb-8">
+      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center animate-fade-up">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-steel/15 border border-steel/30 text-navy text-xs font-medium mb-8 animate-badge-glow">
           <span className="w-1.5 h-1.5 rounded-full bg-deep animate-twinkle" />
           UK-based web design studio
         </div>
         <h1 className="font-display font-bold text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-navy leading-[0.95]">
-          AstroLabs <span className="text-steel">& Co.</span>
+          <span className="text-shimmer">AstroLabs</span> <span className="text-steel">& Co.</span>
         </h1>
         <p className="mt-6 text-2xl md:text-3xl font-display font-medium text-deep">
           We Build. You Grow.
@@ -145,7 +173,7 @@ function Hero() {
           Professional websites for local businesses across the UK. No jargon, no hidden fees, just results.
         </p>
         <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
-          <a href="#portfolio" className="px-7 py-3.5 rounded-lg bg-deep text-white font-medium hover:bg-navy transition-all hover:-translate-y-0.5 shadow-lg shadow-deep/20">
+          <a href="#portfolio" className="btn-comet px-7 py-3.5 rounded-lg bg-deep text-white font-medium hover:bg-navy transition-all hover:-translate-y-0.5 shadow-lg shadow-deep/20">
             See Our Work
           </a>
           <a href="#contact" className="px-7 py-3.5 rounded-lg bg-white text-deep font-medium border border-steel/40 hover:border-deep hover:-translate-y-0.5 transition-all">
