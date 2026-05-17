@@ -333,19 +333,19 @@ function Portfolio() {
 function Pricing() {
   const plans = [
     {
-      name: "Launch", price: "£399", popular: false,
+      name: "Launch", price: "£299", popular: false,
       best: "For businesses on a budget",
-      features: ["Custom website design & build", "Free hosting included", "1 year bug fixes & support", "\"Made by AstroLabs & Co.\" badge on site"],
+      features: ["Custom website design & build", "Free hosting and domain included", "1 year bug fixes & support", "\"Made by AstroLabs & Co.\" badge on site"],
     },
     {
-      name: "Standard", price: "£599", popular: true,
+      name: "Standard", price: "£399", popular: true,
       best: "Most flexible",
-      features: ["Custom website design & build", "You manage your own hosting", "No AstroLabs badge", "1 year bug fixes & support"],
+      features: ["Custom website design & build", "You manage your own hosting", "No AstroLabs badge", "1 year bug fixes & support", "Domain for 2 years"],
     },
     {
       name: "Pro", price: "£699", popular: false,
       best: "All-inclusive",
-      features: ["Custom website design & build", "Free hosting included", "No AstroLabs badge", "1 year bug fixes & support", "Optional £30/mo retainer after year 1"],
+      features: ["Custom website design & build", "Free hosting included", "No AstroLabs badge", "1 year bug fixes & support", "Optional £20/mo retainer + domain after year 1", "Domain for 2 years"],
     },
   ];
   return (
