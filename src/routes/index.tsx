@@ -435,7 +435,7 @@ function Contact() {
         </form>
         <p className="mt-6 text-center text-foreground/70">
           Or email us directly at{" "}
-          <a href="mailto:hello@astrolabs.uk" className="text-deep font-medium hover:underline">hello@astrolabs.uk</a>
+          <a href="https://mail.google.com/mail/?view=cm&to=hello@astrolabs.uk" target="_blank" className="text-deep font-medium hover:underline">hello@astrolabs.uk</a>
         </p>
       </div>
     </section>
