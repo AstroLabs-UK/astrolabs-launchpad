@@ -24,7 +24,7 @@
 # AND RELATED RIGHTS IN THE DIGITAL SINGLE MARKET.
 
 search: yes
-ai-input: no
+ai-input: yes
 ai-train: no
 
 User-agent: *
