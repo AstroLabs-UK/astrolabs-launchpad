@@ -14,7 +14,7 @@ const NAV = [
   { label: "Portfolio", href: "#portfolio" },
   { label: "Pricing", href: "#pricing" },
   { label: "Contact", href: "#contact" },
-  { label: "CRM", href: "https://crm.astrolabs.uk", external: true },
+  { label: "CRM", href: "https://crm.astrolabs.uk" },
 ];
 
 function Navbar() {
@@ -53,8 +53,6 @@ function Navbar() {
             <li key={n.href}>
               <a
                 href={n.href}
-                target={n.external ? "_blank" : undefined}
-                rel={n.external ? "noopener noreferrer" : undefined}
                 className="text-sm font-medium text-foreground/70 hover:text-deep transition-colors"
               >
                 {n.label}
@@ -89,8 +87,6 @@ function Navbar() {
               <li key={n.href}>
                 <a
                   href={n.href}
-                  target={n.external ? "_blank" : undefined}
-                  rel={n.external ? "noopener noreferrer" : undefined}
                   onClick={(e) => handleNavClick(e, n.href)}
                   className="block text-sm font-medium text-foreground/80 hover:text-deep transition-colors py-1"
                 >
@@ -445,7 +441,7 @@ function Contact() {
         </form>
         <p className="mt-6 text-center text-foreground/70">
           Or email us directly at{" "}
-          <a href="https://mail.google.com/mail/?view=cm&to=hello@astrolabs.uk" target="_blank" className="text-deep font-medium hover:underline">hello@astrolabs.uk</a>
+          <a href="https://mail.google.com/mail/?view=cm&to=hello@astrolabs.uk" className="text-deep font-medium hover:underline">hello@astrolabs.uk</a>
         </p>
       </div>
     </section>
@@ -465,8 +461,6 @@ function Footer() {
             <li key={n.href}>
               <a
                 href={n.href}
-                target={n.external ? "_blank" : undefined}
-                rel={n.external ? "noopener noreferrer" : undefined}
                 className="hover:text-white transition-colors"
               >
                 {n.label}
