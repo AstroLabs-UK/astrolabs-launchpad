@@ -14,6 +14,7 @@ const NAV = [
   { label: "Portfolio", href: "#portfolio" },
   { label: "Pricing", href: "#pricing" },
   { label: "Contact", href: "#contact" },
+  { label: "CRM", href: "https://crm.astrolabs.uk", external: true },
 ];
 
 function Navbar() {
@@ -28,10 +29,12 @@ function Navbar() {
   }, []);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
     setMenuOpen(false);
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    if (href.startsWith("#")) {
+      e.preventDefault();
+      const el = document.querySelector(href);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
@@ -48,7 +51,12 @@ function Navbar() {
         <ul className="hidden md:flex items-center gap-8">
           {NAV.map((n) => (
             <li key={n.href}>
-              <a href={n.href} className="text-sm font-medium text-foreground/70 hover:text-deep transition-colors">
+              <a
+                href={n.href}
+                target={n.external ? "_blank" : undefined}
+                rel={n.external ? "noopener noreferrer" : undefined}
+                className="text-sm font-medium text-foreground/70 hover:text-deep transition-colors"
+              >
                 {n.label}
               </a>
             </li>
@@ -81,6 +89,8 @@ function Navbar() {
               <li key={n.href}>
                 <a
                   href={n.href}
+                  target={n.external ? "_blank" : undefined}
+                  rel={n.external ? "noopener noreferrer" : undefined}
                   onClick={(e) => handleNavClick(e, n.href)}
                   className="block text-sm font-medium text-foreground/80 hover:text-deep transition-colors py-1"
                 >
@@ -453,7 +463,14 @@ function Footer() {
         <ul className="flex flex-wrap items-center justify-center gap-6 text-sm text-white/80">
           {NAV.map((n) => (
             <li key={n.href}>
-              <a href={n.href} className="hover:text-white transition-colors">{n.label}</a>
+              <a
+                href={n.href}
+                target={n.external ? "_blank" : undefined}
+                rel={n.external ? "noopener noreferrer" : undefined}
+                className="hover:text-white transition-colors"
+              >
+                {n.label}
+              </a>
             </li>
           ))}
         </ul>
