@@ -14,7 +14,7 @@ const NAV = [
   { label: "Portfolio", href: "#portfolio" },
   { label: "Pricing", href: "#pricing" },
   { label: "Contact", href: "#contact" },
-  { label: "CRM", href: "https://crm.astrolabs.uk", external: true },
+  { label: "CRM", href: "https://crm.astrolabs.uk" },
 ];
 
 function Navbar() {
