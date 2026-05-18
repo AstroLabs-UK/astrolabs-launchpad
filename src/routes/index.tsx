@@ -463,7 +463,14 @@ function Footer() {
         <ul className="flex flex-wrap items-center justify-center gap-6 text-sm text-white/80">
           {NAV.map((n) => (
             <li key={n.href}>
-              <a href={n.href} className="hover:text-white transition-colors">{n.label}</a>
+              <a
+                href={n.href}
+                target={n.external ? "_blank" : undefined}
+                rel={n.external ? "noopener noreferrer" : undefined}
+                className="hover:text-white transition-colors"
+              >
+                {n.label}
+              </a>
             </li>
           ))}
         </ul>
