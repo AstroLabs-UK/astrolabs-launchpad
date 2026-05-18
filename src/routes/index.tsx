@@ -87,8 +87,6 @@ function Navbar() {
               <li key={n.href}>
                 <a
                   href={n.href}
-                  target={n.external ? "_blank" : undefined}
-                  rel={n.external ? "noopener noreferrer" : undefined}
                   onClick={(e) => handleNavClick(e, n.href)}
                   className="block text-sm font-medium text-foreground/80 hover:text-deep transition-colors py-1"
                 >
