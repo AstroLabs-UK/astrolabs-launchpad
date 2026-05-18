@@ -461,8 +461,6 @@ function Footer() {
             <li key={n.href}>
               <a
                 href={n.href}
-                target={n.external ? "_blank" : undefined}
-                rel={n.external ? "noopener noreferrer" : undefined}
                 className="hover:text-white transition-colors"
               >
                 {n.label}
