@@ -482,7 +482,7 @@ function Index() {
         <Hero />
         <About />
         <Services />
-        <Portfolio />
+        {/* <Portfolio /> */}
         <Pricing />
         <Contact />
       </main>
