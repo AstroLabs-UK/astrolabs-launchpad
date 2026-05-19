@@ -7,5 +7,10 @@ export default defineConfig({
   plugins: [],
   vite: {
     plugins: [],
+    server: {
+      hmr: {
+        overlay: false,
+      },
+    },
   },
 });
