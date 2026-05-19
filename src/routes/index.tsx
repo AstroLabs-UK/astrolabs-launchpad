@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import logo from "@/assets/astrolabs-logo.png";
 import goodVibesImg from "@/assets/portfolio-goodvibes.jpg";
 import puddingsImg from "@/assets/portfolio-puddings.jpg";
-import { User } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -12,7 +11,7 @@ export const Route = createFileRoute("/")({
 const NAV = [
   { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
-  // { label: "Portfolio", href: "#portfolio" },
+  { label: "Portfolio", href: "#portfolio" },
   { label: "Pricing", href: "#pricing" },
   { label: "Contact", href: "#contact" },
   { label: "CRM", href: "https://crm.astrolabs.uk" },
@@ -54,6 +53,7 @@ function Navbar() {
             <li key={n.href}>
               <a
                 href={n.href}
+                onClick={(e) => handleNavClick(e, n.href)}
                 className="text-sm font-medium text-foreground/70 hover:text-deep transition-colors"
               >
                 {n.label}
@@ -103,6 +103,14 @@ function Navbar() {
 }
 
 function StarField() {
+  const [mounted, setMounted] = useState(false);
+  
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
+
   const stars = Array.from({ length: 55 }, (_, i) => {
     const r = Math.random();
     const size = r < 0.4 ? 1 : r < 0.8 ? 1.5 : 2;
@@ -115,6 +123,7 @@ function StarField() {
       duration: 2.5 + Math.random() * 3.5,
     };
   });
+  
   const brightStars = Array.from({ length: 7 }, (_, i) => ({
     id: i,
     top: 10 + Math.random() * 80,
@@ -122,6 +131,7 @@ function StarField() {
     delay: Math.random() * 4,
     duration: 3 + Math.random() * 2,
   }));
+
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {stars.map((s) => (
@@ -388,7 +398,8 @@ function Pricing() {
                   </li>
                 ))}
               </ul>
-              <a                href="#contact"
+              <a
+                href="#contact"
                 className={`mt-8 text-center px-5 py-3 rounded-lg font-medium transition-all ${
                   p.popular
                     ? "bg-white text-deep hover:bg-steel hover:text-white"
@@ -414,16 +425,21 @@ function Contact() {
     setSending(true);
     const form = e.currentTarget;
     const data = new FormData(form);
-    const formspreeEndpoint = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT || "https://formspree.io/f/xpqnaarq";
+    const formspreeEndpoint = "https://formspree.io/f/xpqnaarq";
     
-    await fetch(formspreeEndpoint, {
-      method: "POST",
-      body: data,
-      headers: { Accept: "application/json" },
-    });
-    setSent(true);
-    setSending(false);
-    form.reset();
+    try {
+      await fetch(formspreeEndpoint, {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" },
+      });
+      setSent(true);
+      form.reset();
+    } catch (error) {
+      console.error("Form submission error:", error);
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -443,7 +459,7 @@ function Contact() {
         </form>
         <p className="mt-6 text-center text-foreground/70">
           Or email us directly at{" "}
-          <a href="https://mail.google.com/mail/?view=cm&to=hello@astrolabs.uk" className="text-deep font-medium hover:underline">hello@astrolabs.uk</a>
+          <a href="mailto:hello@astrolabs.uk" className="text-deep font-medium hover:underline">hello@astrolabs.uk</a>
         </p>
       </div>
     </section>
@@ -484,7 +500,7 @@ function Index() {
         <Hero />
         <About />
         <Services />
-        {/* <Portfolio /> */}
+        <Portfolio />
         <Pricing />
         <Contact />
       </main>
