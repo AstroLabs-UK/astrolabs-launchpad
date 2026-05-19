@@ -11,7 +11,7 @@ export const Route = createFileRoute("/")({
 const NAV = [
   { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
-  { label: "Portfolio", href: "#portfolio" },
+  // { label: "Portfolio", href: "#portfolio" },
   { label: "Pricing", href: "#pricing" },
   { label: "Contact", href: "#contact" },
   { label: "CRM", href: "https://crm.astrolabs.uk" },
