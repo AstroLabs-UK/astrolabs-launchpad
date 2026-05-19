@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import logo from "@/assets/astrolabs-logo.png";
 import goodVibesImg from "@/assets/portfolio-goodvibes.jpg";
 import puddingsImg from "@/assets/portfolio-puddings.jpg";
+import { User } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -165,7 +166,7 @@ function Hero() {
     <section id="top" className="relative min-h-screen flex items-center pt-16 overflow-hidden hero-vignette">
       <StarField />
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center animate-fade-up">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-steel/15 border border-steel/30 text-navy text-xs font-medium mb-8 animate-badge-glow">
+        <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-steel/15 border border-steel/30 text-navy text-xs font-medium mb-8 animate-badge-glow">
           <span className="w-1.5 h-1.5 rounded-full bg-deep animate-twinkle" />
           UK-based web design studio
         </div>
@@ -224,7 +225,7 @@ function About() {
     {
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
         </svg>
       ),
       num: "1", label: "Year Support Included",
@@ -240,7 +241,7 @@ function About() {
         <div className="mt-16 grid sm:grid-cols-3 gap-6">
           {stats.map((s) => (
             <div key={s.label} className="p-8 rounded-2xl bg-white border border-border hover:border-steel transition-all hover:-translate-y-1 text-center">
-              <div className="mb-3 flex justify-center text-deep">{s.icon}</div>
+              <div className="mb-5 flex justify-center text-deep">{s.icon}</div>
               <div className="font-display font-bold text-5xl text-deep">{s.num}</div>
               <div className="mt-2 text-sm text-foreground/70">{s.label}</div>
             </div>
@@ -387,8 +388,7 @@ function Pricing() {
                   </li>
                 ))}
               </ul>
-              <a
-                href="#contact"
+              <a                href="#contact"
                 className={`mt-8 text-center px-5 py-3 rounded-lg font-medium transition-all ${
                   p.popular
                     ? "bg-white text-deep hover:bg-steel hover:text-white"
@@ -414,7 +414,9 @@ function Contact() {
     setSending(true);
     const form = e.currentTarget;
     const data = new FormData(form);
-    await fetch("https://formspree.io/f/xpqnaarq", {
+    const formspreeEndpoint = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT || "https://formspree.io/f/xpqnaarq";
+    
+    await fetch(formspreeEndpoint, {
       method: "POST",
       body: data,
       headers: { Accept: "application/json" },

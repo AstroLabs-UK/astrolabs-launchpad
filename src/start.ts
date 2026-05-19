@@ -20,3 +20,6 @@ const errorMiddleware = createMiddleware().server(async ({ next }) => {
 export const startInstance = createStart(() => ({
   requestMiddleware: [errorMiddleware],
 }));
+
+// Add default export so the virtual client entry can resolve the start instance
+export default startInstance;
