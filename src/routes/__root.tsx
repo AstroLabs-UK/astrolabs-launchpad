@@ -90,6 +90,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     scripts: [
       {
         type: "application/ld+json",
+        suppressHydrationWarning: true,
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Organization",

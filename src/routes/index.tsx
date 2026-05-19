@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import logo from "@/assets/astrolabs-logo.png";
 import goodVibesImg from "@/assets/portfolio-goodvibes.jpg";
 import puddingsImg from "@/assets/portfolio-puddings.jpg";
@@ -102,25 +102,41 @@ function Navbar() {
 }
 
 function StarField() {
-  const stars = Array.from({ length: 55 }, (_, i) => {
-    const r = Math.random();
-    const size = r < 0.4 ? 1 : r < 0.8 ? 1.5 : 2;
-    return {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const stars = useMemo(() => {
+    if (!mounted) return [];
+    return Array.from({ length: 55 }, (_, i) => {
+      const r = Math.random();
+      const size = r < 0.4 ? 1 : r < 0.8 ? 1.5 : 2;
+      return {
+        id: i,
+        top: Math.random() * 100,
+        left: Math.random() * 100,
+        size,
+        delay: Math.random() * 4,
+        duration: 2.5 + Math.random() * 3.5,
+      };
+    });
+  }, [mounted]);
+
+  const brightStars = useMemo(() => {
+    if (!mounted) return [];
+    return Array.from({ length: 7 }, (_, i) => ({
       id: i,
-      top: Math.random() * 100,
-      left: Math.random() * 100,
-      size,
+      top: 10 + Math.random() * 80,
+      left: 5 + Math.random() * 90,
       delay: Math.random() * 4,
-      duration: 2.5 + Math.random() * 3.5,
-    };
-  });
-  const brightStars = Array.from({ length: 7 }, (_, i) => ({
-    id: i,
-    top: 10 + Math.random() * 80,
-    left: 5 + Math.random() * 90,
-    delay: Math.random() * 4,
-    duration: 3 + Math.random() * 2,
-  }));
+      duration: 3 + Math.random() * 2,
+    }));
+  }, [mounted]);
+
+  if (!mounted) return null;
+
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {stars.map((s) => (
