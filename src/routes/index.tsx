@@ -1,16 +1,8 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useState, useMemo } from "react";
+import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import logo from "@/assets/astrolabs-logo.png";
 import goodVibesImg from "@/assets/portfolio-goodvibes.jpg";
 import puddingsImg from "@/assets/portfolio-puddings.jpg";
-import ChatBubble from "@/components/ChatBubble";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { ChevronDown, ExternalLink, MessageSquare } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -19,15 +11,10 @@ export const Route = createFileRoute("/")({
 const NAV = [
   { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
+  // { label: "Portfolio", href: "#portfolio" },
   { label: "Pricing", href: "#pricing" },
   { label: "Contact", href: "#contact" },
-  { 
-    label: "CRM", 
-    children: [
-      { label: "Customer Connect", href: "https://crm.astrolabs.uk", external: true, icon: <ExternalLink size={14} /> },
-      { label: "Customer Chat", href: "/crm/chat", external: false, icon: <MessageSquare size={14} /> }
-    ]
-  },
+  { label: "CRM", href: "https://crm.astrolabs.uk" },
 ];
 
 function Navbar() {
@@ -63,36 +50,13 @@ function Navbar() {
         </a>
         <ul className="hidden md:flex items-center gap-8">
           {NAV.map((n) => (
-            <li key={n.label}>
-              {n.children ? (
-                <DropdownMenu>
-                  <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium text-foreground/70 hover:text-deep transition-colors outline-none cursor-pointer">
-                    {n.label} <ChevronDown size={14} />
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end" className="w-48">
-                    {n.children.map((child) => (
-                      <DropdownMenuItem key={child.label} asChild>
-                        {child.external ? (
-                          <a href={child.href} target="_blank" rel="noreferrer" className="flex items-center justify-between w-full cursor-pointer">
-                            {child.label} {child.icon}
-                          </a>
-                        ) : (
-                          <Link to={child.href} className="flex items-center justify-between w-full cursor-pointer">
-                            {child.label} {child.icon}
-                          </Link>
-                        )}
-                      </DropdownMenuItem>
-                    ))}
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              ) : (
-                <a
-                  href={n.href}
-                  className="text-sm font-medium text-foreground/70 hover:text-deep transition-colors"
-                >
-                  {n.label}
-                </a>
-              )}
+            <li key={n.href}>
+              <a
+                href={n.href}
+                className="text-sm font-medium text-foreground/70 hover:text-deep transition-colors"
+              >
+                {n.label}
+              </a>
             </li>
           ))}
         </ul>
@@ -120,42 +84,14 @@ function Navbar() {
         <div className="md:hidden bg-white border-b border-border">
           <ul className="px-6 py-4 space-y-3">
             {NAV.map((n) => (
-              <li key={n.label}>
-                {n.children ? (
-                  <div className="space-y-2">
-                    <p className="text-xs font-bold text-steel uppercase tracking-wider px-1">{n.label}</p>
-                    {n.children.map((child) => (
-                      <div key={child.label}>
-                        {child.external ? (
-                          <a
-                            href={child.href}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="flex items-center gap-2 text-sm font-medium text-foreground/80 hover:text-deep transition-colors py-1 pl-2"
-                          >
-                            {child.icon} {child.label}
-                          </a>
-                        ) : (
-                          <Link
-                            to={child.href}
-                            onClick={() => setMenuOpen(false)}
-                            className="flex items-center gap-2 text-sm font-medium text-foreground/80 hover:text-deep transition-colors py-1 pl-2"
-                          >
-                            {child.icon} {child.label}
-                          </Link>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <a
-                    href={n.href}
-                    onClick={(e) => handleNavClick(e, n.href)}
-                    className="block text-sm font-medium text-foreground/80 hover:text-deep transition-colors py-1"
-                  >
-                    {n.label}
-                  </a>
-                )}
+              <li key={n.href}>
+                <a
+                  href={n.href}
+                  onClick={(e) => handleNavClick(e, n.href)}
+                  className="block text-sm font-medium text-foreground/80 hover:text-deep transition-colors py-1"
+                >
+                  {n.label}
+                </a>
               </li>
             ))}
           </ul>
@@ -166,41 +102,25 @@ function Navbar() {
 }
 
 function StarField() {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const stars = useMemo(() => {
-    if (!mounted) return [];
-    return Array.from({ length: 55 }, (_, i) => {
-      const r = Math.random();
-      const size = r < 0.4 ? 1 : r < 0.8 ? 1.5 : 2;
-      return {
-        id: i,
-        top: Math.random() * 100,
-        left: Math.random() * 100,
-        size,
-        delay: Math.random() * 4,
-        duration: 2.5 + Math.random() * 3.5,
-      };
-    });
-  }, [mounted]);
-
-  const brightStars = useMemo(() => {
-    if (!mounted) return [];
-    return Array.from({ length: 7 }, (_, i) => ({
+  const stars = Array.from({ length: 55 }, (_, i) => {
+    const r = Math.random();
+    const size = r < 0.4 ? 1 : r < 0.8 ? 1.5 : 2;
+    return {
       id: i,
-      top: 10 + Math.random() * 80,
-      left: 5 + Math.random() * 90,
+      top: Math.random() * 100,
+      left: Math.random() * 100,
+      size,
       delay: Math.random() * 4,
-      duration: 3 + Math.random() * 2,
-    }));
-  }, [mounted]);
-
-  if (!mounted) return null;
-
+      duration: 2.5 + Math.random() * 3.5,
+    };
+  });
+  const brightStars = Array.from({ length: 7 }, (_, i) => ({
+    id: i,
+    top: 10 + Math.random() * 80,
+    left: 5 + Math.random() * 90,
+    delay: Math.random() * 4,
+    duration: 3 + Math.random() * 2,
+  }));
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {stars.map((s) => (
@@ -538,7 +458,7 @@ function Footer() {
         </a>
         <ul className="flex flex-wrap items-center justify-center gap-6 text-sm text-white/80">
           {NAV.map((n) => (
-            <li key={n.label}>
+            <li key={n.href}>
               <a
                 href={n.href}
                 className="hover:text-white transition-colors"
@@ -548,9 +468,7 @@ function Footer() {
             </li>
           ))}
         </ul>
-        <p className="text-xs text-white/60">
-          © <span suppressHydrationWarning>{new Date().getFullYear()}</span> AstroLabs & Co.™ All rights reserved.
-        </p>
+        <p className="text-xs text-white/60">© {new Date().getFullYear()} AstroLabs & Co.™ All rights reserved.</p>
       </div>
     </footer>
   );
@@ -569,7 +487,6 @@ function Index() {
         <Contact />
       </main>
       <Footer />
-      <ChatBubble />
     </div>
   );
 }
