@@ -87,27 +87,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" },
     ],
-    scripts: [
-      {
-        type: "application/ld+json",
-        suppressHydrationWarning: true,
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          name: "AstroLabs & Co.",
-          alternateName: [
-            "AstroLabs",
-            "AstroLabs & Co",
-            "AstroLabs and Co",
-            "AstroLabs and Co.",
-            "AstroLabs co",
-          ],
-          url: "https://www.astrolabs.uk",
-          description: "Professional websites for local businesses across the UK. No jargon, no hidden fees — just results.",
-          sameAs: [],
-        }),
-      },
-    ],
   }),
   shellComponent: RootShell,
   component: RootComponent,
@@ -120,6 +99,27 @@ function RootShell({ children }: { children: React.ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
+        <script
+          type="application/ld+json"
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "AstroLabs & Co.",
+              alternateName: [
+                "AstroLabs",
+                "AstroLabs & Co",
+                "AstroLabs and Co",
+                "AstroLabs and Co.",
+                "AstroLabs co",
+              ],
+              url: "https://www.astrolabs.uk",
+              description: "Professional websites for local businesses across the UK. No jargon, no hidden fees — just results.",
+              sameAs: [],
+            }),
+          }}
+        />
       </head>
       <body>
         {children}
