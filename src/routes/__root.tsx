@@ -72,17 +72,30 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "AstroLabs & Co. — UK Web Design Studio" },
-      { name: "description", content: "Professional websites for local businesses across the UK. No jargon, no hidden fees — just results." },
-      { name: "keywords", content: "AstroLabs, AstroLabs & Co., AstroLabs and Co, AstroLabs co, AstroLabs & Co, AstroLabs and Co., UK web design, web design studio, website designer UK, local business websites" },
-      { property: "og:title", content: "AstroLabs & Co. — UK Web Design Studio" },
-      { property: "og:description", content: "We build. You grow. Custom websites, hosting, and support for UK businesses." },
+      { title: "AstroLabs & Co. — UK Web Design Studio | Professional Business Websites" },
+      { name: "description", content: "AstroLabs & Co. builds high-performance, custom websites for UK local businesses. Transparent pricing, free hosting, and dedicated support. Start your digital journey today." },
+      { name: "keywords", content: "AstroLabs, AstroLabs & Co., UK web design, web design studio, website designer UK, local business websites, affordable web design, custom web development, AstroLabs and Co" },
+      { name: "author", content: "AstroLabs & Co." },
+      { name: "robots", content: "index, follow" },
+      // Open Graph / Facebook
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
+      { property: "og:url", content: "https://www.astrolabs.uk/" },
+      { property: "og:title", content: "AstroLabs & Co. — UK Web Design Studio" },
+      { property: "og:description", content: "Professional websites for local businesses across the UK. No jargon, no hidden fees — just results." },
+      { property: "og:image", content: "https://www.astrolabs.uk/og-image.png" },
+      // Twitter
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:url", content: "https://www.astrolabs.uk/" },
+      { name: "twitter:title", content: "AstroLabs & Co. — UK Web Design Studio" },
+      { name: "twitter:description", content: "We build. You grow. Custom websites, hosting, and support for UK businesses." },
+      { name: "twitter:image", content: "https://www.astrolabs.uk/og-image.png" },
     ],
     links: [
+      { rel: "canonical", href: "https://www.astrolabs.uk/" },
       { rel: "stylesheet", href: appCss },
       { rel: "icon", type: "image/png", href: "/favicon.png" },
+      { rel: "apple-touch-icon", href: "/favicon.png" },
+      { rel: "manifest", href: "/site.webmanifest" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" },
@@ -93,17 +106,26 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Organization",
-          name: "AstroLabs & Co.",
-          alternateName: [
+          "name": "AstroLabs & Co.",
+          "alternateName": [
             "AstroLabs",
             "AstroLabs & Co",
             "AstroLabs and Co",
             "AstroLabs and Co.",
-            "AstroLabs co",
+            "AstroLabs co"
           ],
-          url: "https://www.astrolabs.uk",
-          description: "Professional websites for local businesses across the UK. No jargon, no hidden fees — just results.",
-          sameAs: [],
+          "url": "https://www.astrolabs.uk",
+          "logo": "https://www.astrolabs.uk/favicon.png",
+          "description": "Professional websites for local businesses across the UK. No jargon, no hidden fees — just results.",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "GB"
+          },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "hello@astrolabs.uk",
+            "contactType": "customer service"
+          }
         }),
       },
     ],

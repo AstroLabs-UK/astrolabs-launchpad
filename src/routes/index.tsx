@@ -43,9 +43,9 @@ function Navbar() {
         scrolled ? "bg-background/85 backdrop-blur-md shadow-[0_2px_20px_-10px_rgba(74,81,112,0.3)]" : "bg-transparent"
       }`}
     >
-      <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="#top" className="flex items-center gap-2.5 group">
-          <img src={logo} alt="AstroLabs & Co." className="h-9 w-9 transition-transform group-hover:rotate-12" />
+      <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between" aria-label="Main navigation">
+        <a href="#top" className="flex items-center gap-2.5 group" aria-label="AstroLabs & Co. Home">
+          <img src={logo} alt="AstroLabs & Co. Logo" className="h-9 w-9 transition-transform group-hover:rotate-12" />
           <span className="font-display font-bold text-navy text-lg tracking-tight">AstroLabs <span className="text-steel">& Co.</span></span>
         </a>
         <ul className="hidden md:flex items-center gap-8">
@@ -68,12 +68,12 @@ function Navbar() {
           aria-expanded={menuOpen}
         >
           {menuOpen ? (
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <line x1="18" y1="6" x2="6" y2="18" />
               <line x1="6" y1="6" x2="18" y2="18" />
             </svg>
           ) : (
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <line x1="4" y1="6" x2="20" y2="6" />
               <line x1="4" y1="12" x2="20" y2="12" />
               <line x1="4" y1="18" x2="20" y2="18" />
@@ -133,7 +133,7 @@ function StarField() {
   }));
 
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
       {stars.map((s) => (
         <span
           key={s.id}
@@ -215,7 +215,7 @@ function About() {
   const stats = [
     {
       icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M12 2L2 7l10 5 10-5-10-5z" />
           <path d="M2 17l10 5 10-5" />
           <path d="M2 12l10 5 10-5" />
@@ -225,7 +225,7 @@ function About() {
     },
     {
       icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" aria-hidden="true">
           <rect x="2" y="7" width="20" height="14" rx="2" />
           <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
         </svg>
@@ -234,7 +234,7 @@ function About() {
     },
     {
       icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
         </svg>
       ),
@@ -266,7 +266,7 @@ function Services() {
   const items = [
     {
       icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M12 19l7-7-7-7M5 19l7-7-7-7" />
         </svg>
       ),
@@ -275,7 +275,7 @@ function Services() {
     },
     {
       icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" aria-hidden="true">
           <rect x="2" y="3" width="20" height="14" rx="2" />
           <path d="M8 21h8M12 17v4" />
         </svg>
@@ -285,7 +285,7 @@ function Services() {
     },
     {
       icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
         </svg>
       ),
@@ -299,11 +299,11 @@ function Services() {
         <SectionHeading eyebrow="Services" title="What We Do" />
         <div className="grid md:grid-cols-3 gap-6">
           {items.map((s) => (
-            <div key={s.title} className="group p-8 rounded-2xl bg-background border border-border hover:bg-deep hover:border-deep transition-all duration-300 hover:-translate-y-1">
+            <article key={s.title} className="group p-8 rounded-2xl bg-background border border-border hover:bg-deep hover:border-deep transition-all duration-300 hover:-translate-y-1">
               <div className="mb-5 text-deep group-hover:text-white transition-colors">{s.icon}</div>
               <h3 className="font-display font-bold text-2xl text-navy group-hover:text-white transition-colors">{s.title}</h3>
               <p className="mt-3 text-foreground/70 group-hover:text-white/80 leading-relaxed transition-colors">{s.desc}</p>
-            </div>
+            </article>
           ))}
         </div>
       </div>
@@ -319,7 +319,7 @@ function Portfolio() {
         <div className="grid md:grid-cols-2 gap-8">
           <article className="group rounded-2xl overflow-hidden bg-white border border-border hover:shadow-xl hover:shadow-navy/10 transition-all hover:-translate-y-1">
             <div className="aspect-[4/3] overflow-hidden bg-muted">
-              <img src={goodVibesImg} alt="Good Vibes Café website" width={1024} height={768} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <img src={goodVibesImg} alt="Good Vibes Café website design preview" width={1024} height={768} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
             </div>
             <div className="p-7">
               <h3 className="font-display font-bold text-2xl text-navy">Good Vibes Café</h3>
@@ -331,7 +331,7 @@ function Portfolio() {
           </article>
           <article className="group rounded-2xl overflow-hidden bg-white border border-border hover:shadow-xl hover:shadow-navy/10 transition-all hover:-translate-y-1">
             <div className="aspect-[4/3] overflow-hidden bg-muted">
-              <img src={puddingsImg} alt="Puddings Maidstone website" width={1024} height={768} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <img src={puddingsImg} alt="Puddings Maidstone website design preview" width={1024} height={768} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
             </div>
             <div className="p-7">
               <h3 className="font-display font-bold text-2xl text-navy">Puddings Maidstone</h3>
@@ -393,7 +393,7 @@ function Pricing() {
               <ul className="mt-6 space-y-3 flex-1">
                 {p.features.map((f) => (
                   <li key={f} className={`flex gap-2.5 text-sm ${p.popular ? "text-white/90" : "text-foreground/80"}`}>
-                    <span className={p.popular ? "text-steel" : "text-deep"}>✓</span>
+                    <span className={p.popular ? "text-steel" : "text-deep"} aria-hidden="true">✓</span>
                     <span>{f}</span>
                   </li>
                 ))}
@@ -448,11 +448,23 @@ function Contact() {
         <SectionHeading eyebrow="Contact" title="Let's Build Something" />
         <form onSubmit={handleSubmit} className="space-y-4 bg-white p-8 rounded-2xl border border-border">
           <div className="grid sm:grid-cols-2 gap-4">
-            <input name="name" required placeholder="Your name" className="px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:border-deep transition" />
-            <input name="business" required placeholder="Business name" className="px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:border-deep transition" />
+            <div className="flex flex-col gap-1.5">
+              <label htmlFor="name" className="text-xs font-semibold text-navy/70 ml-1">Your Name</label>
+              <input id="name" name="name" required placeholder="John Doe" className="px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:border-deep transition" />
+            </div>
+            <div className="flex flex-col gap-1.5">
+              <label htmlFor="business" className="text-xs font-semibold text-navy/70 ml-1">Business Name</label>
+              <input id="business" name="business" required placeholder="My Local Business" className="px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:border-deep transition" />
+            </div>
           </div>
-          <input name="email" required type="email" placeholder="Email address" className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:border-deep transition" />
-          <textarea name="message" required rows={5} placeholder="Tell us about your project…" className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:border-deep transition resize-none" />
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="email" className="text-xs font-semibold text-navy/70 ml-1">Email Address</label>
+            <input id="email" name="email" required type="email" placeholder="john@example.com" className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:border-deep transition" />
+          </div>
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="message" className="text-xs font-semibold text-navy/70 ml-1">Project Details</label>
+            <textarea id="message" name="message" required rows={5} placeholder="Tell us about your project…" className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:border-deep transition resize-none" />
+          </div>
           <button type="submit" disabled={sending} className="w-full px-6 py-3.5 rounded-lg bg-deep text-white font-medium hover:bg-navy transition-all hover:-translate-y-0.5">
             {sent ? "Thanks — we'll be in touch ✦" : sending ? "Sending…" : "Send Message"}
           </button>
@@ -470,22 +482,24 @@ function Footer() {
   return (
     <footer className="bg-deep text-white">
       <div className="max-w-7xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center gap-6 md:justify-between">
-        <a href="#top" className="flex items-center gap-2.5">
-          <img src={logo} alt="" className="h-8 w-8" />
+        <a href="#top" className="flex items-center gap-2.5" aria-label="AstroLabs & Co. Home">
+          <img src={logo} alt="AstroLabs & Co. Logo" className="h-8 w-8" />
           <span className="font-display font-bold">AstroLabs & Co.</span>
         </a>
-        <ul className="flex flex-wrap items-center justify-center gap-6 text-sm text-white/80">
-          {NAV.map((n) => (
-            <li key={n.href}>
-              <a
-                href={n.href}
-                className="hover:text-white transition-colors"
-              >
-                {n.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <nav aria-label="Footer navigation">
+          <ul className="flex flex-wrap items-center justify-center gap-6 text-sm text-white/80">
+            {NAV.map((n) => (
+              <li key={n.href}>
+                <a
+                  href={n.href}
+                  className="hover:text-white transition-colors"
+                >
+                  {n.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
         <p className="text-xs text-white/60">© {new Date().getFullYear()} AstroLabs & Co.™ All rights reserved.</p>
       </div>
     </footer>
@@ -496,7 +510,7 @@ function Index() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
-      <main>
+      <main id="main-content">
         <Hero />
         <About />
         <Services />
