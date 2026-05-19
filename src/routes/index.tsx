@@ -1,8 +1,16 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState, useMemo } from "react";
 import logo from "@/assets/astrolabs-logo.png";
 import goodVibesImg from "@/assets/portfolio-goodvibes.jpg";
 import puddingsImg from "@/assets/portfolio-puddings.jpg";
+import ChatBubble from "@/components/ChatBubble";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { ChevronDown, ExternalLink, MessageSquare } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -11,10 +19,15 @@ export const Route = createFileRoute("/")({
 const NAV = [
   { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
-  // { label: "Portfolio", href: "#portfolio" },
   { label: "Pricing", href: "#pricing" },
   { label: "Contact", href: "#contact" },
-  { label: "CRM", href: "https://crm.astrolabs.uk" },
+  { 
+    label: "CRM", 
+    children: [
+      { label: "Customer Connect", href: "https://crm.astrolabs.uk", external: true, icon: <ExternalLink size={14} /> },
+      { label: "Customer Chat", href: "/crm/chat", external: false, icon: <MessageSquare size={14} /> }
+    ]
+  },
 ];
 
 function Navbar() {
@@ -50,13 +63,36 @@ function Navbar() {
         </a>
         <ul className="hidden md:flex items-center gap-8">
           {NAV.map((n) => (
-            <li key={n.href}>
-              <a
-                href={n.href}
-                className="text-sm font-medium text-foreground/70 hover:text-deep transition-colors"
-              >
-                {n.label}
-              </a>
+            <li key={n.label}>
+              {n.children ? (
+                <DropdownMenu>
+                  <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium text-foreground/70 hover:text-deep transition-colors outline-none cursor-pointer">
+                    {n.label} <ChevronDown size={14} />
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" className="w-48">
+                    {n.children.map((child) => (
+                      <DropdownMenuItem key={child.label} asChild>
+                        {child.external ? (
+                          <a href={child.href} target="_blank" rel="noreferrer" className="flex items-center justify-between w-full cursor-pointer">
+                            {child.label} {child.icon}
+                          </a>
+                        ) : (
+                          <Link to={child.href} className="flex items-center justify-between w-full cursor-pointer">
+                            {child.label} {child.icon}
+                          </Link>
+                        )}
+                      </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              ) : (
+                <a
+                  href={n.href}
+                  className="text-sm font-medium text-foreground/70 hover:text-deep transition-colors"
+                >
+                  {n.label}
+                </a>
+              )}
             </li>
           ))}
         </ul>
@@ -84,14 +120,42 @@ function Navbar() {
         <div className="md:hidden bg-white border-b border-border">
           <ul className="px-6 py-4 space-y-3">
             {NAV.map((n) => (
-              <li key={n.href}>
-                <a
-                  href={n.href}
-                  onClick={(e) => handleNavClick(e, n.href)}
-                  className="block text-sm font-medium text-foreground/80 hover:text-deep transition-colors py-1"
-                >
-                  {n.label}
-                </a>
+              <li key={n.label}>
+                {n.children ? (
+                  <div className="space-y-2">
+                    <p className="text-xs font-bold text-steel uppercase tracking-wider px-1">{n.label}</p>
+                    {n.children.map((child) => (
+                      <div key={child.label}>
+                        {child.external ? (
+                          <a
+                            href={child.href}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="flex items-center gap-2 text-sm font-medium text-foreground/80 hover:text-deep transition-colors py-1 pl-2"
+                          >
+                            {child.icon} {child.label}
+                          </a>
+                        ) : (
+                          <Link
+                            to={child.href}
+                            onClick={() => setMenuOpen(false)}
+                            className="flex items-center gap-2 text-sm font-medium text-foreground/80 hover:text-deep transition-colors py-1 pl-2"
+                          >
+                            {child.icon} {child.label}
+                          </Link>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <a
+                    href={n.href}
+                    onClick={(e) => handleNavClick(e, n.href)}
+                    className="block text-sm font-medium text-foreground/80 hover:text-deep transition-colors py-1"
+                  >
+                    {n.label}
+                  </a>
+                )}
               </li>
             ))}
           </ul>
@@ -474,7 +538,7 @@ function Footer() {
         </a>
         <ul className="flex flex-wrap items-center justify-center gap-6 text-sm text-white/80">
           {NAV.map((n) => (
-            <li key={n.href}>
+            <li key={n.label}>
               <a
                 href={n.href}
                 className="hover:text-white transition-colors"
@@ -505,6 +569,7 @@ function Index() {
         <Contact />
       </main>
       <Footer />
+      <ChatBubble />
     </div>
   );
 }
