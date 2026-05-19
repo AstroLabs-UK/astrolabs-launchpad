@@ -416,6 +416,39 @@ function Pricing() {
   );
 }
 
+function FAQ() {
+  const faqs = [
+    {
+      q: "How much does a professional website cost in the UK?",
+      a: "At AstroLabs & Co., our professional web design packages start from £299 for a complete launch. We offer transparent, one-off pricing with no hidden fees."
+    },
+    {
+      q: "Do you provide hosting and domain names?",
+      a: "Yes, we include free hosting and domain registration in our Launch and Pro packages. We handle all the technical setup so you don't have to."
+    },
+    {
+      q: "How long does it take to build a website?",
+      a: "Most local business websites are designed and launched within 2-4 weeks, depending on the complexity and how quickly we receive your content."
+    }
+  ];
+
+  return (
+    <section id="faq" className="py-28 px-6 bg-background">
+      <div className="max-w-3xl mx-auto">
+        <SectionHeading eyebrow="FAQ" title="Common Questions" />
+        <div className="space-y-8">
+          {faqs.map((faq, i) => (
+            <article key={i} className="p-6 rounded-2xl bg-white border border-border">
+              <h3 className="font-display font-bold text-xl text-navy mb-3">{faq.q}</h3>
+              <p className="text-foreground/70 leading-relaxed">{faq.a}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Contact() {
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
@@ -516,6 +549,7 @@ function Index() {
         <Services />
         <Portfolio />
         <Pricing />
+        <FAQ />
         <Contact />
       </main>
       <Footer />

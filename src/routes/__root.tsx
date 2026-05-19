@@ -103,30 +103,63 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     scripts: [
       {
         type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          "name": "AstroLabs & Co.",
-          "alternateName": [
-            "AstroLabs",
-            "AstroLabs & Co",
-            "AstroLabs and Co",
-            "AstroLabs and Co.",
-            "AstroLabs co"
-          ],
-          "url": "https://www.astrolabs.uk",
-          "logo": "https://www.astrolabs.uk/favicon.png",
-          "description": "Professional websites for local businesses across the UK. No jargon, no hidden fees — just results.",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "GB"
+        children: JSON.stringify([
+          {
+            "@context": "https://schema.org",
+            "@type": "ProfessionalService",
+            "name": "AstroLabs & Co.",
+            "alternateName": ["AstroLabs", "AstroLabs & Co", "AstroLabs and Co"],
+            "url": "https://www.astrolabs.uk",
+            "logo": "https://www.astrolabs.uk/favicon.png",
+            "image": "https://www.astrolabs.uk/og-image.png",
+            "description": "AstroLabs & Co. is a UK-based web design studio specializing in high-performance, custom websites for local businesses. We offer transparent pricing, free hosting, and dedicated support.",
+            "address": {
+              "@type": "PostalAddress",
+              "addressCountry": "GB"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "51.5074",
+              "longitude": "0.1278"
+            },
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Web Design Services",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Custom Web Design",
+                    "description": "Bespoke website design tailored to local UK businesses."
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Managed Hosting",
+                    "description": "Fast and secure website hosting included with all plans."
+                  }
+                }
+              ]
+            },
+            "priceRange": "££",
+            "areaServed": "GB",
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "email": "hello@astrolabs.uk",
+              "contactType": "customer service"
+            }
           },
-          "contactPoint": {
-            "@type": "ContactPoint",
-            "email": "hello@astrolabs.uk",
-            "contactType": "customer service"
+          {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "url": "https://www.astrolabs.uk",
+            "name": "AstroLabs & Co.",
+            "description": "Professional UK Web Design Studio"
           }
-        }),
+        ]),
       },
     ],
   }),
