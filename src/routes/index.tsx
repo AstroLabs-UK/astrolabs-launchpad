@@ -539,6 +539,50 @@ function Footer() {
   );
 }
 
+function ChatTeaser() {
+  const [visible, setVisible] = useState(false);
+  const [dismissed, setDismissed] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (sessionStorage.getItem("chat-teaser-dismissed") === "1") {
+      setDismissed(true);
+      return;
+    }
+    const t = setTimeout(() => setVisible(true), 2500);
+    return () => clearTimeout(t);
+  }, []);
+
+  if (dismissed || !visible) return null;
+
+  const dismiss = () => {
+    setDismissed(true);
+    try {
+      sessionStorage.setItem("chat-teaser-dismissed", "1");
+    } catch {}
+  };
+
+  return (
+    <div className="fixed bottom-24 right-4 z-50 max-w-[260px] animate-fade-up sm:bottom-28 sm:right-6">
+      <div className="relative rounded-2xl border border-border bg-card/95 px-4 py-3 pr-8 text-sm text-foreground shadow-xl backdrop-blur">
+        <button
+          type="button"
+          onClick={dismiss}
+          aria-label="Dismiss"
+          className="absolute right-2 top-2 text-muted-foreground/70 transition hover:text-foreground"
+        >
+          ×
+        </button>
+        <p className="font-medium">👋 Want to chat?</p>
+        <p className="mt-1 text-xs text-muted-foreground">
+          Ask us anything — we usually reply in minutes.
+        </p>
+        <div className="absolute -bottom-1.5 right-8 h-3 w-3 rotate-45 border-b border-r border-border bg-card/95" />
+      </div>
+    </div>
+  );
+}
+
 function Index() {
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -553,6 +597,7 @@ function Index() {
         <Contact />
       </main>
       <Footer />
+      <ChatTeaser />
     </div>
   );
 }
