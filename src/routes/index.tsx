@@ -564,20 +564,20 @@ function ChatTeaser() {
 
   return (
     <div className="fixed bottom-24 right-4 z-50 max-w-[260px] animate-fade-up sm:bottom-28 sm:right-6">
-      <div className="relative rounded-2xl border border-border bg-card/95 px-4 py-3 pr-8 text-sm text-foreground shadow-xl backdrop-blur">
+      <div className="relative rounded-2xl border border-steel/30 bg-deep/95 px-4 py-3 pr-8 text-sm text-white shadow-xl shadow-navy/20 backdrop-blur">
         <button
           type="button"
           onClick={dismiss}
           aria-label="Dismiss"
-          className="absolute right-2 top-2 text-muted-foreground/70 transition hover:text-foreground"
+          className="absolute right-2 top-2 text-white/60 transition hover:text-white"
         >
           ×
         </button>
         <p className="font-medium">👋 Want to chat?</p>
-        <p className="mt-1 text-xs text-muted-foreground">
+        <p className="mt-1 text-xs text-white/70">
           Ask us anything — we usually reply in minutes.
         </p>
-        <div className="absolute -bottom-1.5 right-8 h-3 w-3 rotate-45 border-b border-r border-border bg-card/95" />
+        <div className="absolute -bottom-1.5 right-8 h-3 w-3 rotate-45 border-b border-r border-steel/30 bg-deep/95" />
       </div>
     </div>
   );
