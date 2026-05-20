@@ -553,6 +553,7 @@ function Index() {
         <Contact />
       </main>
       <Footer />
+      <ChatTeaser />
     </div>
   );
 }
