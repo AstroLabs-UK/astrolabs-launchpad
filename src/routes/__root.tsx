@@ -161,6 +161,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           }
         ]),
       },
+      {
+        src: "https://crm.astrolabs.uk/widget.js",
+        "data-studio": "325d2056-a06b-4b40-9905-7e9350290137",
+        "data-api": "https://crm.astrolabs.uk",
+        defer: true,
+      },
     ],
   }),
   shellComponent: RootShell,
