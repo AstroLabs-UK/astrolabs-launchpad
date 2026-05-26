@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import logo from "@/assets/astrolabs-logo.png";
-import goodVibesImg from "@/assets/portfolio-goodvibes.jpg";
-import puddingsImg from "@/assets/portfolio-puddings.jpg";
+// import goodVibesImg from "@/assets/portfolio-goodvibes.jpg";
+// import puddingsImg from "@/assets/portfolio-puddings.jpg";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -11,7 +11,7 @@ export const Route = createFileRoute("/")({
 const NAV = [
   { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
-  { label: "Portfolio", href: "#portfolio" },
+  // { label: "Portfolio", href: "#portfolio" },
   { label: "Pricing", href: "#pricing" },
   { label: "Contact", href: "#contact" },
   { label: "CRM", href: "https://crm.astrolabs.uk" },
@@ -190,11 +190,11 @@ function Hero() {
           Professional websites for local businesses across the UK. No jargon, no hidden fees, just results.
         </p>
         <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
-          <a href="#portfolio" className="btn-comet px-7 py-3.5 rounded-lg bg-deep text-white font-medium hover:bg-navy transition-all hover:-translate-y-0.5 shadow-lg shadow-deep/20">
-            See Our Work
-          </a>
-          <a href="#contact" className="px-7 py-3.5 rounded-lg bg-white text-deep font-medium border border-steel/40 hover:border-deep hover:-translate-y-0.5 transition-all">
+          <a href="#contact" className="btn-comet px-7 py-3.5 rounded-lg bg-deep text-white font-medium hover:bg-navy transition-all hover:-translate-y-0.5 shadow-lg shadow-deep/20">
             Get a Quote
+          </a>
+          <a href="#services" className="px-7 py-3.5 rounded-lg bg-white text-deep font-medium border border-steel/40 hover:border-deep hover:-translate-y-0.5 transition-all">
+            Our Services
           </a>
         </div>
       </div>
@@ -311,6 +311,7 @@ function Services() {
   );
 }
 
+/*
 function Portfolio() {
   return (
     <section id="portfolio" className="py-28 px-6">
@@ -346,6 +347,7 @@ function Portfolio() {
     </section>
   );
 }
+*/
 
 function Pricing() {
   const plans = [
@@ -591,7 +593,7 @@ function Index() {
         <Hero />
         <About />
         <Services />
-        <Portfolio />
+        {/* <Portfolio /> */}
         <Pricing />
         <FAQ />
         <Contact />
