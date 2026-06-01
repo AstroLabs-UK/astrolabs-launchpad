@@ -552,7 +552,43 @@ function ChatTeaser() {
       return;
     }
     const t = setTimeout(() => setVisible(true), 2500);
-    return () => clearTimeout(t);
+
+    const markDismissed = () => {
+      setDismissed(true);
+      try {
+        sessionStorage.setItem("chat-teaser-dismissed", "1");
+      } catch {}
+    };
+
+    const isWidgetEl = (el: Element | null) => {
+      while (el && el !== document.body) {
+        if (el.closest('[data-chat-teaser="1"]')) return false;
+        const tag = el.tagName?.toLowerCase();
+        if (tag === "iframe") {
+          const src = (el as HTMLIFrameElement).src || "";
+          if (src.includes("crm.astrolabs") || src.includes("325d2056")) return true;
+        }
+        const id = (el.id || "").toLowerCase();
+        const cls = typeof el.className === "string" ? el.className.toLowerCase() : "";
+        if (
+          id.includes("widget") || id.includes("chat") ||
+          cls.includes("widget") || cls.includes("chat") ||
+          el.hasAttribute("data-studio")
+        ) return true;
+        el = el.parentElement;
+      }
+      return false;
+    };
+
+    const onClick = (e: MouseEvent) => {
+      if (isWidgetEl(e.target as Element)) markDismissed();
+    };
+    document.addEventListener("click", onClick, true);
+
+    return () => {
+      clearTimeout(t);
+      document.removeEventListener("click", onClick, true);
+    };
   }, []);
 
   if (dismissed || !visible) return null;
@@ -565,7 +601,7 @@ function ChatTeaser() {
   };
 
   return (
-    <div className="fixed bottom-24 right-4 z-50 max-w-[260px] animate-fade-up sm:bottom-28 sm:right-6">
+    <div className="fixed bottom-24 right-4 z-50 max-w-[260px] animate-fade-up sm:bottom-28 sm:right-6" data-chat-teaser="1">
       <div className="relative rounded-2xl border border-steel/30 bg-deep/95 px-4 py-3 pr-8 text-sm text-white shadow-xl shadow-navy/20 backdrop-blur">
         <button
           type="button"
