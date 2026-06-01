@@ -591,6 +591,17 @@ function ChatTeaser() {
     };
   }, []);
 
+  useEffect(() => {
+    if (!visible) return;
+    const t = setTimeout(() => {
+      setDismissed(true);
+      try {
+        sessionStorage.setItem("chat-teaser-dismissed", "1");
+      } catch {}
+    }, 16000);
+    return () => clearTimeout(t);
+  }, [visible]);
+
   if (dismissed || !visible) return null;
 
   const dismiss = () => {
