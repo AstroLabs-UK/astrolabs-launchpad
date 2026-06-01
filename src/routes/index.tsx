@@ -601,7 +601,7 @@ function ChatTeaser() {
   };
 
   return (
-    <div className="fixed bottom-24 right-4 z-50 max-w-[260px] animate-fade-up sm:bottom-28 sm:right-6">
+    <div className="fixed bottom-24 right-4 z-50 max-w-[260px] animate-fade-up sm:bottom-28 sm:right-6" data-chat-teaser="1">
       <div className="relative rounded-2xl border border-steel/30 bg-deep/95 px-4 py-3 pr-8 text-sm text-white shadow-xl shadow-navy/20 backdrop-blur">
         <button
           type="button"
