@@ -535,7 +535,7 @@ function Footer() {
             ))}
           </ul>
         </nav>
-        <p className="text-xs text-white/60">© {new Date().getFullYear()} AstroLabs & Co.™ All rights reserved.</p>
+        <p className="text-xs text-white/60">© {new Date().getFullYear()} AstroLabs & Co. All rights reserved.</p>
       </div>
     </footer>
   );
