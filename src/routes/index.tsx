@@ -550,21 +550,15 @@ function ChatTeaser() {
     setExiting(true);
     setTimeout(() => {
       setVisible(false);
-      try {
-        sessionStorage.setItem("chat-teaser-dismissed", "1");
-      } catch {}
     }, 500);
   }, [exiting]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    if (sessionStorage.getItem("chat-teaser-dismissed") === "1") {
-      setVisible(false);
-      return;
-    }
     const t = setTimeout(() => setVisible(true), 2500);
     return () => clearTimeout(t);
   }, []);
+
 
   useEffect(() => {
     if (!visible) return;
