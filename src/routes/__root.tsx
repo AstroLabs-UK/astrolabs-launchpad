@@ -7,8 +7,13 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
+import { useEffect } from "react";
 
 import appCss from "../styles.css?url";
+
+// Delay (ms) before the chat widget script is injected into the page.
+const CHAT_WIDGET_DELAY_MS = 15000;
+
 
 function NotFoundComponent() {
   return (
