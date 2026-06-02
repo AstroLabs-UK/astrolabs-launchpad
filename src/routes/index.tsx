@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import logo from "@/assets/astrolabs-logo.png";
 // import goodVibesImg from "@/assets/portfolio-goodvibes.jpg";
 // import puddingsImg from "@/assets/portfolio-puddings.jpg";
@@ -543,23 +543,38 @@ function Footer() {
 
 function ChatTeaser() {
   const [visible, setVisible] = useState(false);
-  const [dismissed, setDismissed] = useState(false);
+  const [exiting, setExiting] = useState(false);
+
+  const doDismiss = useCallback(() => {
+    if (exiting) return;
+    setExiting(true);
+    setTimeout(() => {
+      setVisible(false);
+      try {
+        sessionStorage.setItem("chat-teaser-dismissed", "1");
+      } catch {}
+    }, 500);
+  }, [exiting]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
     if (sessionStorage.getItem("chat-teaser-dismissed") === "1") {
-      setDismissed(true);
+      setVisible(false);
       return;
     }
     const t = setTimeout(() => setVisible(true), 2500);
+    return () => clearTimeout(t);
+  }, []);
 
-    const markDismissed = () => {
-      setDismissed(true);
-      try {
-        sessionStorage.setItem("chat-teaser-dismissed", "1");
-      } catch {}
-    };
+  useEffect(() => {
+    if (!visible) return;
+    const t = setTimeout(() => {
+      doDismiss();
+    }, 16000);
+    return () => clearTimeout(t);
+  }, [visible, doDismiss]);
 
+  useEffect(() => {
     const isWidgetEl = (el: Element | null) => {
       while (el && el !== document.body) {
         if (el.closest('[data-chat-teaser="1"]')) return false;
@@ -581,42 +596,28 @@ function ChatTeaser() {
     };
 
     const onClick = (e: MouseEvent) => {
-      if (isWidgetEl(e.target as Element)) markDismissed();
+      if (isWidgetEl(e.target as Element)) doDismiss();
     };
     document.addEventListener("click", onClick, true);
 
     return () => {
-      clearTimeout(t);
       document.removeEventListener("click", onClick, true);
     };
-  }, []);
+  }, [doDismiss]);
 
-  useEffect(() => {
-    if (!visible) return;
-    const t = setTimeout(() => {
-      setDismissed(true);
-      try {
-        sessionStorage.setItem("chat-teaser-dismissed", "1");
-      } catch {}
-    }, 16000);
-    return () => clearTimeout(t);
-  }, [visible]);
-
-  if (dismissed || !visible) return null;
-
-  const dismiss = () => {
-    setDismissed(true);
-    try {
-      sessionStorage.setItem("chat-teaser-dismissed", "1");
-    } catch {}
-  };
+  if (!visible && !exiting) return null;
 
   return (
-    <div className="fixed bottom-24 right-4 z-50 max-w-[260px] animate-fade-up sm:bottom-28 sm:right-6" data-chat-teaser="1">
+    <div
+      className={`fixed bottom-24 right-4 z-50 max-w-[260px] sm:bottom-28 sm:right-6 transition-all duration-500 ease-out ${
+        visible && !exiting ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2 pointer-events-none"
+      }`}
+      data-chat-teaser="1"
+    >
       <div className="relative rounded-2xl border border-steel/30 bg-deep/95 px-4 py-3 pr-8 text-sm text-white shadow-xl shadow-navy/20 backdrop-blur">
         <button
           type="button"
-          onClick={dismiss}
+          onClick={doDismiss}
           aria-label="Dismiss"
           className="absolute right-2 top-2 text-white/60 transition hover:text-white"
         >
