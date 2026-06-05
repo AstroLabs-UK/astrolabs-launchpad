@@ -203,7 +203,8 @@ function RootComponent() {
       s.setAttribute("data-base", "https://crm.astrolabs.uk");
       s.setAttribute("data-business", "AstroLabs & Co.");
       s.setAttribute("data-title", "Chat with us");
-      s.setAttribute("data-color", "#6366f1");
+      s.setAttribute("data-color", "#4A6FA5");
+      s.setAttribute("data-greeting-delay", "15");
       s.setAttribute("data-chat-widget", "1");
       s.defer = true;
       document.body.appendChild(s);
