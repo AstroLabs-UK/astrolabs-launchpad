@@ -171,7 +171,59 @@ function StarField() {
   );
 }
 
+function useTypewriterCycle(words: string[], baseText: string, pauseMs: number = 2000) {
+  const [display, setDisplay] = useState(baseText + words[0]);
+  const [cursorVisible, setCursorVisible] = useState(true);
+
+  useEffect(() => {
+    let cancelled = false;
+    let cycleIndex = 0;
+    const fullCycle = async () => {
+      while (!cancelled) {
+        const currentWord = words[cycleIndex];
+        const nextWord = words[(cycleIndex + 1) % words.length];
+
+        // pause on current word (longer pause on Grow)
+        const isFinal = currentWord.toLowerCase() === "grow";
+        await new Promise((r) => setTimeout(r, isFinal ? pauseMs : 1400));
+        if (cancelled) break;
+
+        // delete current word
+        for (let i = currentWord.length; i >= 0; i--) {
+          setDisplay(baseText + currentWord.slice(0, i));
+          await new Promise((r) => setTimeout(r, 55));
+          if (cancelled) return;
+        }
+
+        // type next word
+        for (let i = 1; i <= nextWord.length; i++) {
+          setDisplay(baseText + nextWord.slice(0, i));
+          await new Promise((r) => setTimeout(r, 110));
+          if (cancelled) return;
+        }
+
+        cycleIndex = (cycleIndex + 1) % words.length;
+      }
+    };
+    fullCycle();
+    return () => { cancelled = true; };
+  }, [words, baseText, pauseMs]);
+
+  useEffect(() => {
+    const id = setInterval(() => setCursorVisible((v) => !v), 530);
+    return () => clearInterval(id);
+  }, []);
+
+  return { display, cursorVisible };
+}
+
 function Hero() {
+  const { display, cursorVisible } = useTypewriterCycle(
+    ["Grow", "Design", "Imagine", "Create", "Launch", "Scale", "Thrive"],
+    "We Build. You ",
+    2200
+  );
+
   return (
     <section id="top" className="relative min-h-screen flex items-center pt-16 overflow-hidden hero-vignette">
       <StarField />
@@ -183,8 +235,9 @@ function Hero() {
         <h1 className="font-display font-bold text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-navy leading-[0.95]">
           <span className="text-shimmer">AstroLabs</span> <span className="text-steel">& Co.</span>
         </h1>
-        <p className="mt-6 text-2xl md:text-3xl font-display font-medium text-deep">
-          We Build. You Grow.
+        <p className="mt-6 text-2xl md:text-3xl font-display font-medium text-deep whitespace-nowrap">
+          {display}
+          <span className={`inline-block w-[3px] h-[0.85em] ml-0.5 align-middle bg-deep rounded-sm transition-opacity duration-100 ${cursorVisible ? 'opacity-100' : 'opacity-0'}`} />
         </p>
         <p className="mt-5 max-w-xl mx-auto text-base md:text-lg text-foreground/70 leading-relaxed">
           Professional websites for local businesses across the UK. No jargon, no hidden fees, just results.
