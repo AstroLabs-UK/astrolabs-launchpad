@@ -17,6 +17,51 @@ const NAV = [
   { label: "CRM", href: "https://crm.astrolabs.uk" },
 ];
 
+const TYPEWRITER_WORDS = [
+  "You Grow.",
+  "You Imagine.",
+  "You Design.",
+  "You Create.",
+  "You Launch.",
+  "You Scale.",
+  "You Thrive.",
+  "You Shine.",
+];
+
+function TypewriterText() {
+  const [displayed, setDisplayed] = useState("");
+  const [wordIndex, setWordIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const currentWord = TYPEWRITER_WORDS[wordIndex];
+    let timer: ReturnType<typeof setTimeout>;
+
+    if (!isDeleting && displayed === currentWord) {
+      timer = setTimeout(() => setIsDeleting(true), 2000);
+    } else if (isDeleting && displayed === "") {
+      setIsDeleting(false);
+      setWordIndex((prev) => (prev + 1) % TYPEWRITER_WORDS.length);
+    } else {
+      const delta = isDeleting ? 60 : 100;
+      timer = setTimeout(() => {
+        setDisplayed((prev) =>
+          isDeleting ? prev.slice(0, -1) : currentWord.slice(0, prev.length + 1)
+        );
+      }, delta);
+    }
+
+    return () => clearTimeout(timer);
+  }, [displayed, isDeleting, wordIndex]);
+
+  return (
+    <span className="inline-block min-w-[9ch]">
+      {displayed}
+      <span className="animate-pulse">|</span>
+    </span>
+  );
+}
+
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -184,7 +229,7 @@ function Hero() {
           <span className="text-shimmer">AstroLabs</span> <span className="text-steel">& Co.</span>
         </h1>
         <p className="mt-6 text-2xl md:text-3xl font-display font-medium text-deep">
-          We Build. You Grow.
+          We Build. <TypewriterText />
         </p>
         <p className="mt-5 max-w-xl mx-auto text-base md:text-lg text-foreground/70 leading-relaxed">
           Professional websites for local businesses across the UK. No jargon, no hidden fees, just results.
