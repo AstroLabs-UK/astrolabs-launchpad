@@ -7,13 +7,8 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect } from "react";
 
 import appCss from "../styles.css?url";
-
-// Delay (ms) before the chat widget script is injected into the page.
-const CHAT_WIDGET_DELAY_MS = 15000;
-
 
 function NotFoundComponent() {
   return (
@@ -166,12 +161,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           }
         ]),
       },
-      // Chat widget script is injected client-side after CHAT_WIDGET_DELAY_MS (see RootComponent).
+      {
+        src: "https://crm.astrolabs.uk/api/public/widget",
+        "data-base": "https://crm.astrolabs.uk",
+        "data-business": "AstroLabs & Co.",
+        "data-title": "Chat with us",
+        "data-color": "#6366f1",
+        defer: true,
+      },
     ],
   }),
   shellComponent: RootShell,
   component: RootComponent,
-
   notFoundComponent: NotFoundComponent,
   errorComponent: ErrorComponent,
 });
@@ -193,30 +194,9 @@ function RootShell({ children }: { children: React.ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
-  useEffect(() => {
-    if (typeof document === "undefined") return;
-    if (document.querySelector('script[data-chat-widget="1"]')) return;
-
-    const timer = setTimeout(() => {
-      const s = document.createElement("script");
-      s.src = "https://crm.astrolabs.uk/api/public/widget";
-      s.setAttribute("data-base", "https://crm.astrolabs.uk");
-      s.setAttribute("data-business", "AstroLabs & Co.");
-      s.setAttribute("data-title", "Chat with us");
-      s.setAttribute("data-color", "#4A6FA5");
-      s.setAttribute("data-greeting-delay", "15");
-      s.setAttribute("data-chat-widget", "1");
-      s.defer = true;
-      document.body.appendChild(s);
-    }, CHAT_WIDGET_DELAY_MS);
-
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <QueryClientProvider client={queryClient}>
       <Outlet />
     </QueryClientProvider>
   );
 }
-
