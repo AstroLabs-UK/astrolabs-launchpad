@@ -80,14 +80,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       // Open Graph / Facebook
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://www.astrolabs.uk/" },
-      { property: "og:title", content: "AstroLabs & Co. — UK Web Design Studio" },
-      { property: "og:description", content: "Professional websites for local businesses across the UK. No jargon, no hidden fees — just results." },
+      { property: "og:title", content: "AstroLabs & Co. — UK Web Design Studio | Professional Business Websites" },
+      { property: "og:description", content: "AstroLabs & Co. builds high-performance, custom websites for UK local businesses. Transparent pricing, free hosting, and dedicated support. Start your digital journey today." },
       { property: "og:image", content: "https://www.astrolabs.uk/og-image.png" },
       // Twitter
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:url", content: "https://www.astrolabs.uk/" },
-      { name: "twitter:title", content: "AstroLabs & Co. — UK Web Design Studio" },
-      { name: "twitter:description", content: "We build. You grow. Custom websites, hosting, and support for UK businesses." },
+      { name: "twitter:title", content: "AstroLabs & Co. — UK Web Design Studio | Professional Business Websites" },
+      { name: "twitter:description", content: "AstroLabs & Co. builds high-performance, custom websites for UK local businesses. Transparent pricing, free hosting, and dedicated support. Start your digital journey today." },
       { name: "twitter:image", content: "https://www.astrolabs.uk/og-image.png" },
     ],
     links: [
