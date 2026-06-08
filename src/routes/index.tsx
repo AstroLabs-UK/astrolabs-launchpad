@@ -184,7 +184,7 @@ function Hero() {
           <span className="text-shimmer">AstroLabs</span> <span className="text-steel">& Co.</span>
         </h1>
         <p className="mt-6 text-2xl md:text-3xl font-display font-medium text-deep">
-          We Build. You Grow.
+          We Build. <TypewriterText />
         </p>
         <p className="mt-5 max-w-xl mx-auto text-base md:text-lg text-foreground/70 leading-relaxed">
           Professional websites for local businesses across the UK. No jargon, no hidden fees, just results.
