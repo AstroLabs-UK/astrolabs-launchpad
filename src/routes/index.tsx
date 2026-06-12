@@ -691,7 +691,8 @@ function Index() {
         <Contact />
       </main>
       <Footer />
-      <ChatTeaser />
+      {/* ChatTeaser disabled — uncomment below to re-enable */}
+      {/* <ChatTeaser /> */}
     </div>
   );
 }
