@@ -277,7 +277,19 @@ function useReveal() {
     els.forEach((el) => io.observe(el));
     return () => io.disconnect();
   }, []);
+
+function SectionCurve({ fill, bg, flip = false, tintPct }: { fill: string; bg: string; flip?: boolean; tintPct?: number }) {
+  // tintPct kept for future tuning; currently a visual placeholder
+  void tintPct;
+  return (
+    <div aria-hidden="true" style={{ background: bg, lineHeight: 0 }}>
+      <svg viewBox="0 0 1440 70" preserveAspectRatio="none" className="block w-full h-[50px] md:h-[70px]" style={{ transform: flip ? "scaleY(-1)" : undefined }}>
+        <path d="M0,35 C360,80 1080,-10 1440,35 L1440,70 L0,70 Z" fill={fill} />
+      </svg>
+    </div>
+  );
 }
+
 
 function About() {
   const stats = [
