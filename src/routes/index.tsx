@@ -714,6 +714,7 @@ function ChatTeaser() {
 }
 
 function Index() {
+  useReveal();
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
