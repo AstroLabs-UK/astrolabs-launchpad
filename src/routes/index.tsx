@@ -505,14 +505,14 @@ function Contact() {
     setSending(true);
     const form = e.currentTarget;
     const data = new FormData(form);
-    const formspreeEndpoint = "https://formspree.io/f/xpqnaarq";
-    
+
     try {
-      await fetch(formspreeEndpoint, {
+      const res = await fetch("/api/public/contact", {
         method: "POST",
         body: data,
         headers: { Accept: "application/json" },
       });
+      if (!res.ok) throw new Error(`Request failed: ${res.status}`);
       setSent(true);
       form.reset();
     } catch (error) {
