@@ -277,6 +277,9 @@ function useReveal() {
     els.forEach((el) => io.observe(el));
     return () => io.disconnect();
   }, []);
+}
+
+
 
 function SectionCurve({ fill, bg, flip = false, tintPct }: { fill: string; bg: string; flip?: boolean; tintPct?: number }) {
   // tintPct kept for future tuning; currently a visual placeholder
