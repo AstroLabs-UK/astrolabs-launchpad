@@ -256,6 +256,44 @@ function SectionHeading({ eyebrow, title }: { eyebrow: string; title: string }) 
   );
 }
 
+function useReveal() {
+  useEffect(() => {
+    const els = document.querySelectorAll<HTMLElement>(".reveal");
+    if (!("IntersectionObserver" in window)) {
+      els.forEach((el) => el.classList.add("is-visible"));
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("is-visible");
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+    );
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+}
+
+
+
+function SectionCurve({ fill, bg, flip = false, tintPct }: { fill: string; bg: string; flip?: boolean; tintPct?: number }) {
+  // tintPct kept for future tuning; currently a visual placeholder
+  void tintPct;
+  return (
+    <div aria-hidden="true" style={{ background: bg, lineHeight: 0 }}>
+      <svg viewBox="0 0 1440 70" preserveAspectRatio="none" className="block w-full h-[50px] md:h-[70px]" style={{ transform: flip ? "scaleY(-1)" : undefined }}>
+        <path d="M0,35 C360,80 1080,-10 1440,35 L1440,70 L0,70 Z" fill={fill} />
+      </svg>
+    </div>
+  );
+}
+
+
 function About() {
   const stats = [
     {
@@ -287,15 +325,20 @@ function About() {
     },
   ];
   return (
-    <section id="about" className="py-28 px-6">
-      <div className="max-w-5xl mx-auto">
-        <SectionHeading eyebrow="About" title="Who We Are" />
-        <p className="text-lg md:text-xl text-center text-foreground/80 max-w-3xl mx-auto leading-relaxed">
+    <section id="about" className="relative py-32 px-6 overflow-hidden">
+      <div className="blob-field" />
+      <div className="relative max-w-5xl mx-auto">
+        <div className="reveal"><SectionHeading eyebrow="About" title="Who We Are" /></div>
+        <p className="reveal text-lg md:text-xl text-center text-foreground/80 max-w-3xl mx-auto leading-relaxed">
           We're a small UK-based web studio that helps local businesses get online and look great doing it. We handle everything — design, build, and hosting — so you can focus on running your business.
         </p>
-        <div className="mt-16 grid sm:grid-cols-3 gap-6">
-          {stats.map((s) => (
-            <div key={s.label} className="p-8 rounded-2xl bg-white border border-border hover:border-steel transition-all hover:-translate-y-1 text-center">
+        <div className="mt-20 grid sm:grid-cols-3 gap-6">
+          {stats.map((s, i) => (
+            <div
+              key={s.label}
+              className="reveal card-lift card-glow p-8 rounded-2xl bg-white border border-border text-center"
+              style={{ transitionDelay: `${i * 80}ms` }}
+            >
               <div className="mb-5 flex justify-center text-deep">{s.icon}</div>
               <div className="font-display font-bold text-5xl text-deep">{s.num}</div>
               <div className="mt-2 text-sm text-foreground/70">{s.label}</div>
@@ -339,12 +382,17 @@ function Services() {
     },
   ];
   return (
-    <section id="services" className="py-28 px-6 bg-white">
-      <div className="max-w-6xl mx-auto">
-        <SectionHeading eyebrow="Services" title="What We Do" />
+    <section id="services" className="relative py-32 px-6 section-tint-strong overflow-hidden">
+      <div className="blob-field" />
+      <div className="relative max-w-6xl mx-auto">
+        <div className="reveal"><SectionHeading eyebrow="Services" title="What We Do" /></div>
         <div className="grid md:grid-cols-3 gap-6">
-          {items.map((s) => (
-            <article key={s.title} className="group p-8 rounded-2xl bg-background border border-border hover:bg-deep hover:border-deep transition-all duration-300 hover:-translate-y-1">
+          {items.map((s, i) => (
+            <article
+              key={s.title}
+              className="reveal group card-lift p-8 rounded-2xl bg-white border border-border hover:bg-deep hover:border-deep"
+              style={{ transitionDelay: `${i * 90}ms` }}
+            >
               <div className="mb-5 text-deep group-hover:text-white transition-colors">{s.icon}</div>
               <h3 className="font-display font-bold text-2xl text-navy group-hover:text-white transition-colors">{s.title}</h3>
               <p className="mt-3 text-foreground/70 group-hover:text-white/80 leading-relaxed transition-colors">{s.desc}</p>
@@ -358,39 +406,7 @@ function Services() {
 
 /*
 function Portfolio() {
-  return (
-    <section id="portfolio" className="py-28 px-6">
-      <div className="max-w-6xl mx-auto">
-        <SectionHeading eyebrow="Portfolio" title="Our Work" />
-        <div className="grid md:grid-cols-2 gap-8">
-          <article className="group rounded-2xl overflow-hidden bg-white border border-border hover:shadow-xl hover:shadow-navy/10 transition-all hover:-translate-y-1">
-            <div className="aspect-[4/3] overflow-hidden bg-muted">
-              <img src={goodVibesImg} alt="Good Vibes Café website design preview" width={1024} height={768} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-            </div>
-            <div className="p-7">
-              <h3 className="font-display font-bold text-2xl text-navy">Good Vibes Café</h3>
-              <p className="mt-2 text-foreground/70">First Portfolio Website Design</p>
-              <a href="https://good-vibes.astrolabs.uk" target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-deep text-white text-sm font-medium hover:bg-navy transition-colors">
-                Visit Site →
-              </a>
-            </div>
-          </article>
-          <article className="group rounded-2xl overflow-hidden bg-white border border-border hover:shadow-xl hover:shadow-navy/10 transition-all hover:-translate-y-1">
-            <div className="aspect-[4/3] overflow-hidden bg-muted">
-              <img src={puddingsImg} alt="Puddings Maidstone website design preview" width={1024} height={768} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-            </div>
-            <div className="p-7">
-              <h3 className="font-display font-bold text-2xl text-navy">Puddings Maidstone</h3>
-              <p className="mt-2 text-foreground/70">Second Portfolio Website Design</p>
-              <a href="https://puddings.astrolabs.uk" target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-deep text-white text-sm font-medium hover:bg-navy transition-colors">
-                Visit Site →
-              </a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-  );
+  return null;
 }
 */
 
@@ -413,21 +429,23 @@ function Pricing() {
     },
   ];
   return (
-    <section id="pricing" className="py-28 px-6 bg-white">
+    <section id="pricing" className="relative py-32 px-6 overflow-hidden">
       <div className="max-w-6xl mx-auto">
-        <SectionHeading eyebrow="Pricing" title="Simple, Transparent Pricing" />
-        <div className="grid md:grid-cols-3 gap-6 items-stretch">
-          {plans.map((p) => (
+        <div className="reveal"><SectionHeading eyebrow="Pricing" title="Simple, Transparent Pricing" /></div>
+        <div className="grid md:grid-cols-3 gap-8 items-stretch pt-4">
+          {plans.map((p, i) => (
             <div
               key={p.name}
-              className={`relative p-8 rounded-2xl flex flex-col transition-all hover:-translate-y-1 ${
+              className={`reveal card-lift relative p-8 rounded-2xl flex flex-col ${
                 p.popular
-                  ? "bg-deep text-white border-2 border-deep shadow-2xl shadow-deep/20 md:scale-105"
-                  : "bg-background border border-border hover:border-steel"
+                  ? "pricing-glow bg-deep text-white border-2 border-deep shadow-[0_30px_60px_-20px_color-mix(in_oklab,var(--navy)_45%,transparent)] md:scale-[1.04] md:-my-1 z-10"
+                  : "bg-white border border-border"
               }`}
+              style={{ transitionDelay: `${i * 90}ms` }}
             >
               {p.popular && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-steel text-white text-xs font-semibold tracking-wide">
+                <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-steel to-navy text-white text-[11px] font-semibold tracking-[0.14em] shadow-lg shadow-navy/30 animate-badge-glow">
+                  <span className="w-1.5 h-1.5 rounded-full bg-white/90" />
                   MOST POPULAR
                 </span>
               )}
@@ -447,9 +465,9 @@ function Pricing() {
               </ul>
               <a
                 href="#contact"
-                className={`mt-8 text-center px-5 py-3 rounded-lg font-medium transition-all ${
+                className={`mt-8 text-center px-5 py-3 rounded-lg font-medium transition-all hover:-translate-y-0.5 ${
                   p.popular
-                    ? "bg-white text-deep hover:bg-steel hover:text-white"
+                    ? "bg-white text-deep hover:bg-steel hover:text-white shadow-md"
                     : "bg-deep text-white hover:bg-navy"
                 }`}
               >
@@ -480,15 +498,28 @@ function FAQ() {
   ];
 
   return (
-    <section id="faq" className="py-28 px-6 bg-background">
+    <section id="faq" className="relative py-32 px-6 section-tint">
       <div className="max-w-3xl mx-auto">
-        <SectionHeading eyebrow="FAQ" title="Common Questions" />
-        <div className="space-y-8">
+        <div className="reveal"><SectionHeading eyebrow="FAQ" title="Common Questions" /></div>
+        <div className="space-y-4">
           {faqs.map((faq, i) => (
-            <article key={i} className="p-6 rounded-2xl bg-white border border-border">
-              <h3 className="font-display font-bold text-xl text-navy mb-3">{faq.q}</h3>
-              <p className="text-foreground/70 leading-relaxed">{faq.a}</p>
-            </article>
+            <details
+              key={i}
+              className="faq-item reveal card-lift group rounded-2xl bg-white border border-border p-2"
+              style={{ transitionDelay: `${i * 80}ms` }}
+            >
+              <summary className="flex items-center justify-between gap-4 px-5 py-5">
+                <h3 className="font-display font-semibold text-lg md:text-xl text-navy pr-2">{faq.q}</h3>
+                <span className="faq-chev shrink-0 w-8 h-8 rounded-full bg-background border border-border flex items-center justify-center text-deep" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9" /></svg>
+                </span>
+              </summary>
+              <div className="faq-body">
+                <div>
+                  <p className="px-5 pb-5 pt-1 text-foreground/70 leading-relaxed">{faq.a}</p>
+                </div>
+              </div>
+            </details>
           ))}
         </div>
       </div>
@@ -523,40 +554,60 @@ function Contact() {
   };
 
   return (
-    <section id="contact" className="py-28 px-6">
-      <div className="max-w-2xl mx-auto">
-        <SectionHeading eyebrow="Contact" title="Let's Build Something" />
-        <form onSubmit={handleSubmit} className="space-y-4 bg-white p-8 rounded-2xl border border-border">
-          <div className="grid sm:grid-cols-2 gap-4">
-            <div className="flex flex-col gap-1.5">
-              <label htmlFor="name" className="text-xs font-semibold text-navy/70 ml-1">Your Name</label>
-              <input id="name" name="name" required placeholder="John Doe" className="px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:border-deep transition" />
+    <section id="contact" className="relative py-32 px-6 overflow-hidden">
+      <div className="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
+        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, transparent, color-mix(in oklab, var(--steel) 8%, transparent))" }} />
+        <div className="absolute top-1/3 left-[-10%] w-[26rem] h-[26rem] rounded-full blur-3xl" style={{ background: "radial-gradient(circle, color-mix(in oklab, var(--steel) 22%, transparent), transparent 65%)" }} />
+        <div className="absolute bottom-0 right-[-10%] w-[28rem] h-[28rem] rounded-full blur-3xl" style={{ background: "radial-gradient(circle, color-mix(in oklab, var(--navy) 18%, transparent), transparent 65%)" }} />
+      </div>
+      <div className="max-w-6xl mx-auto">
+        <div className="reveal"><SectionHeading eyebrow="Contact" title="Let's Build Something" /></div>
+        <div className="grid lg:grid-cols-[1.15fr_1fr] gap-10 items-center">
+          <form onSubmit={handleSubmit} className="reveal glass-card space-y-4 p-8 md:p-10 rounded-3xl">
+            <div className="grid sm:grid-cols-2 gap-4">
+              <div className="flex flex-col gap-1.5">
+                <label htmlFor="name" className="text-xs font-semibold text-navy/70 ml-1">Your Name</label>
+                <input id="name" name="name" required placeholder="John Doe" className="px-4 py-3 rounded-lg border border-border bg-white/70 focus:outline-none focus:border-deep focus:bg-white transition" />
+              </div>
+              <div className="flex flex-col gap-1.5">
+                <label htmlFor="business" className="text-xs font-semibold text-navy/70 ml-1">Business Name</label>
+                <input id="business" name="business" required placeholder="My Local Business" className="px-4 py-3 rounded-lg border border-border bg-white/70 focus:outline-none focus:border-deep focus:bg-white transition" />
+              </div>
             </div>
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="business" className="text-xs font-semibold text-navy/70 ml-1">Business Name</label>
-              <input id="business" name="business" required placeholder="My Local Business" className="px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:border-deep transition" />
+              <label htmlFor="email" className="text-xs font-semibold text-navy/70 ml-1">Email Address</label>
+              <input id="email" name="email" required type="email" placeholder="john@example.com" className="w-full px-4 py-3 rounded-lg border border-border bg-white/70 focus:outline-none focus:border-deep focus:bg-white transition" />
             </div>
+            <div className="flex flex-col gap-1.5">
+              <label htmlFor="message" className="text-xs font-semibold text-navy/70 ml-1">Project Details</label>
+              <textarea id="message" name="message" required rows={5} placeholder="Tell us about your project…" className="w-full px-4 py-3 rounded-lg border border-border bg-white/70 focus:outline-none focus:border-deep focus:bg-white transition resize-none" />
+            </div>
+            <button type="submit" disabled={sending} className="btn-comet w-full px-6 py-3.5 rounded-lg bg-deep text-white font-medium hover:bg-navy transition-all hover:-translate-y-0.5 shadow-lg shadow-deep/20">
+              {sent ? "Thanks — we'll be in touch ✦" : sending ? "Sending…" : "Send Message"}
+            </button>
+            <p className="pt-2 text-center text-sm text-foreground/70">
+              Or email us at{" "}
+              <a href="mailto:hello@astrolabs.uk" className="text-deep font-medium hover:underline">hello@astrolabs.uk</a>
+            </p>
+          </form>
+
+          <div className="reveal hidden lg:block relative aspect-square" aria-hidden="true">
+            <div className="absolute inset-6 rounded-full border border-steel/30 animate-orbit-slow" />
+            <div className="absolute inset-16 rounded-full border border-navy/20 animate-orbit" />
+            <div className="absolute inset-24 rounded-full bg-gradient-to-br from-steel/30 to-navy/20 blur-2xl" />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <img src={logo} alt="" className="h-24 w-24 opacity-90 drop-shadow-[0_10px_30px_color-mix(in_oklab,var(--navy)_35%,transparent)]" />
+            </div>
+            <span className="absolute top-6 right-10 w-2 h-2 rounded-full bg-navy animate-star-glow" />
+            <span className="absolute bottom-12 left-6 w-1.5 h-1.5 rounded-full bg-deep animate-twinkle" />
+            <span className="absolute top-1/3 left-4 w-1 h-1 rounded-full bg-steel animate-twinkle" style={{ animationDelay: "1.2s" }} />
           </div>
-          <div className="flex flex-col gap-1.5">
-            <label htmlFor="email" className="text-xs font-semibold text-navy/70 ml-1">Email Address</label>
-            <input id="email" name="email" required type="email" placeholder="john@example.com" className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:border-deep transition" />
-          </div>
-          <div className="flex flex-col gap-1.5">
-            <label htmlFor="message" className="text-xs font-semibold text-navy/70 ml-1">Project Details</label>
-            <textarea id="message" name="message" required rows={5} placeholder="Tell us about your project…" className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:border-deep transition resize-none" />
-          </div>
-          <button type="submit" disabled={sending} className="w-full px-6 py-3.5 rounded-lg bg-deep text-white font-medium hover:bg-navy transition-all hover:-translate-y-0.5">
-            {sent ? "Thanks — we'll be in touch ✦" : sending ? "Sending…" : "Send Message"}
-          </button>
-        </form>
-        <p className="mt-6 text-center text-foreground/70">
-          Or email us directly at{" "}
-          <a href="mailto:hello@astrolabs.uk" className="text-deep font-medium hover:underline">hello@astrolabs.uk</a>
-        </p>
+        </div>
       </div>
     </section>
   );
 }
+
 
 function Footer() {
   return (
@@ -678,14 +729,16 @@ function ChatTeaser() {
 }
 
 function Index() {
+  useReveal();
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
       <main id="main-content">
         <Hero />
         <About />
+        <SectionCurve fill="var(--color-background)" bg="transparent" tintPct={5} />
         <Services />
-        {/* <Portfolio /> */}
+        <SectionCurve fill="transparent" bg="color-mix(in oklab, var(--steel) 5%, var(--background))" flip />
         <Pricing />
         <FAQ />
         <Contact />
