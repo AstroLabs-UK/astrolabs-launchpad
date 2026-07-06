@@ -161,17 +161,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           }
         ]),
       },
-      // AI chat widget — disabled for now, re-enable by uncommenting below
-      /*
+      // AstroLabs & Co. CRM chat widget
       {
         src: "https://crm.astrolabs.uk/api/public/widget",
         "data-base": "https://crm.astrolabs.uk",
         "data-business": "AstroLabs & Co.",
         "data-title": "Chat with us",
-        "data-color": "#6366f1",
+        "data-color": "#4A6FA5",
+        "data-greeting-delay": "15",
         defer: true,
       },
-      */
     ],
   }),
   shellComponent: RootShell,
