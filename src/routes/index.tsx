@@ -721,8 +721,9 @@ function Index() {
       <main id="main-content">
         <Hero />
         <About />
+        <SectionCurve fill="var(--color-background)" bg="transparent" tintPct={5} />
         <Services />
-        {/* <Portfolio /> */}
+        <SectionCurve fill="transparent" bg="color-mix(in oklab, var(--steel) 5%, var(--background))" flip />
         <Pricing />
         <FAQ />
         <Contact />
