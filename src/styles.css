@@ -186,4 +186,107 @@
   pointer-events: none;
 }
 .btn-comet:hover::after { animation: comet-sweep 0.9s ease-out; }
+
+/* ── Section polish ─────────────────────────────────────── */
+.section-tint {
+  background: color-mix(in oklab, var(--steel) 6%, var(--background));
+}
+.section-tint-strong {
+  background:
+    linear-gradient(180deg, color-mix(in oklab, var(--steel) 4%, transparent) 0%, color-mix(in oklab, var(--navy) 5%, transparent) 100%),
+    var(--background);
+}
+
+/* Curved SVG dividers use currentColor from the section above/below */
+
+/* Decorative blurred blob field for feature sections */
+.blob-field { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 0; }
+.blob-field::before,
+.blob-field::after {
+  content: "";
+  position: absolute;
+  width: 42rem; height: 42rem;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.55;
+}
+.blob-field::before {
+  top: -10rem; left: -12rem;
+  background: radial-gradient(circle, color-mix(in oklab, var(--steel) 35%, transparent), transparent 65%);
+  animation: bg-drift 24s ease-in-out infinite alternate;
+}
+.blob-field::after {
+  bottom: -14rem; right: -10rem;
+  background: radial-gradient(circle, color-mix(in oklab, var(--navy) 28%, transparent), transparent 65%);
+  animation: bg-drift 30s ease-in-out infinite alternate-reverse;
+}
+
+/* Card glow — soft brand-blue halo behind key cards */
+.card-glow { position: relative; isolation: isolate; }
+.card-glow::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, color-mix(in oklab, var(--steel) 40%, transparent), transparent 60%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 300ms ease;
+  z-index: 1;
+}
+.card-glow:hover::before { opacity: 1; }
+
+.pricing-glow { position: relative; }
+.pricing-glow::before {
+  content: "";
+  position: absolute;
+  inset: -18px;
+  border-radius: 24px;
+  background: radial-gradient(60% 60% at 50% 50%, color-mix(in oklab, var(--steel) 30%, transparent), transparent 70%);
+  filter: blur(24px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Lift-on-hover for cards */
+.card-lift {
+  transition: transform 280ms cubic-bezier(.2,.7,.2,1), box-shadow 280ms ease, border-color 280ms ease, background-color 280ms ease;
+}
+.card-lift:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 20px 40px -20px color-mix(in oklab, var(--navy) 30%, transparent), 0 8px 16px -12px color-mix(in oklab, var(--deep) 20%, transparent);
+  border-color: color-mix(in oklab, var(--steel) 80%, transparent);
+}
+
+/* Glass card for contact form */
+.glass-card {
+  background: color-mix(in oklab, white 70%, transparent);
+  backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid color-mix(in oklab, var(--steel) 30%, transparent);
+  box-shadow: 0 30px 60px -30px color-mix(in oklab, var(--navy) 30%, transparent);
+}
+
+/* Reveal on scroll */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 700ms ease, transform 700ms cubic-bezier(.2,.7,.2,1); will-change: opacity, transform; }
+.reveal.is-visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* FAQ accordion */
+.faq-item summary { list-style: none; cursor: pointer; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item[open] .faq-chev { transform: rotate(180deg); }
+.faq-chev { transition: transform 300ms ease; }
+.faq-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 320ms ease;
+}
+.faq-item[open] .faq-body { grid-template-rows: 1fr; }
+.faq-body > div { overflow: hidden; }
+
 [data-lovable-badge] { display: none !important; }
