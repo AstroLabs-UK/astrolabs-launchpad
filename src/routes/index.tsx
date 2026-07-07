@@ -570,8 +570,9 @@ function FAQ() {
   ];
 
   return (
-    <section id="faq" className="relative py-32 px-6 section-tint">
-      <div className="max-w-3xl mx-auto">
+    <section id="faq" className="relative py-32 px-6 section-tint overflow-hidden">
+      <OrbitalDecor lines={1} stars={2} size={200} className="absolute top-8 right-4 opacity-50" />
+      <div className="relative max-w-3xl mx-auto">
         <div className="reveal"><SectionHeading eyebrow="FAQ" title="Common Questions" /></div>
         <div className="space-y-4">
           {faqs.map((faq, i) => (
