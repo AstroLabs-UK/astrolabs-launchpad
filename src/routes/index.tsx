@@ -505,7 +505,9 @@ function Pricing() {
   ];
   return (
     <section id="pricing" className="relative py-32 px-6 overflow-hidden">
-      <OrbitalDecor lines={3} stars={5} size={420} className="absolute -top-16 left-1/2 -translate-x-1/2 opacity-40" />
+      <div className="absolute inset-0 flex items-center justify-center -z-10 pointer-events-none overflow-hidden">
+        <OrbitalDecor lines={3} stars={5} size={420} className="opacity-25" />
+      </div>
       <div className="relative max-w-6xl mx-auto">
         <div className="reveal"><SectionHeading eyebrow="Pricing" title="Simple, Transparent Pricing" /></div>
         <div className="grid md:grid-cols-3 gap-8 items-stretch pt-4">
