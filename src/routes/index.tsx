@@ -293,6 +293,75 @@ function SectionCurve({ fill, bg, flip = false, tintPct }: { fill: string; bg: s
   );
 }
 
+/**
+ * Orbital rings + stars decoration. Max 3 rings, max 5 stars.
+ * Position via wrapper (absolute/relative). Non-interactive.
+ */
+function OrbitalDecor({
+  lines = 2,
+  stars = 3,
+  size = 340,
+  className = "",
+  showLogo = false,
+}: {
+  lines?: 1 | 2 | 3;
+  stars?: 0 | 1 | 2 | 3 | 4 | 5;
+  size?: number;
+  className?: string;
+  showLogo?: boolean;
+}) {
+  const ringSpecs = [
+    { inset: "0", cls: "animate-orbit-slow border-steel/30" },
+    { inset: "12%", cls: "animate-orbit border-navy/20" },
+    { inset: "26%", cls: "border-steel/20" },
+  ].slice(0, lines);
+
+  const starSpecs = [
+    { top: "8%", left: "78%", size: 2, cls: "bg-navy animate-star-glow", delay: "0s" },
+    { top: "72%", left: "14%", size: 1.5, cls: "bg-deep animate-twinkle", delay: "0.6s" },
+    { top: "30%", left: "6%", size: 1, cls: "bg-steel animate-twinkle", delay: "1.2s" },
+    { top: "84%", left: "72%", size: 2, cls: "bg-navy animate-star-glow", delay: "1.8s" },
+    { top: "18%", left: "42%", size: 1, cls: "bg-steel animate-twinkle", delay: "2.4s" },
+  ].slice(0, stars);
+
+  return (
+    <div
+      aria-hidden="true"
+      className={`pointer-events-none relative ${className}`}
+      style={{ width: size, height: size, maxWidth: "100%" }}
+    >
+      {ringSpecs.map((r, i) => (
+        <div
+          key={i}
+          className={`absolute rounded-full border ${r.cls}`}
+          style={{ inset: r.inset }}
+        />
+      ))}
+      {showLogo && (
+        <>
+          <div className="absolute inset-[30%] rounded-full bg-gradient-to-br from-steel/25 to-navy/15 blur-2xl" />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <img src={logo} alt="" className="h-16 w-16 opacity-80 drop-shadow-[0_10px_30px_color-mix(in_oklab,var(--navy)_35%,transparent)]" />
+          </div>
+        </>
+      )}
+      {starSpecs.map((s, i) => (
+        <span
+          key={`s-${i}`}
+          className={`absolute rounded-full ${s.cls}`}
+          style={{
+            top: s.top,
+            left: s.left,
+            width: `${s.size * 2}px`,
+            height: `${s.size * 2}px`,
+            animationDelay: s.delay,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
 
 function About() {
   const stats = [
