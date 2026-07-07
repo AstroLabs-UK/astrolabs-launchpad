@@ -633,48 +633,38 @@ function Contact() {
         <div className="absolute top-1/3 left-[-10%] w-[26rem] h-[26rem] rounded-full blur-3xl" style={{ background: "radial-gradient(circle, color-mix(in oklab, var(--steel) 22%, transparent), transparent 65%)" }} />
         <div className="absolute bottom-0 right-[-10%] w-[28rem] h-[28rem] rounded-full blur-3xl" style={{ background: "radial-gradient(circle, color-mix(in oklab, var(--navy) 18%, transparent), transparent 65%)" }} />
       </div>
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-3xl mx-auto">
         <div className="reveal"><SectionHeading eyebrow="Contact" title="Let's Build Something" /></div>
-        <div className="grid lg:grid-cols-[1.15fr_1fr] gap-10 items-center">
-          <form onSubmit={handleSubmit} className="reveal glass-card space-y-4 p-8 md:p-10 rounded-3xl">
-            <div className="grid sm:grid-cols-2 gap-4">
-              <div className="flex flex-col gap-1.5">
-                <label htmlFor="name" className="text-xs font-semibold text-navy/70 ml-1">Your Name</label>
-                <input id="name" name="name" required placeholder="John Doe" className="px-4 py-3 rounded-lg border border-border bg-white/70 focus:outline-none focus:border-deep focus:bg-white transition" />
-              </div>
-              <div className="flex flex-col gap-1.5">
-                <label htmlFor="business" className="text-xs font-semibold text-navy/70 ml-1">Business Name</label>
-                <input id="business" name="business" required placeholder="My Local Business" className="px-4 py-3 rounded-lg border border-border bg-white/70 focus:outline-none focus:border-deep focus:bg-white transition" />
-              </div>
+        <form onSubmit={handleSubmit} className="reveal glass-card space-y-4 p-8 md:p-10 rounded-3xl">
+          <div className="grid sm:grid-cols-2 gap-4">
+            <div className="flex flex-col gap-1.5">
+              <label htmlFor="name" className="text-xs font-semibold text-navy/70 ml-1">Your Name</label>
+              <input id="name" name="name" required placeholder="John Doe" className="px-4 py-3 rounded-lg border border-border bg-white/70 focus:outline-none focus:border-deep focus:bg-white transition" />
             </div>
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="email" className="text-xs font-semibold text-navy/70 ml-1">Email Address</label>
-              <input id="email" name="email" required type="email" placeholder="john@example.com" className="w-full px-4 py-3 rounded-lg border border-border bg-white/70 focus:outline-none focus:border-deep focus:bg-white transition" />
+              <label htmlFor="business" className="text-xs font-semibold text-navy/70 ml-1">Business Name</label>
+              <input id="business" name="business" required placeholder="My Local Business" className="px-4 py-3 rounded-lg border border-border bg-white/70 focus:outline-none focus:border-deep focus:bg-white transition" />
             </div>
-            <div className="flex flex-col gap-1.5">
-              <label htmlFor="message" className="text-xs font-semibold text-navy/70 ml-1">Project Details</label>
-              <textarea id="message" name="message" required rows={5} placeholder="Tell us about your project…" className="w-full px-4 py-3 rounded-lg border border-border bg-white/70 focus:outline-none focus:border-deep focus:bg-white transition resize-none" />
-            </div>
-            <button type="submit" disabled={sending} className="btn-comet w-full px-6 py-3.5 rounded-lg bg-deep text-white font-medium hover:bg-navy transition-all hover:-translate-y-0.5 shadow-lg shadow-deep/20">
-              {sent ? "Thanks — we'll be in touch ✦" : sending ? "Sending…" : "Send Message"}
-            </button>
-            <p className="pt-2 text-center text-sm text-foreground/70">
-              Or email us at{" "}
-              <a href="mailto:hello@astrolabs.uk" className="text-deep font-medium hover:underline">hello@astrolabs.uk</a>
-            </p>
-          </form>
-
-          <div className="reveal hidden lg:block relative aspect-square" aria-hidden="true">
-            <div className="absolute inset-6 rounded-full border border-steel/30 animate-orbit-slow" />
-            <div className="absolute inset-16 rounded-full border border-navy/20 animate-orbit" />
-            <div className="absolute inset-24 rounded-full bg-gradient-to-br from-steel/30 to-navy/20 blur-2xl" />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <img src={logo} alt="" className="h-24 w-24 opacity-90 drop-shadow-[0_10px_30px_color-mix(in_oklab,var(--navy)_35%,transparent)]" />
-            </div>
-            <span className="absolute top-6 right-10 w-2 h-2 rounded-full bg-navy animate-star-glow" />
-            <span className="absolute bottom-12 left-6 w-1.5 h-1.5 rounded-full bg-deep animate-twinkle" />
-            <span className="absolute top-1/3 left-4 w-1 h-1 rounded-full bg-steel animate-twinkle" style={{ animationDelay: "1.2s" }} />
           </div>
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="email" className="text-xs font-semibold text-navy/70 ml-1">Email Address</label>
+            <input id="email" name="email" required type="email" placeholder="john@example.com" className="w-full px-4 py-3 rounded-lg border border-border bg-white/70 focus:outline-none focus:border-deep focus:bg-white transition" />
+          </div>
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="message" className="text-xs font-semibold text-navy/70 ml-1">Project Details</label>
+            <textarea id="message" name="message" required rows={5} placeholder="Tell us about your project…" className="w-full px-4 py-3 rounded-lg border border-border bg-white/70 focus:outline-none focus:border-deep focus:bg-white transition resize-none" />
+          </div>
+          <button type="submit" disabled={sending} className="btn-comet w-full px-6 py-3.5 rounded-lg bg-deep text-white font-medium hover:bg-navy transition-all hover:-translate-y-0.5 shadow-lg shadow-deep/20">
+            {sent ? "Thanks — we'll be in touch ✦" : sending ? "Sending…" : "Send Message"}
+          </button>
+          <p className="pt-2 text-center text-sm text-foreground/70">
+            Or email us at{" "}
+            <a href="mailto:hello@astrolabs.uk" className="text-deep font-medium hover:underline">hello@astrolabs.uk</a>
+          </p>
+        </form>
+
+        <div className="reveal mt-16 flex justify-center">
+          <OrbitalDecor lines={3} stars={5} size={360} showLogo />
         </div>
       </div>
     </section>
