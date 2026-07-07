@@ -396,7 +396,9 @@ function About() {
   return (
     <section id="about" className="relative py-32 px-6 overflow-hidden">
       <div className="blob-field" />
-      <OrbitalDecor lines={2} stars={4} size={280} className="absolute -top-6 -right-10 md:right-6 opacity-70" />
+      <div className="absolute inset-0 flex items-center justify-center -z-10 pointer-events-none overflow-hidden">
+        <OrbitalDecor lines={2} stars={4} size={280} className="opacity-30" />
+      </div>
       <div className="relative max-w-5xl mx-auto">
         <div className="reveal"><SectionHeading eyebrow="About" title="Who We Are" /></div>
         <p className="reveal text-lg md:text-xl text-center text-foreground/80 max-w-3xl mx-auto leading-relaxed">
@@ -454,7 +456,9 @@ function Services() {
   return (
     <section id="services" className="relative py-32 px-6 section-tint-strong overflow-hidden">
       <div className="blob-field" />
-      <OrbitalDecor lines={1} stars={3} size={220} className="absolute top-10 -left-10 opacity-60" />
+      <div className="absolute inset-0 flex items-center justify-center -z-10 pointer-events-none overflow-hidden">
+        <OrbitalDecor lines={1} stars={3} size={220} className="opacity-30" />
+      </div>
       <div className="relative max-w-6xl mx-auto">
         <div className="reveal"><SectionHeading eyebrow="Services" title="What We Do" /></div>
         <div className="grid md:grid-cols-3 gap-6">
@@ -501,7 +505,9 @@ function Pricing() {
   ];
   return (
     <section id="pricing" className="relative py-32 px-6 overflow-hidden">
-      <OrbitalDecor lines={3} stars={5} size={420} className="absolute -top-16 left-1/2 -translate-x-1/2 opacity-40" />
+      <div className="absolute inset-0 flex items-center justify-center -z-10 pointer-events-none overflow-hidden">
+        <OrbitalDecor lines={3} stars={5} size={420} className="opacity-25" />
+      </div>
       <div className="relative max-w-6xl mx-auto">
         <div className="reveal"><SectionHeading eyebrow="Pricing" title="Simple, Transparent Pricing" /></div>
         <div className="grid md:grid-cols-3 gap-8 items-stretch pt-4">
@@ -571,7 +577,9 @@ function FAQ() {
 
   return (
     <section id="faq" className="relative py-32 px-6 section-tint overflow-hidden">
-      <OrbitalDecor lines={1} stars={2} size={200} className="absolute top-8 right-4 opacity-50" />
+      <div className="absolute inset-0 flex items-center justify-center -z-10 pointer-events-none overflow-hidden">
+        <OrbitalDecor lines={1} stars={2} size={200} className="opacity-30" />
+      </div>
       <div className="relative max-w-3xl mx-auto">
         <div className="reveal"><SectionHeading eyebrow="FAQ" title="Common Questions" /></div>
         <div className="space-y-4">
