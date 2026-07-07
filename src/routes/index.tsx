@@ -456,7 +456,9 @@ function Services() {
   return (
     <section id="services" className="relative py-32 px-6 section-tint-strong overflow-hidden">
       <div className="blob-field" />
-      <OrbitalDecor lines={1} stars={3} size={220} className="absolute top-10 -left-10 opacity-60" />
+      <div className="absolute inset-0 flex items-center justify-center -z-10 pointer-events-none overflow-hidden">
+        <OrbitalDecor lines={1} stars={3} size={220} className="opacity-30" />
+      </div>
       <div className="relative max-w-6xl mx-auto">
         <div className="reveal"><SectionHeading eyebrow="Services" title="What We Do" /></div>
         <div className="grid md:grid-cols-3 gap-6">
