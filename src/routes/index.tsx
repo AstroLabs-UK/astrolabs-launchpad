@@ -577,7 +577,9 @@ function FAQ() {
 
   return (
     <section id="faq" className="relative py-32 px-6 section-tint overflow-hidden">
-      <OrbitalDecor lines={1} stars={2} size={200} className="absolute top-8 right-4 opacity-50" />
+      <div className="absolute inset-0 flex items-center justify-center -z-10 pointer-events-none overflow-hidden">
+        <OrbitalDecor lines={1} stars={2} size={200} className="opacity-30" />
+      </div>
       <div className="relative max-w-3xl mx-auto">
         <div className="reveal"><SectionHeading eyebrow="FAQ" title="Common Questions" /></div>
         <div className="space-y-4">
