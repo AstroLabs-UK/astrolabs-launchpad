@@ -501,7 +501,8 @@ function Pricing() {
   ];
   return (
     <section id="pricing" className="relative py-32 px-6 overflow-hidden">
-      <div className="max-w-6xl mx-auto">
+      <OrbitalDecor lines={3} stars={5} size={420} className="absolute -top-16 left-1/2 -translate-x-1/2 opacity-40" />
+      <div className="relative max-w-6xl mx-auto">
         <div className="reveal"><SectionHeading eyebrow="Pricing" title="Simple, Transparent Pricing" /></div>
         <div className="grid md:grid-cols-3 gap-8 items-stretch pt-4">
           {plans.map((p, i) => (
