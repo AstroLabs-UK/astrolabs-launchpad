@@ -327,7 +327,7 @@ function OrbitalDecor({
   return (
     <div
       aria-hidden="true"
-      className={`pointer-events-none ${className}`}
+      className={`pointer-events-none relative ${className}`}
       style={{ width: size, height: size, maxWidth: "100%" }}
     >
       {ringSpecs.map((r, i) => (
