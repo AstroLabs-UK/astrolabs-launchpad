@@ -293,75 +293,6 @@ function SectionCurve({ fill, bg, flip = false, tintPct }: { fill: string; bg: s
   );
 }
 
-/**
- * Orbital rings + stars decoration. Max 3 rings, max 5 stars.
- * Position via wrapper (absolute/relative). Non-interactive.
- */
-function OrbitalDecor({
-  lines = 2,
-  stars = 3,
-  size = 340,
-  className = "",
-  showLogo = false,
-}: {
-  lines?: 1 | 2 | 3;
-  stars?: 0 | 1 | 2 | 3 | 4 | 5;
-  size?: number;
-  className?: string;
-  showLogo?: boolean;
-}) {
-  const ringSpecs = [
-    { inset: "0", cls: "animate-orbit-slow border-steel/30" },
-    { inset: "12%", cls: "animate-orbit border-navy/20" },
-    { inset: "26%", cls: "border-steel/20" },
-  ].slice(0, lines);
-
-  const starSpecs = [
-    { top: "8%", left: "78%", size: 2, cls: "bg-navy animate-star-glow", delay: "0s" },
-    { top: "72%", left: "14%", size: 1.5, cls: "bg-deep animate-twinkle", delay: "0.6s" },
-    { top: "30%", left: "6%", size: 1, cls: "bg-steel animate-twinkle", delay: "1.2s" },
-    { top: "84%", left: "72%", size: 2, cls: "bg-navy animate-star-glow", delay: "1.8s" },
-    { top: "18%", left: "42%", size: 1, cls: "bg-steel animate-twinkle", delay: "2.4s" },
-  ].slice(0, stars);
-
-  return (
-    <div
-      aria-hidden="true"
-      className={`pointer-events-none relative ${className}`}
-      style={{ width: size, height: size, maxWidth: "100%" }}
-    >
-      {ringSpecs.map((r, i) => (
-        <div
-          key={i}
-          className={`absolute rounded-full border ${r.cls}`}
-          style={{ inset: r.inset }}
-        />
-      ))}
-      {showLogo && (
-        <>
-          <div className="absolute inset-[30%] rounded-full bg-gradient-to-br from-steel/25 to-navy/15 blur-2xl" />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <img src={logo} alt="" className="h-16 w-16 opacity-80 drop-shadow-[0_10px_30px_color-mix(in_oklab,var(--navy)_35%,transparent)]" />
-          </div>
-        </>
-      )}
-      {starSpecs.map((s, i) => (
-        <span
-          key={`s-${i}`}
-          className={`absolute rounded-full ${s.cls}`}
-          style={{
-            top: s.top,
-            left: s.left,
-            width: `${s.size * 2}px`,
-            height: `${s.size * 2}px`,
-            animationDelay: s.delay,
-          }}
-        />
-      ))}
-    </div>
-  );
-}
-
 
 function About() {
   const stats = [
@@ -396,9 +327,6 @@ function About() {
   return (
     <section id="about" className="relative py-32 px-6 overflow-hidden">
       <div className="blob-field" />
-      <div className="absolute inset-0 flex items-center justify-center -z-10 pointer-events-none overflow-hidden">
-        <OrbitalDecor lines={2} stars={4} size={280} className="opacity-30" />
-      </div>
       <div className="relative max-w-5xl mx-auto">
         <div className="reveal"><SectionHeading eyebrow="About" title="Who We Are" /></div>
         <p className="reveal text-lg md:text-xl text-center text-foreground/80 max-w-3xl mx-auto leading-relaxed">
@@ -456,9 +384,6 @@ function Services() {
   return (
     <section id="services" className="relative py-32 px-6 section-tint-strong overflow-hidden">
       <div className="blob-field" />
-      <div className="absolute inset-0 flex items-center justify-center -z-10 pointer-events-none overflow-hidden">
-        <OrbitalDecor lines={1} stars={3} size={220} className="opacity-30" />
-      </div>
       <div className="relative max-w-6xl mx-auto">
         <div className="reveal"><SectionHeading eyebrow="Services" title="What We Do" /></div>
         <div className="grid md:grid-cols-3 gap-6">
@@ -505,10 +430,7 @@ function Pricing() {
   ];
   return (
     <section id="pricing" className="relative py-32 px-6 overflow-hidden">
-      <div className="absolute inset-0 flex items-center justify-center -z-10 pointer-events-none overflow-hidden">
-        <OrbitalDecor lines={3} stars={5} size={420} className="opacity-25" />
-      </div>
-      <div className="relative max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <div className="reveal"><SectionHeading eyebrow="Pricing" title="Simple, Transparent Pricing" /></div>
         <div className="grid md:grid-cols-3 gap-8 items-stretch pt-4">
           {plans.map((p, i) => (
@@ -576,11 +498,8 @@ function FAQ() {
   ];
 
   return (
-    <section id="faq" className="relative py-32 px-6 section-tint overflow-hidden">
-      <div className="absolute inset-0 flex items-center justify-center -z-10 pointer-events-none overflow-hidden">
-        <OrbitalDecor lines={1} stars={2} size={200} className="opacity-30" />
-      </div>
-      <div className="relative max-w-3xl mx-auto">
+    <section id="faq" className="relative py-32 px-6 section-tint">
+      <div className="max-w-3xl mx-auto">
         <div className="reveal"><SectionHeading eyebrow="FAQ" title="Common Questions" /></div>
         <div className="space-y-4">
           {faqs.map((faq, i) => (
@@ -641,38 +560,48 @@ function Contact() {
         <div className="absolute top-1/3 left-[-10%] w-[26rem] h-[26rem] rounded-full blur-3xl" style={{ background: "radial-gradient(circle, color-mix(in oklab, var(--steel) 22%, transparent), transparent 65%)" }} />
         <div className="absolute bottom-0 right-[-10%] w-[28rem] h-[28rem] rounded-full blur-3xl" style={{ background: "radial-gradient(circle, color-mix(in oklab, var(--navy) 18%, transparent), transparent 65%)" }} />
       </div>
-      <div className="max-w-3xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <div className="reveal"><SectionHeading eyebrow="Contact" title="Let's Build Something" /></div>
-        <form onSubmit={handleSubmit} className="reveal glass-card space-y-4 p-8 md:p-10 rounded-3xl">
-          <div className="grid sm:grid-cols-2 gap-4">
-            <div className="flex flex-col gap-1.5">
-              <label htmlFor="name" className="text-xs font-semibold text-navy/70 ml-1">Your Name</label>
-              <input id="name" name="name" required placeholder="John Doe" className="px-4 py-3 rounded-lg border border-border bg-white/70 focus:outline-none focus:border-deep focus:bg-white transition" />
+        <div className="grid lg:grid-cols-[1.15fr_1fr] gap-10 items-center">
+          <form onSubmit={handleSubmit} className="reveal glass-card space-y-4 p-8 md:p-10 rounded-3xl">
+            <div className="grid sm:grid-cols-2 gap-4">
+              <div className="flex flex-col gap-1.5">
+                <label htmlFor="name" className="text-xs font-semibold text-navy/70 ml-1">Your Name</label>
+                <input id="name" name="name" required placeholder="John Doe" className="px-4 py-3 rounded-lg border border-border bg-white/70 focus:outline-none focus:border-deep focus:bg-white transition" />
+              </div>
+              <div className="flex flex-col gap-1.5">
+                <label htmlFor="business" className="text-xs font-semibold text-navy/70 ml-1">Business Name</label>
+                <input id="business" name="business" required placeholder="My Local Business" className="px-4 py-3 rounded-lg border border-border bg-white/70 focus:outline-none focus:border-deep focus:bg-white transition" />
+              </div>
             </div>
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="business" className="text-xs font-semibold text-navy/70 ml-1">Business Name</label>
-              <input id="business" name="business" required placeholder="My Local Business" className="px-4 py-3 rounded-lg border border-border bg-white/70 focus:outline-none focus:border-deep focus:bg-white transition" />
+              <label htmlFor="email" className="text-xs font-semibold text-navy/70 ml-1">Email Address</label>
+              <input id="email" name="email" required type="email" placeholder="john@example.com" className="w-full px-4 py-3 rounded-lg border border-border bg-white/70 focus:outline-none focus:border-deep focus:bg-white transition" />
             </div>
-          </div>
-          <div className="flex flex-col gap-1.5">
-            <label htmlFor="email" className="text-xs font-semibold text-navy/70 ml-1">Email Address</label>
-            <input id="email" name="email" required type="email" placeholder="john@example.com" className="w-full px-4 py-3 rounded-lg border border-border bg-white/70 focus:outline-none focus:border-deep focus:bg-white transition" />
-          </div>
-          <div className="flex flex-col gap-1.5">
-            <label htmlFor="message" className="text-xs font-semibold text-navy/70 ml-1">Project Details</label>
-            <textarea id="message" name="message" required rows={5} placeholder="Tell us about your project…" className="w-full px-4 py-3 rounded-lg border border-border bg-white/70 focus:outline-none focus:border-deep focus:bg-white transition resize-none" />
-          </div>
-          <button type="submit" disabled={sending} className="btn-comet w-full px-6 py-3.5 rounded-lg bg-deep text-white font-medium hover:bg-navy transition-all hover:-translate-y-0.5 shadow-lg shadow-deep/20">
-            {sent ? "Thanks — we'll be in touch ✦" : sending ? "Sending…" : "Send Message"}
-          </button>
-          <p className="pt-2 text-center text-sm text-foreground/70">
-            Or email us at{" "}
-            <a href="mailto:hello@astrolabs.uk" className="text-deep font-medium hover:underline">hello@astrolabs.uk</a>
-          </p>
-        </form>
+            <div className="flex flex-col gap-1.5">
+              <label htmlFor="message" className="text-xs font-semibold text-navy/70 ml-1">Project Details</label>
+              <textarea id="message" name="message" required rows={5} placeholder="Tell us about your project…" className="w-full px-4 py-3 rounded-lg border border-border bg-white/70 focus:outline-none focus:border-deep focus:bg-white transition resize-none" />
+            </div>
+            <button type="submit" disabled={sending} className="btn-comet w-full px-6 py-3.5 rounded-lg bg-deep text-white font-medium hover:bg-navy transition-all hover:-translate-y-0.5 shadow-lg shadow-deep/20">
+              {sent ? "Thanks — we'll be in touch ✦" : sending ? "Sending…" : "Send Message"}
+            </button>
+            <p className="pt-2 text-center text-sm text-foreground/70">
+              Or email us at{" "}
+              <a href="mailto:hello@astrolabs.uk" className="text-deep font-medium hover:underline">hello@astrolabs.uk</a>
+            </p>
+          </form>
 
-        <div className="reveal mt-16 flex justify-center">
-          <OrbitalDecor lines={3} stars={5} size={360} showLogo />
+          <div className="reveal hidden lg:block relative aspect-square" aria-hidden="true">
+            <div className="absolute inset-6 rounded-full border border-steel/30 animate-orbit-slow" />
+            <div className="absolute inset-16 rounded-full border border-navy/20 animate-orbit" />
+            <div className="absolute inset-24 rounded-full bg-gradient-to-br from-steel/30 to-navy/20 blur-2xl" />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <img src={logo} alt="" className="h-24 w-24 opacity-90 drop-shadow-[0_10px_30px_color-mix(in_oklab,var(--navy)_35%,transparent)]" />
+            </div>
+            <span className="absolute top-6 right-10 w-2 h-2 rounded-full bg-navy animate-star-glow" />
+            <span className="absolute bottom-12 left-6 w-1.5 h-1.5 rounded-full bg-deep animate-twinkle" />
+            <span className="absolute top-1/3 left-4 w-1 h-1 rounded-full bg-steel animate-twinkle" style={{ animationDelay: "1.2s" }} />
+          </div>
         </div>
       </div>
     </section>
