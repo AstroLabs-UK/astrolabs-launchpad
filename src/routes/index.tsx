@@ -396,7 +396,9 @@ function About() {
   return (
     <section id="about" className="relative py-32 px-6 overflow-hidden">
       <div className="blob-field" />
-      <OrbitalDecor lines={2} stars={4} size={280} className="absolute -top-6 -right-10 md:right-6 opacity-70" />
+      <div className="absolute inset-0 flex items-center justify-center -z-10 pointer-events-none overflow-hidden">
+        <OrbitalDecor lines={2} stars={4} size={280} className="opacity-30" />
+      </div>
       <div className="relative max-w-5xl mx-auto">
         <div className="reveal"><SectionHeading eyebrow="About" title="Who We Are" /></div>
         <p className="reveal text-lg md:text-xl text-center text-foreground/80 max-w-3xl mx-auto leading-relaxed">
