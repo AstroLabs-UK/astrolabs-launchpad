@@ -4,9 +4,33 @@ import logo from "@/assets/astrolabs-logo.png";
 // import goodVibesImg from "@/assets/portfolio-goodvibes.jpg";
 // import puddingsImg from "@/assets/portfolio-puddings.jpg";
 
+const FAQS = [
+  { q: "How much does a professional website cost in the UK?", a: "At AstroLabs & Co., our professional web design packages start from £299 for a complete launch. We offer transparent, one-off pricing with no hidden fees." },
+  { q: "Do you provide hosting and domain names?", a: "Yes, we include free hosting and domain registration in our Launch and Pro packages. We handle all the technical setup so you don't have to." },
+  { q: "How long does it take to build a website?", a: "Most local business websites are designed and launched within 2-4 weeks, depending on the complexity and how quickly we receive your content." },
+];
+
 export const Route = createFileRoute("/")({
   component: Index,
+  head: () => ({
+    links: [{ rel: "canonical", href: "https://www.astrolabs.uk/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: FAQS.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
+        }),
+      },
+    ],
+  }),
 });
+
 
 const NAV = [
   { label: "About", href: "#about" },
@@ -90,7 +114,7 @@ function Navbar() {
     >
       <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between" aria-label="Main navigation">
         <a href="#top" className="flex items-center gap-2.5 group" aria-label="AstroLabs & Co. Home">
-          <img src={logo} alt="AstroLabs & Co. Logo" className="h-9 w-9 transition-transform group-hover:rotate-12" />
+          <img src={logo} alt="AstroLabs & Co. web design studio" className="h-9 w-9 transition-transform group-hover:rotate-12" />
           <span className="font-display font-bold text-navy text-lg tracking-tight">AstroLabs <span className="text-steel">& Co.</span></span>
         </a>
         <ul className="hidden md:flex items-center gap-8">
