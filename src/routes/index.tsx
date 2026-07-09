@@ -251,6 +251,7 @@ function Hero() {
         </div>
         <h1 className="font-display font-bold text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-navy leading-[0.95]">
           <span className="text-shimmer">AstroLabs</span> <span className="text-steel">& Co.</span>
+          <span className="sr-only"> — Web Design Studio for UK Small Businesses</span>
         </h1>
         <p className="mt-6 text-2xl md:text-3xl font-display font-medium text-deep">
           We Build. <TypewriterText />
@@ -638,7 +639,7 @@ function Footer() {
     <footer className="bg-deep text-white">
       <div className="max-w-7xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center gap-6 md:justify-between">
         <a href="#top" className="flex items-center gap-2.5" aria-label="AstroLabs & Co. Home">
-          <img src={logo} alt="AstroLabs & Co. Logo" className="h-8 w-8" />
+          <img src={logo} alt="AstroLabs & Co. web design studio" className="h-8 w-8" />
           <span className="font-display font-bold">AstroLabs & Co.</span>
         </a>
         <nav aria-label="Footer navigation">
