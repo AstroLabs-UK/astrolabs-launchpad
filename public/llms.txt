@@ -1,0 +1,17 @@
+# AstroLabs & Co.
+
+> UK-based web design studio building fast, custom websites for local small businesses with transparent pricing, free hosting, and dedicated support.
+
+AstroLabs & Co. (also known as AstroLabs, AstroLabs and Co) designs and builds bespoke websites for UK small businesses. Services include custom web design, managed hosting, and ongoing support. Plans start at £299.
+
+## Pages
+
+- [Home](/): Overview of AstroLabs & Co., services, portfolio, pricing, and contact.
+
+## Sections
+
+- [About](/#about): Who we are and how we work.
+- [Services](/#services): Custom web design, managed hosting, and support.
+- [Pricing](/#pricing): Transparent plans starting at £299.
+- [FAQ](/#faq): Common questions about our process and pricing.
+- [Contact](/#contact): Get in touch at hello@astrolabs.uk.
