@@ -760,6 +760,8 @@ function Index() {
       <Footer />
       {/* ChatTeaser disabled — uncomment below to re-enable */}
       {/* <ChatTeaser /> */}
+      <AccessibilityWidget />
     </div>
+
   );
 }
