@@ -290,3 +290,64 @@
 .faq-body > div { overflow: hidden; }
 
 [data-lovable-badge] { display: none !important; }
+
+/* ── Accessibility widget overrides ─────────────────────── */
+/* Reduce motion — disables all animations and transitions */
+body.a11y-reduce-motion,
+body.a11y-reduce-motion *,
+body.a11y-reduce-motion *::before,
+body.a11y-reduce-motion *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
+}
+body.a11y-reduce-motion::before { animation: none !important; }
+
+/* Text size scaling */
+body.a11y-text-large { font-size: 1.125rem; }
+body.a11y-text-xlarge { font-size: 1.3125rem; }
+
+/* Remove styling — strip decoration but keep layout & readability */
+body.a11y-no-styling::before { display: none !important; }
+body.a11y-no-styling,
+body.a11y-no-styling * {
+  font-family: Georgia, "Times New Roman", serif !important;
+  letter-spacing: normal !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+  background-image: none !important;
+  filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  animation: none !important;
+  border-radius: 0 !important;
+}
+body.a11y-no-styling {
+  background: #ffffff !important;
+  color: #111111 !important;
+}
+body.a11y-no-styling h1,
+body.a11y-no-styling h2,
+body.a11y-no-styling h3,
+body.a11y-no-styling h4,
+body.a11y-no-styling p,
+body.a11y-no-styling li,
+body.a11y-no-styling span,
+body.a11y-no-styling a { color: #111111 !important; }
+body.a11y-no-styling a { text-decoration: underline !important; }
+body.a11y-no-styling .blob-field,
+body.a11y-no-styling .hero-vignette::before,
+body.a11y-no-styling .pricing-glow::before,
+body.a11y-no-styling .card-glow::before { display: none !important; }
+body.a11y-no-styling .text-shimmer {
+  background: none !important;
+  -webkit-text-fill-color: #111111 !important;
+  color: #111111 !important;
+}
+/* Keep the accessibility widget itself styled so users can turn it back off */
+body.a11y-no-styling [data-a11y-widget],
+body.a11y-no-styling [data-a11y-widget] * {
+  font-family: var(--font-sans) !important;
+  background-image: initial;
+}
