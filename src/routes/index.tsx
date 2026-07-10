@@ -610,7 +610,7 @@ function Contact() {
             <div className="absolute inset-16 rounded-full border border-navy/20 animate-orbit" />
             <div className="absolute inset-24 rounded-full bg-gradient-to-br from-steel/30 to-navy/20 blur-2xl" />
             <div className="absolute inset-0 flex items-center justify-center">
-              <img src={logo} alt="" className="h-24 w-24 opacity-90 drop-shadow-[0_10px_30px_color-mix(in_oklab,var(--navy)_35%,transparent)]" />
+              <img src={logo} alt="" aria-hidden="true" width={96} height={96} loading="lazy" decoding="async" className="h-24 w-24 opacity-90 drop-shadow-[0_10px_30px_color-mix(in_oklab,var(--navy)_35%,transparent)]" />
             </div>
             <span className="absolute top-6 right-10 w-2 h-2 rounded-full bg-navy animate-star-glow" />
             <span className="absolute bottom-12 left-6 w-1.5 h-1.5 rounded-full bg-deep animate-twinkle" />
