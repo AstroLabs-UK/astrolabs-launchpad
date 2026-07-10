@@ -352,7 +352,7 @@ function About() {
     },
   ];
   return (
-    <section id="about" className="relative py-32 px-6 overflow-hidden">
+    <section id="about" className="relative py-20 md:py-24 px-6 overflow-hidden">
       <div className="blob-field" />
       <div className="relative max-w-5xl mx-auto">
         <div className="reveal"><SectionHeading eyebrow="About" title="Who We Are" /></div>
@@ -409,7 +409,7 @@ function Services() {
     },
   ];
   return (
-    <section id="services" className="relative py-32 px-6 section-tint-strong overflow-hidden">
+    <section id="services" className="relative py-20 md:py-24 px-6 section-tint-strong overflow-hidden">
       <div className="blob-field" />
       <div className="relative max-w-6xl mx-auto">
         <div className="reveal"><SectionHeading eyebrow="Services" title="What We Do" /></div>
@@ -456,7 +456,7 @@ function Pricing() {
     },
   ];
   return (
-    <section id="pricing" className="relative py-32 px-6 overflow-hidden">
+    <section id="pricing" className="relative py-20 md:py-24 px-6 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <div className="reveal"><SectionHeading eyebrow="Pricing" title="Simple, Transparent Pricing" /></div>
         <div className="grid md:grid-cols-3 gap-8 items-stretch pt-4">
@@ -512,7 +512,7 @@ function FAQ() {
   const faqs = FAQS;
 
   return (
-    <section id="faq" className="relative py-32 px-6 section-tint">
+    <section id="faq" className="relative py-20 md:py-24 px-6 section-tint">
       <div className="max-w-3xl mx-auto">
         <div className="reveal"><SectionHeading eyebrow="FAQ" title="Common Questions" /></div>
         <div className="space-y-4">
@@ -568,7 +568,7 @@ function Contact() {
   };
 
   return (
-    <section id="contact" className="relative py-32 px-6 overflow-hidden">
+    <section id="contact" className="relative py-20 md:py-24 px-6 overflow-hidden">
       <div className="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
         <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, transparent, color-mix(in oklab, var(--steel) 8%, transparent))" }} />
         <div className="absolute top-1/3 left-[-10%] w-[26rem] h-[26rem] rounded-full blur-3xl" style={{ background: "radial-gradient(circle, color-mix(in oklab, var(--steel) 22%, transparent), transparent 65%)" }} />
