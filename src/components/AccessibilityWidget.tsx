@@ -65,7 +65,7 @@ export default function AccessibilityWidget() {
   const reset = () => setSettings(DEFAULTS);
 
   return (
-    <div ref={panelRef} className="fixed bottom-4 right-4 z-[60] print:hidden">
+    <div ref={panelRef} data-a11y-widget className="fixed bottom-4 right-4 z-[60] print:hidden">
       {open && (
         <div
           role="dialog"
