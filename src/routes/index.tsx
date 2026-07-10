@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import logo from "@/assets/astrolabs-logo.png";
+import AccessibilityWidget from "@/components/AccessibilityWidget";
+
 // import goodVibesImg from "@/assets/portfolio-goodvibes.jpg";
 // import puddingsImg from "@/assets/portfolio-puddings.jpg";
 
