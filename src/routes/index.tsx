@@ -116,7 +116,7 @@ function Navbar() {
     >
       <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between" aria-label="Main navigation">
         <a href="#top" className="flex items-center gap-2.5 group" aria-label="AstroLabs & Co. Home">
-          <img src={logo} alt="AstroLabs & Co. web design studio" className="h-9 w-9 transition-transform group-hover:rotate-12" />
+          <img src={logo} alt="AstroLabs & Co. web design studio logo" width={36} height={36} decoding="async" fetchPriority="high" className="h-9 w-9 transition-transform group-hover:rotate-12" />
           <span className="font-display font-bold text-navy text-lg tracking-tight">AstroLabs <span className="text-steel">& Co.</span></span>
         </a>
         <ul className="hidden md:flex items-center gap-8">
