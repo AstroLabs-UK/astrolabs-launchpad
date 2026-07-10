@@ -628,7 +628,7 @@ function Footer() {
     <footer className="bg-deep text-white">
       <div className="max-w-7xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center gap-6 md:justify-between">
         <a href="#top" className="flex items-center gap-2.5" aria-label="AstroLabs & Co. Home">
-          <img src={logo} alt="AstroLabs & Co. web design studio" className="h-8 w-8" />
+          <img src={logo} alt="AstroLabs & Co. logo" width={32} height={32} loading="lazy" decoding="async" className="h-8 w-8" />
           <span className="font-display font-bold">AstroLabs & Co.</span>
         </a>
         <nav aria-label="Footer navigation">
