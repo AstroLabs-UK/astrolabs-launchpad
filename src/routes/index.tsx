@@ -116,7 +116,7 @@ function Navbar() {
     >
       <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between" aria-label="Main navigation">
         <a href="#top" className="flex items-center gap-2.5 group" aria-label="AstroLabs & Co. Home">
-          <img src={logo} alt="AstroLabs & Co. web design studio" className="h-9 w-9 transition-transform group-hover:rotate-12" />
+          <img src={logo} alt="AstroLabs & Co. web design studio logo" width={36} height={36} decoding="async" fetchPriority="high" className="h-9 w-9 transition-transform group-hover:rotate-12" />
           <span className="font-display font-bold text-navy text-lg tracking-tight">AstroLabs <span className="text-steel">& Co.</span></span>
         </a>
         <ul className="hidden md:flex items-center gap-8">
@@ -352,7 +352,7 @@ function About() {
     },
   ];
   return (
-    <section id="about" className="relative py-32 px-6 overflow-hidden">
+    <section id="about" className="relative py-20 md:py-24 px-6 overflow-hidden">
       <div className="blob-field" />
       <div className="relative max-w-5xl mx-auto">
         <div className="reveal"><SectionHeading eyebrow="About" title="Who We Are" /></div>
@@ -409,7 +409,7 @@ function Services() {
     },
   ];
   return (
-    <section id="services" className="relative py-32 px-6 section-tint-strong overflow-hidden">
+    <section id="services" className="relative py-20 md:py-24 px-6 section-tint-strong overflow-hidden">
       <div className="blob-field" />
       <div className="relative max-w-6xl mx-auto">
         <div className="reveal"><SectionHeading eyebrow="Services" title="What We Do" /></div>
@@ -456,7 +456,7 @@ function Pricing() {
     },
   ];
   return (
-    <section id="pricing" className="relative py-32 px-6 overflow-hidden">
+    <section id="pricing" className="relative py-20 md:py-24 px-6 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <div className="reveal"><SectionHeading eyebrow="Pricing" title="Simple, Transparent Pricing" /></div>
         <div className="grid md:grid-cols-3 gap-8 items-stretch pt-4">
@@ -512,7 +512,7 @@ function FAQ() {
   const faqs = FAQS;
 
   return (
-    <section id="faq" className="relative py-32 px-6 section-tint">
+    <section id="faq" className="relative py-20 md:py-24 px-6 section-tint">
       <div className="max-w-3xl mx-auto">
         <div className="reveal"><SectionHeading eyebrow="FAQ" title="Common Questions" /></div>
         <div className="space-y-4">
@@ -568,7 +568,7 @@ function Contact() {
   };
 
   return (
-    <section id="contact" className="relative py-32 px-6 overflow-hidden">
+    <section id="contact" className="relative py-20 md:py-24 px-6 overflow-hidden">
       <div className="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
         <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, transparent, color-mix(in oklab, var(--steel) 8%, transparent))" }} />
         <div className="absolute top-1/3 left-[-10%] w-[26rem] h-[26rem] rounded-full blur-3xl" style={{ background: "radial-gradient(circle, color-mix(in oklab, var(--steel) 22%, transparent), transparent 65%)" }} />
@@ -610,7 +610,7 @@ function Contact() {
             <div className="absolute inset-16 rounded-full border border-navy/20 animate-orbit" />
             <div className="absolute inset-24 rounded-full bg-gradient-to-br from-steel/30 to-navy/20 blur-2xl" />
             <div className="absolute inset-0 flex items-center justify-center">
-              <img src={logo} alt="" className="h-24 w-24 opacity-90 drop-shadow-[0_10px_30px_color-mix(in_oklab,var(--navy)_35%,transparent)]" />
+              <img src={logo} alt="" aria-hidden="true" width={96} height={96} loading="lazy" decoding="async" className="h-24 w-24 opacity-90 drop-shadow-[0_10px_30px_color-mix(in_oklab,var(--navy)_35%,transparent)]" />
             </div>
             <span className="absolute top-6 right-10 w-2 h-2 rounded-full bg-navy animate-star-glow" />
             <span className="absolute bottom-12 left-6 w-1.5 h-1.5 rounded-full bg-deep animate-twinkle" />
@@ -628,7 +628,7 @@ function Footer() {
     <footer className="bg-deep text-white">
       <div className="max-w-7xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center gap-6 md:justify-between">
         <a href="#top" className="flex items-center gap-2.5" aria-label="AstroLabs & Co. Home">
-          <img src={logo} alt="AstroLabs & Co. web design studio" className="h-8 w-8" />
+          <img src={logo} alt="AstroLabs & Co. logo" width={32} height={32} loading="lazy" decoding="async" className="h-8 w-8" />
           <span className="font-display font-bold">AstroLabs & Co.</span>
         </a>
         <nav aria-label="Footer navigation">
@@ -746,6 +746,9 @@ function Index() {
   useReveal();
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-md focus:bg-deep focus:text-white">
+        Skip to main content
+      </a>
       <Navbar />
       <main id="main-content">
         <Hero />
