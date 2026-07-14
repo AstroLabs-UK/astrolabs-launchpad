@@ -58,8 +58,25 @@ function TypewriterText() {
   const [displayed, setDisplayed] = useState("");
   const [wordIndex, setWordIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [reduced, setReduced] = useState(false);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const check = () =>
+      setReduced(mq.matches || document.body.classList.contains("a11y-reduce-motion"));
+    check();
+    mq.addEventListener?.("change", check);
+    const observer = new MutationObserver(check);
+    observer.observe(document.body, { attributes: true, attributeFilter: ["class"] });
+    return () => {
+      mq.removeEventListener?.("change", check);
+      observer.disconnect();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (reduced) return;
     const currentWord = TYPEWRITER_WORDS[wordIndex];
     let timer: ReturnType<typeof setTimeout>;
 
@@ -78,7 +95,11 @@ function TypewriterText() {
     }
 
     return () => clearTimeout(timer);
-  }, [displayed, isDeleting, wordIndex]);
+  }, [displayed, isDeleting, wordIndex, reduced]);
+
+  if (reduced) {
+    return <span className="inline-block">You Grow.</span>;
+  }
 
   return (
     <span className="inline-block min-w-[9ch]">
