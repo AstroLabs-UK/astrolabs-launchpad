@@ -268,10 +268,9 @@ function Hero() {
     <section id="top" className="relative min-h-screen flex items-center pt-16 overflow-hidden hero-vignette">
       <StarField />
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center animate-fade-up">
-        <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-steel/15 border border-steel/30 text-navy text-xs font-medium mb-8 animate-badge-glow">
-          <span className="w-1.5 h-1.5 rounded-full bg-deep animate-twinkle" />
+        <p className="text-xs uppercase tracking-[0.2em] text-navy/70 mb-8 text-center">
           UK-based web design studio
-        </div>
+        </p>
         <h1 className="font-display font-bold text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-navy leading-[0.95]">
           <span className="text-shimmer">AstroLabs</span> <span className="text-steel">& Co.</span>
           <span className="sr-only"> — Web Design Studio for UK Small Businesses</span>
