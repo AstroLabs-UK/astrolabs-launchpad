@@ -36,9 +36,6 @@ export default function AccessibilityWidget() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
-    if (scrolled && open) setOpen(false);
-  }, [scrolled, open]);
 
   useEffect(() => {
     try {
