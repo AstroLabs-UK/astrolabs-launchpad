@@ -77,7 +77,32 @@ export default function AccessibilityWidget() {
   const reset = () => setSettings(DEFAULTS);
 
   return (
-    <div ref={panelRef} data-a11y-widget className="fixed bottom-4 right-4 z-[60] print:hidden">
+    <>
+    <button
+      type="button"
+      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      aria-label="Scroll to top"
+      className={
+        "fixed bottom-4 right-4 z-[60] print:hidden flex h-12 w-12 items-center justify-center rounded-full bg-[color:var(--deep)] text-white shadow-lg ring-2 ring-white/40 transition-all duration-500 ease-out hover:scale-105 focus:outline-none focus-visible:ring-4 focus-visible:ring-[color-mix(in_oklab,var(--steel)_60%,transparent)] " +
+        (scrolled
+          ? "opacity-100 translate-x-0 translate-y-0"
+          : "opacity-0 pointer-events-none translate-y-4 md:translate-y-0 md:translate-x-4")
+      }
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6" aria-hidden="true">
+        <polyline points="18 15 12 9 6 15" />
+      </svg>
+    </button>
+    <div
+      ref={panelRef}
+      data-a11y-widget
+      className={
+        "fixed bottom-4 right-4 z-[60] print:hidden transition-all duration-500 ease-out " +
+        (scrolled
+          ? "opacity-0 pointer-events-none -translate-y-[150%] md:translate-y-0 md:-translate-x-[150%]"
+          : "opacity-100 translate-x-0 translate-y-0")
+      }
+    >
       {open && (
         <div
           role="dialog"
