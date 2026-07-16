@@ -25,8 +25,20 @@ function applySettings(s: Settings) {
 
 export default function AccessibilityWidget() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [settings, setSettings] = useState<Settings>(DEFAULTS);
   const panelRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 250);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    if (scrolled && open) setOpen(false);
+  }, [scrolled, open]);
 
   useEffect(() => {
     try {
