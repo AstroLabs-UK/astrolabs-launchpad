@@ -99,7 +99,7 @@ export default function AccessibilityWidget() {
       className={
         "fixed bottom-4 right-4 z-[60] print:hidden transition-all duration-500 ease-out " +
         (scrolled
-          ? "opacity-0 pointer-events-none -translate-y-[150%] md:translate-y-0 md:-translate-x-[150%]"
+          ? "opacity-100 -translate-y-16 md:translate-y-0 md:-translate-x-16"
           : "opacity-100 translate-x-0 translate-y-0")
       }
     >
