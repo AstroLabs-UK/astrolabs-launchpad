@@ -188,5 +188,6 @@ export default function AccessibilityWidget() {
         </svg>
       </button>
     </div>
+    </>
   );
 }
