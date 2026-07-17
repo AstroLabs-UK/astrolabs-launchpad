@@ -617,10 +617,11 @@ function Contact() {
               <select
                 id="plan"
                 name="plan"
-                defaultValue="N/A"
+                defaultValue=""
                 aria-label="Preferred plan"
-                className="w-full px-4 py-3 rounded-lg border border-border bg-white/70 focus:outline-none focus:border-deep focus:bg-white transition"
+                className="w-full px-4 py-3 rounded-lg border border-border bg-white/70 focus:outline-none focus:border-deep focus:bg-white transition text-foreground"
               >
+                <option value="" disabled>Select a plan (optional)</option>
                 <option value="N/A">N/A</option>
                 <option value="Launch">Launch — £299</option>
                 <option value="Standard">Standard — £399</option>
