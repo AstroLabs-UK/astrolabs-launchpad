@@ -564,6 +564,7 @@ function FAQ() {
 function Contact() {
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
+  const [plan, setPlan] = useState("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
