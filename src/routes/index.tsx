@@ -613,6 +613,22 @@ function Contact() {
               <input id="email" name="email" required type="email" placeholder="john@example.com" className="w-full px-4 py-3 rounded-lg border border-border bg-white/70 focus:outline-none focus:border-deep focus:bg-white transition" />
             </div>
             <div className="flex flex-col gap-1.5">
+              <label htmlFor="plan" className="text-xs font-semibold text-navy/70 ml-1">Preferred Plan</label>
+              <select
+                id="plan"
+                name="plan"
+                defaultValue="N/A"
+                aria-label="Preferred plan"
+                className="w-full px-4 py-3 rounded-lg border border-border bg-white/70 focus:outline-none focus:border-deep focus:bg-white transition"
+              >
+                <option value="N/A">N/A</option>
+                <option value="Launch">Launch — £299</option>
+                <option value="Standard">Standard — £399</option>
+                <option value="Pro">Pro — £699</option>
+                <option value="Not sure">Not sure / Custom</option>
+              </select>
+            </div>
+            <div className="flex flex-col gap-1.5">
               <label htmlFor="message" className="text-xs font-semibold text-navy/70 ml-1">Project Details</label>
               <textarea id="message" name="message" required rows={5} placeholder="Tell us about your project…" className="w-full px-4 py-3 rounded-lg border border-border bg-white/70 focus:outline-none focus:border-deep focus:bg-white transition resize-none" />
             </div>
