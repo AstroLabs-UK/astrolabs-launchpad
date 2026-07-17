@@ -6,6 +6,7 @@ const ContactSchema = z.object({
   business: z.string().trim().min(1).max(200),
   email: z.string().trim().email().max(320),
   message: z.string().trim().min(1).max(5000),
+  plan: z.string().trim().max(50).optional().default("N/A"),
 });
 
 export const Route = createFileRoute("/api/public/contact")({
