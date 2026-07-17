@@ -564,6 +564,7 @@ function FAQ() {
 function Contact() {
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
+  const [plan, setPlan] = useState("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -617,11 +618,12 @@ function Contact() {
               <select
                 id="plan"
                 name="plan"
-                defaultValue=""
+                value={plan}
+                onChange={(e) => setPlan(e.target.value)}
                 aria-label="Preferred plan"
-                className="w-full px-4 py-3 rounded-lg border border-border bg-white/70 focus:outline-none focus:border-deep focus:bg-white transition text-foreground"
+                className={`w-full px-4 py-3 rounded-lg border border-border bg-white/70 focus:outline-none focus:border-deep focus:bg-white transition ${plan === "" ? "text-foreground/50" : "text-foreground"}`}
               >
-                <option value="" disabled>Select a plan (optional)</option>
+                <option value="" disabled className="text-foreground/50">Select a plan (optional)</option>
                 <option value="N/A">N/A</option>
                 <option value="Launch">Launch — £299</option>
                 <option value="Standard">Standard — £399</option>
