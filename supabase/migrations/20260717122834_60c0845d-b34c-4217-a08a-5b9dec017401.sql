@@ -1,0 +1,1 @@
+ALTER TABLE public.contact_submissions ADD COLUMN plan TEXT NOT NULL DEFAULT 'N/A';
