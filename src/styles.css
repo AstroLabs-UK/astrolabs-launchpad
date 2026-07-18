@@ -308,7 +308,7 @@ body.a11y-reduce-motion::before { animation: none !important; }
 body.a11y-text-large { font-size: 1.125rem; }
 body.a11y-text-xlarge { font-size: 1.3125rem; }
 
-/* Remove styling — strip decoration but keep layout & readability */
+/* Remove styling - strip decoration but keep layout & readability */
 body.a11y-no-styling::before { display: none !important; }
 body.a11y-no-styling,
 body.a11y-no-styling * {
