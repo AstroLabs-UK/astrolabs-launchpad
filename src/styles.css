@@ -74,7 +74,7 @@
     position: relative;
     min-height: 100vh;
   }
-  /* Subtle animated gradient background — sits behind all content */
+  /* Subtle animated gradient background - sits behind all content */
   body::before {
     content: "";
     position: fixed;
@@ -221,7 +221,7 @@
   animation: bg-drift 30s ease-in-out infinite alternate-reverse;
 }
 
-/* Card glow — soft brand-blue halo behind key cards */
+/* Card glow - soft brand-blue halo behind key cards */
 .card-glow { position: relative; isolation: isolate; }
 .card-glow::before {
   content: "";
@@ -291,8 +291,8 @@
 
 [data-lovable-badge] { display: none !important; }
 
-/* ── Accessibility widget overrides ─────────────────────── */
-/* Reduce motion — disables all animations and transitions */
+/* -- Accessibility widget overrides ------------------------ */
+/* Reduce motion - disables all animations and transitions */
 body.a11y-reduce-motion,
 body.a11y-reduce-motion *,
 body.a11y-reduce-motion *::before,
