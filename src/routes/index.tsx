@@ -273,7 +273,7 @@ function Hero() {
         </p>
         <h1 className="font-display font-bold text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-navy leading-[0.95]">
           <span className="text-shimmer">AstroLabs</span> <span className="text-steel">& Co.</span>
-          <span className="sr-only"> — Web Design Studio for UK Small Businesses</span>
+          <span className="sr-only"> - Web Design Studio for UK Small Businesses</span>
         </h1>
         <p className="mt-6 text-2xl md:text-3xl font-display font-medium text-deep">
           We Build. <TypewriterText />
@@ -377,7 +377,7 @@ function About() {
       <div className="relative max-w-5xl mx-auto">
         <div className="reveal"><SectionHeading eyebrow="About" title="Who We Are" /></div>
         <p className="reveal text-lg md:text-xl text-center text-foreground/80 max-w-3xl mx-auto leading-relaxed">
-          We're a small UK-based web studio that helps local businesses get online and look great doing it. We handle everything — design, build, and hosting — so you can focus on running your business.
+          We're a small UK-based web studio that helps local businesses get online and look great doing it. We handle everything - design, build, and hosting - so you can focus on running your business.
         </p>
         <div className="mt-20 grid sm:grid-cols-3 gap-6">
           {stats.map((s, i) => (
@@ -416,7 +416,7 @@ function Services() {
         </svg>
       ),
       title: "Hosting",
-      desc: "Fast, reliable, free hosting on our end — no extra invoices to worry about.",
+      desc: "Fast, reliable, free hosting on our end - no extra invoices to worry about.",
     },
     {
       icon: (
@@ -625,9 +625,9 @@ function Contact() {
               >
                 <option value="" disabled className="text-foreground/50">Select a plan (optional)</option>
                 <option value="N/A">N/A</option>
-                <option value="Launch">Launch — £299</option>
-                <option value="Standard">Standard — £399</option>
-                <option value="Pro">Pro — £699</option>
+                <option value="Launch">Launch - £299</option>
+                <option value="Standard">Standard - £399</option>
+                <option value="Pro">Pro - £699</option>
                 <option value="Not sure">Not sure / Custom</option>
               </select>
             </div>
@@ -636,7 +636,7 @@ function Contact() {
               <textarea id="message" name="message" required rows={5} placeholder="Tell us about your project…" className="w-full px-4 py-3 rounded-lg border border-border bg-white/70 focus:outline-none focus:border-deep focus:bg-white transition resize-none" />
             </div>
             <button type="submit" disabled={sending} className="btn-comet w-full px-6 py-3.5 rounded-lg bg-deep text-white font-medium hover:bg-navy transition-all hover:-translate-y-0.5 shadow-lg shadow-deep/20">
-              {sent ? "Thanks — we'll be in touch ✦" : sending ? "Sending…" : "Send Message"}
+              {sent ? "Thanks - we'll be in touch ✦" : sending ? "Sending…" : "Send Message"}
             </button>
             <p className="pt-2 text-center text-sm text-foreground/70">
               Or email us at{" "}
@@ -773,7 +773,7 @@ function ChatTeaser() {
         </button>
         <p className="font-medium">👋 Want to chat?</p>
         <p className="mt-1 text-xs text-white/70">
-          Ask us anything — we usually reply in minutes.
+          Ask us anything - we usually reply in minutes.
         </p>
         <div className="absolute -bottom-1.5 right-8 h-3 w-3 rotate-45 border-b border-r border-steel/30 bg-deep/95" />
       </div>
@@ -800,7 +800,7 @@ function Index() {
         <Contact />
       </main>
       <Footer />
-      {/* ChatTeaser disabled — uncomment below to re-enable */}
+      {/* ChatTeaser disabled - uncomment below to re-enable */}
       {/* <ChatTeaser /> */}
       <AccessibilityWidget />
     </div>

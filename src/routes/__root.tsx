@@ -72,7 +72,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "AstroLabs & Co. — UK Web Design Studio" },
+      { title: "AstroLabs & Co. - UK Web Design Studio" },
       { name: "description", content: "AstroLabs & Co. builds fast, custom websites for UK small businesses. Transparent pricing, free hosting, and dedicated support." },
       { name: "keywords", content: "AstroLabs, AstroLabs & Co., UK web design, web design studio, website designer UK, local business websites, affordable web design, custom web development, AstroLabs and Co" },
       { name: "author", content: "AstroLabs & Co." },
@@ -80,13 +80,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       // Open Graph / Facebook
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://www.astrolabs.uk/" },
-      { property: "og:title", content: "AstroLabs & Co. — UK Web Design Studio" },
+      { property: "og:title", content: "AstroLabs & Co. - UK Web Design Studio" },
       { property: "og:description", content: "AstroLabs & Co. builds fast, custom websites for UK small businesses. Transparent pricing, free hosting, and dedicated support." },
       { property: "og:image", content: "https://www.astrolabs.uk/og-image.png" },
       // Twitter
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:url", content: "https://www.astrolabs.uk/" },
-      { name: "twitter:title", content: "AstroLabs & Co. — UK Web Design Studio" },
+      { name: "twitter:title", content: "AstroLabs & Co. - UK Web Design Studio" },
       { name: "twitter:description", content: "AstroLabs & Co. builds fast, custom websites for UK small businesses. Transparent pricing, free hosting, and dedicated support." },
       { name: "twitter:image", content: "https://www.astrolabs.uk/og-image.png" },
 
