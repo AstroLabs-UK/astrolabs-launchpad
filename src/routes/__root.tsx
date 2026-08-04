@@ -125,6 +125,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             "logo": "https://www.astrolabs.uk/favicon.png",
             "image": "https://www.astrolabs.uk/og-image.png",
             "description": "AstroLabs & Co. is a UK-based web design studio specializing in high-performance, custom websites for local businesses. We offer transparent pricing, free hosting, and dedicated support.",
+            "disambiguatingDescription": "AstroLabs & Co. is an independent web design studio based in the United Kingdom. It is not affiliated with AstroLabs the Dubai business-expansion consultancy, nor with Astro Labs the cannabis cultivator.",
+            "knowsAbout": ["Web design", "Website development", "Web hosting", "Small business websites", "UK web design"],
+            "slogan": "Free hosting forever with every website",
+            "email": "hello@astrolabs.uk",
+
             "address": {
               "@type": "PostalAddress",
               "addressCountry": "GB"
