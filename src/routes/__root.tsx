@@ -100,6 +100,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
     ],
     links: [
+      { rel: "image_src", href: "https://www.astrolabs.uk/og-image.png" },
+
       
       { rel: "stylesheet", href: appCss },
       { rel: "icon", type: "image/png", href: "/favicon.png" },
