@@ -89,9 +89,19 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:title", content: "AstroLabs & Co. - UK Web Design Studio" },
       { name: "twitter:description", content: "AstroLabs & Co. builds fast, custom websites for UK small businesses. Transparent pricing, free hosting, and dedicated support." },
       { name: "twitter:image", content: "https://www.astrolabs.uk/og-image.png" },
+      { name: "twitter:image:alt", content: "AstroLabs & Co. - free hosting forever with every website" },
+      { property: "og:image:alt", content: "AstroLabs & Co. - free hosting forever with every website" },
+      { property: "og:image:width", content: "1080" },
+      { property: "og:image:height", content: "1350" },
+      { property: "og:site_name", content: "AstroLabs & Co." },
+      { property: "og:locale", content: "en_GB" },
+      { name: "thumbnail", content: "https://www.astrolabs.uk/og-image.png" },
+
 
     ],
     links: [
+      { rel: "image_src", href: "https://www.astrolabs.uk/og-image.png" },
+
       
       { rel: "stylesheet", href: appCss },
       { rel: "icon", type: "image/png", href: "/favicon.png" },
@@ -115,6 +125,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             "logo": "https://www.astrolabs.uk/favicon.png",
             "image": "https://www.astrolabs.uk/og-image.png",
             "description": "AstroLabs & Co. is a UK-based web design studio specializing in high-performance, custom websites for local businesses. We offer transparent pricing, free hosting, and dedicated support.",
+            "disambiguatingDescription": "AstroLabs & Co. is an independent web design studio based in the United Kingdom. It is not affiliated with AstroLabs the Dubai business-expansion consultancy, nor with Astro Labs the cannabis cultivator.",
+            "knowsAbout": ["Web design", "Website development", "Web hosting", "Small business websites", "UK web design"],
+            "slogan": "Free hosting forever with every website",
+            "email": "hello@astrolabs.uk",
+
             "address": {
               "@type": "PostalAddress",
               "addressCountry": "GB"
