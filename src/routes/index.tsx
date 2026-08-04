@@ -638,6 +638,10 @@ function Contact() {
             <button type="submit" disabled={sending} className="btn-comet w-full px-6 py-3.5 rounded-lg bg-deep text-white font-medium hover:bg-navy transition-all hover:-translate-y-0.5 shadow-lg shadow-deep/20">
               {sent ? "Thanks - we'll be in touch ✦" : sending ? "Sending…" : "Send Message"}
             </button>
+            <p className="text-center text-xs text-foreground/60">
+              By submitting this form you agree to our{" "}
+              <a href="/privacy" className="text-deep font-medium hover:underline">privacy policy</a>.
+            </p>
             <p className="pt-2 text-center text-sm text-foreground/70">
               Or email us at{" "}
               <a href="mailto:hello@astrolabs.uk" className="text-deep font-medium hover:underline">hello@astrolabs.uk</a>
