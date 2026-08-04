@@ -89,6 +89,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:title", content: "AstroLabs & Co. - UK Web Design Studio" },
       { name: "twitter:description", content: "AstroLabs & Co. builds fast, custom websites for UK small businesses. Transparent pricing, free hosting, and dedicated support." },
       { name: "twitter:image", content: "https://www.astrolabs.uk/og-image.png" },
+      { name: "twitter:image:alt", content: "AstroLabs & Co. - free hosting forever with every website" },
+      { property: "og:image:alt", content: "AstroLabs & Co. - free hosting forever with every website" },
+      { property: "og:image:width", content: "1080" },
+      { property: "og:image:height", content: "1350" },
+      { property: "og:site_name", content: "AstroLabs & Co." },
+      { property: "og:locale", content: "en_GB" },
+      { name: "thumbnail", content: "https://www.astrolabs.uk/og-image.png" },
+
 
     ],
     links: [
