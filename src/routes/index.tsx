@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import logo from "@/assets/astrolabs-logo.png";
 import AccessibilityWidget from "@/components/AccessibilityWidget";
+import PrivacyConsent from "@/components/PrivacyConsent";
 
 // import goodVibesImg from "@/assets/portfolio-goodvibes.jpg";
 // import puddingsImg from "@/assets/portfolio-puddings.jpg";
@@ -810,6 +811,7 @@ function Index() {
       {/* ChatTeaser disabled - uncomment below to re-enable */}
       {/* <ChatTeaser /> */}
       <AccessibilityWidget />
+      <PrivacyConsent />
     </div>
 
   );
