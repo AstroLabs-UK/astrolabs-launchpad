@@ -686,6 +686,9 @@ function Footer() {
                 </a>
               </li>
             ))}
+            <li>
+              <a href="/privacy" className="hover:text-white transition-colors">Privacy</a>
+            </li>
           </ul>
         </nav>
         <p className="text-xs text-white/60">© {new Date().getFullYear()} AstroLabs & Co. All rights reserved.</p>
