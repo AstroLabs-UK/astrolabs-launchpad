@@ -351,3 +351,18 @@ body.a11y-no-styling [data-a11y-widget] * {
   font-family: var(--font-sans) !important;
   background-image: initial;
 }
+
+/* Accessibility panel pop animation */
+@keyframes a11y-pop {
+  from { opacity: 0; transform: translateY(8px) scale(0.94); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.animate-a11y-pop {
+  animation: a11y-pop 0.22s cubic-bezier(0.16, 1, 0.3, 1) both;
+  transform-origin: bottom right;
+}
+@keyframes consent-rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-consent-rise { animation: consent-rise 0.4s ease-out both; }

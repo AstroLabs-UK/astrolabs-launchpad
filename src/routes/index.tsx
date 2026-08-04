@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import logo from "@/assets/astrolabs-logo.png";
 import AccessibilityWidget from "@/components/AccessibilityWidget";
+import PrivacyConsent from "@/components/PrivacyConsent";
 
 // import goodVibesImg from "@/assets/portfolio-goodvibes.jpg";
 // import puddingsImg from "@/assets/portfolio-puddings.jpg";
@@ -638,6 +639,10 @@ function Contact() {
             <button type="submit" disabled={sending} className="btn-comet w-full px-6 py-3.5 rounded-lg bg-deep text-white font-medium hover:bg-navy transition-all hover:-translate-y-0.5 shadow-lg shadow-deep/20">
               {sent ? "Thanks - we'll be in touch ✦" : sending ? "Sending…" : "Send Message"}
             </button>
+            <p className="text-center text-xs text-foreground/60">
+              By submitting this form you agree to our{" "}
+              <a href="/privacy" className="text-deep font-medium hover:underline">privacy policy</a>.
+            </p>
             <p className="pt-2 text-center text-sm text-foreground/70">
               Or email us at{" "}
               <a href="mailto:hello@astrolabs.uk" className="text-deep font-medium hover:underline">hello@astrolabs.uk</a>
@@ -682,6 +687,9 @@ function Footer() {
                 </a>
               </li>
             ))}
+            <li>
+              <a href="/privacy" className="hover:text-white transition-colors">Privacy</a>
+            </li>
           </ul>
         </nav>
         <p className="text-xs text-white/60">© {new Date().getFullYear()} AstroLabs & Co. All rights reserved.</p>
@@ -803,6 +811,7 @@ function Index() {
       {/* ChatTeaser disabled - uncomment below to re-enable */}
       {/* <ChatTeaser /> */}
       <AccessibilityWidget />
+      <PrivacyConsent />
     </div>
 
   );

@@ -104,7 +104,7 @@ export default function AccessibilityWidget() {
         <div
           role="dialog"
           aria-label="Accessibility settings"
-          className="absolute bottom-full right-0 mb-3 w-72 rounded-2xl border border-[color-mix(in_oklab,var(--steel)_35%,transparent)] bg-[color:var(--background)]/95 p-4 shadow-2xl backdrop-blur-md"
+          className="animate-a11y-pop absolute bottom-full right-0 mb-3 w-72 rounded-2xl border border-[color-mix(in_oklab,var(--steel)_35%,transparent)] bg-[color:var(--background)]/95 p-4 shadow-2xl backdrop-blur-md"
         >
           <div className="mb-3 flex items-center justify-between">
             <h2 className="text-sm font-semibold text-[color:var(--navy)]">
