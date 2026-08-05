@@ -26,15 +26,32 @@ function applySettings(s: Settings) {
 export default function AccessibilityWidget() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [bottomOffset, setBottomOffset] = useState(16);
   const [settings, setSettings] = useState<Settings>(DEFAULTS);
   const panelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 250);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 250);
+      const footer = document.querySelector("footer");
+      const base = 16;
+      if (footer) {
+        const top = footer.getBoundingClientRect().top;
+        const overlap = window.innerHeight - top;
+        setBottomOffset(overlap > 0 ? overlap + base : base);
+      } else {
+        setBottomOffset(base);
+      }
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
+
 
 
   useEffect(() => {
