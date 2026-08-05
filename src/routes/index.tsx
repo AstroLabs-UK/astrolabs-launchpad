@@ -41,8 +41,10 @@ const NAV = [
   // { label: "Portfolio", href: "#portfolio" },
   { label: "Pricing", href: "#pricing" },
   { label: "Contact", href: "#contact" },
+  { label: "Privacy", href: "/privacy" },
   { label: "CRM", href: "https://crm.astrolabs.uk" },
 ];
+
 
 const TYPEWRITER_WORDS = [
   "You Grow.",
@@ -599,7 +601,7 @@ function Contact() {
       <div className="max-w-6xl mx-auto">
         <div className="reveal"><SectionHeading eyebrow="Contact" title="Let's Build Something" /></div>
         <div className="grid lg:grid-cols-[1.15fr_1fr] gap-10 items-center">
-          <form onSubmit={handleSubmit} className="reveal glass-card space-y-4 p-8 md:p-10 rounded-3xl">
+          <form onSubmit={handleSubmit} className="reveal glass-card relative z-10 space-y-4 p-8 md:p-10 rounded-3xl">
             <div className="grid sm:grid-cols-2 gap-4">
               <div className="flex flex-col gap-1.5">
                 <label htmlFor="name" className="text-xs font-semibold text-navy/70 ml-1">Your Name</label>
@@ -649,7 +651,7 @@ function Contact() {
             </p>
           </form>
 
-          <div className="reveal hidden lg:block relative aspect-square" aria-hidden="true">
+          <div className="reveal hidden lg:block relative z-0 aspect-square pointer-events-none" aria-hidden="true">
             <div className="absolute inset-6 rounded-full border border-steel/30 animate-orbit-slow" />
             <div className="absolute inset-16 rounded-full border border-navy/20 animate-orbit" />
             <div className="absolute inset-24 rounded-full bg-gradient-to-br from-steel/30 to-navy/20 blur-2xl" />
