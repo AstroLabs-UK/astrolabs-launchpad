@@ -649,7 +649,7 @@ function Contact() {
             </p>
           </form>
 
-          <div className="reveal hidden lg:block relative aspect-square" aria-hidden="true">
+          <div className="reveal hidden lg:block relative z-0 aspect-square pointer-events-none" aria-hidden="true">
             <div className="absolute inset-6 rounded-full border border-steel/30 animate-orbit-slow" />
             <div className="absolute inset-16 rounded-full border border-navy/20 animate-orbit" />
             <div className="absolute inset-24 rounded-full bg-gradient-to-br from-steel/30 to-navy/20 blur-2xl" />
