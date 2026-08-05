@@ -41,8 +41,10 @@ const NAV = [
   // { label: "Portfolio", href: "#portfolio" },
   { label: "Pricing", href: "#pricing" },
   { label: "Contact", href: "#contact" },
+  { label: "Privacy", href: "/privacy" },
   { label: "CRM", href: "https://crm.astrolabs.uk" },
 ];
+
 
 const TYPEWRITER_WORDS = [
   "You Grow.",
