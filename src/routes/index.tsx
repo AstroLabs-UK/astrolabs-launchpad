@@ -599,7 +599,7 @@ function Contact() {
       <div className="max-w-6xl mx-auto">
         <div className="reveal"><SectionHeading eyebrow="Contact" title="Let's Build Something" /></div>
         <div className="grid lg:grid-cols-[1.15fr_1fr] gap-10 items-center">
-          <form onSubmit={handleSubmit} className="reveal glass-card space-y-4 p-8 md:p-10 rounded-3xl">
+          <form onSubmit={handleSubmit} className="reveal glass-card relative z-10 space-y-4 p-8 md:p-10 rounded-3xl">
             <div className="grid sm:grid-cols-2 gap-4">
               <div className="flex flex-col gap-1.5">
                 <label htmlFor="name" className="text-xs font-semibold text-navy/70 ml-1">Your Name</label>
