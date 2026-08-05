@@ -26,15 +26,32 @@ function applySettings(s: Settings) {
 export default function AccessibilityWidget() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [bottomOffset, setBottomOffset] = useState(16);
   const [settings, setSettings] = useState<Settings>(DEFAULTS);
   const panelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 250);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 250);
+      const footer = document.querySelector("footer");
+      const base = 16;
+      if (footer) {
+        const top = footer.getBoundingClientRect().top;
+        const overlap = window.innerHeight - top;
+        setBottomOffset(overlap > 0 ? overlap + base : base);
+      } else {
+        setBottomOffset(base);
+      }
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
+
 
 
   useEffect(() => {
@@ -79,8 +96,9 @@ export default function AccessibilityWidget() {
       type="button"
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       aria-label="Scroll to top"
+      style={{ bottom: bottomOffset }}
       className={
-        "fixed bottom-4 right-4 z-[60] print:hidden flex h-12 w-12 items-center justify-center rounded-full bg-[color:var(--deep)] text-white shadow-lg ring-2 ring-white/40 transition-all duration-500 ease-out hover:scale-105 focus:outline-none focus-visible:ring-4 focus-visible:ring-[color-mix(in_oklab,var(--steel)_60%,transparent)] " +
+        "fixed right-4 z-[60] print:hidden flex h-12 w-12 items-center justify-center rounded-full bg-[color:var(--deep)] text-white shadow-lg ring-2 ring-white/40 transition-all duration-500 ease-out hover:scale-105 focus:outline-none focus-visible:ring-4 focus-visible:ring-[color-mix(in_oklab,var(--steel)_60%,transparent)] " +
         (scrolled
           ? "opacity-100 translate-x-0 translate-y-0"
           : "opacity-0 pointer-events-none translate-y-4 md:translate-y-0 md:translate-x-4")
@@ -93,8 +111,9 @@ export default function AccessibilityWidget() {
     <div
       ref={panelRef}
       data-a11y-widget
+      style={{ bottom: bottomOffset }}
       className={
-        "fixed bottom-4 right-4 z-[60] print:hidden transition-all duration-500 ease-out " +
+        "fixed right-4 z-[60] print:hidden transition-all duration-500 ease-out " +
         (scrolled
           ? "opacity-100 -translate-y-16 md:translate-y-0 md:-translate-x-16"
           : "opacity-100 translate-x-0 translate-y-0")

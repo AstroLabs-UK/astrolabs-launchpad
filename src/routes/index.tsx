@@ -42,7 +42,6 @@ const NAV = [
   { label: "Pricing", href: "#pricing" },
   { label: "Contact", href: "#contact" },
   { label: "Privacy", href: "/privacy" },
-  { label: "CRM", href: "https://crm.astrolabs.uk" },
 ];
 
 
@@ -430,13 +429,23 @@ function Services() {
       title: "Support",
       desc: "1 year of bug fixes and updates included with every build.",
     },
+    {
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="4" r="1.6" />
+          <path d="M4.5 8.2 12 9.8l7.5-1.6M12 9.8v4.4M12 14.2 9 20.5M12 14.2l3 6.3" />
+        </svg>
+      ),
+      title: "Accessibility",
+      desc: "Every site we build is accessible by default - readable contrast, keyboard navigation, screen reader support and WCAG-minded markup.",
+    },
   ];
   return (
     <section id="services" className="relative py-12 md:py-16 px-6 section-tint-strong overflow-hidden">
       <div className="blob-field" />
       <div className="relative max-w-6xl mx-auto">
         <div className="reveal"><SectionHeading eyebrow="Services" title="What We Do" /></div>
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {items.map((s, i) => (
             <article
               key={s.title}
@@ -689,105 +698,11 @@ function Footer() {
                 </a>
               </li>
             ))}
-            <li>
-              <a href="/privacy" className="hover:text-white transition-colors">Privacy</a>
-            </li>
           </ul>
         </nav>
         <p className="text-xs text-white/60">© {new Date().getFullYear()} AstroLabs & Co. All rights reserved.</p>
       </div>
     </footer>
-  );
-}
-
-function ChatTeaser() {
-  const [visible, setVisible] = useState(false);
-  const [dismissed, setDismissed] = useState(false);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    if (sessionStorage.getItem("chat-teaser-dismissed") === "1") {
-      setDismissed(true);
-      return;
-    }
-    const t = setTimeout(() => setVisible(true), 2500);
-
-    const markDismissed = () => {
-      setDismissed(true);
-      try {
-        sessionStorage.setItem("chat-teaser-dismissed", "1");
-      } catch {}
-    };
-
-    const isWidgetEl = (el: Element | null) => {
-      while (el && el !== document.body) {
-        if (el.closest('[data-chat-teaser="1"]')) return false;
-        const tag = el.tagName?.toLowerCase();
-        if (tag === "iframe") {
-          const src = (el as HTMLIFrameElement).src || "";
-          if (src.includes("crm.astrolabs") || src.includes("325d2056")) return true;
-        }
-        const id = (el.id || "").toLowerCase();
-        const cls = typeof el.className === "string" ? el.className.toLowerCase() : "";
-        if (
-          id.includes("widget") || id.includes("chat") ||
-          cls.includes("widget") || cls.includes("chat") ||
-          el.hasAttribute("data-studio")
-        ) return true;
-        el = el.parentElement;
-      }
-      return false;
-    };
-
-    const onClick = (e: MouseEvent) => {
-      if (isWidgetEl(e.target as Element)) markDismissed();
-    };
-    document.addEventListener("click", onClick, true);
-
-    return () => {
-      clearTimeout(t);
-      document.removeEventListener("click", onClick, true);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!visible) return;
-    const t = setTimeout(() => {
-      setDismissed(true);
-      try {
-        sessionStorage.setItem("chat-teaser-dismissed", "1");
-      } catch {}
-    }, 16000);
-    return () => clearTimeout(t);
-  }, [visible]);
-
-  if (dismissed || !visible) return null;
-
-  const dismiss = () => {
-    setDismissed(true);
-    try {
-      sessionStorage.setItem("chat-teaser-dismissed", "1");
-    } catch {}
-  };
-
-  return (
-    <div className="fixed bottom-24 right-4 z-50 max-w-[260px] animate-fade-up sm:bottom-28 sm:right-6" data-chat-teaser="1">
-      <div className="relative rounded-2xl border border-steel/30 bg-deep/95 px-4 py-3 pr-8 text-sm text-white shadow-xl shadow-navy/20 backdrop-blur">
-        <button
-          type="button"
-          onClick={dismiss}
-          aria-label="Dismiss"
-          className="absolute right-2 top-2 text-white/60 transition hover:text-white"
-        >
-          ×
-        </button>
-        <p className="font-medium">👋 Want to chat?</p>
-        <p className="mt-1 text-xs text-white/70">
-          Ask us anything - we usually reply in minutes.
-        </p>
-        <div className="absolute -bottom-1.5 right-8 h-3 w-3 rotate-45 border-b border-r border-steel/30 bg-deep/95" />
-      </div>
-    </div>
   );
 }
 
@@ -810,8 +725,6 @@ function Index() {
         <Contact />
       </main>
       <Footer />
-      {/* ChatTeaser disabled - uncomment below to re-enable */}
-      {/* <ChatTeaser /> */}
       <AccessibilityWidget />
       <PrivacyConsent />
     </div>
