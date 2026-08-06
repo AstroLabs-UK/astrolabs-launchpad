@@ -132,6 +132,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
             "address": {
               "@type": "PostalAddress",
+              "addressLocality": "Maidstone",
+              "addressRegion": "Kent",
               "addressCountry": "GB"
             },
             "geo": {
@@ -174,7 +176,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             "@type": "WebSite",
             "url": "https://www.astrolabs.uk",
             "name": "AstroLabs & Co.",
-            "description": "Professional UK Web Design Studio"
+            "alternateName": ["AstroLabs", "AstroLabs & Co", "AstroLabs and Co", "AstroLabs Co"],
+            "inLanguage": "en-GB",
+            "description": "AstroLabs & Co. is a UK web design studio building fast, accessible websites for small businesses, with free hosting forever."
           }
         ]),
       },
