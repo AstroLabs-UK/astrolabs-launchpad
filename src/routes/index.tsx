@@ -698,6 +698,11 @@ function Footer() {
                 </a>
               </li>
             ))}
+            <li>
+              <a href="/accessibility" className="hover:text-white transition-colors">
+                Accessibility
+              </a>
+            </li>
           </ul>
         </nav>
         <p className="text-xs text-white/60">© {new Date().getFullYear()} AstroLabs & Co. All rights reserved.</p>
