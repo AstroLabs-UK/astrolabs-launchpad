@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import logo from "@/assets/astrolabs-logo.png";
+import AccessibilityWidget from "@/components/AccessibilityWidget";
 
 export const Route = createFileRoute("/privacy")({
   head: () => ({
@@ -181,7 +182,11 @@ const SECTIONS: { id: string; title: string; blocks: Block[] }[] = [
 
 function PrivacyPage() {
   return (
-    <main className="min-h-dvh px-6 py-16">
+    <>
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-md focus:bg-deep focus:text-white">
+        Skip to main content
+      </a>
+    <main id="main-content" className="min-h-dvh px-6 py-16">
       <div className="mx-auto max-w-3xl">
         <a href="/" className="mb-8 inline-flex items-center gap-2.5" aria-label="Back to AstroLabs & Co. home">
           <img src={logo} alt="AstroLabs & Co. logo" width={32} height={32} className="h-8 w-8" />
@@ -267,5 +272,7 @@ function PrivacyPage() {
         </a>
       </div>
     </main>
+    <AccessibilityWidget />
+    </>
   );
 }
