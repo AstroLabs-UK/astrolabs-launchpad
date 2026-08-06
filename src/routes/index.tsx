@@ -433,8 +433,11 @@ function Services() {
     {
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" aria-hidden="true">
-          <circle cx="12" cy="4" r="1.6" />
-          <path d="M4.5 8.2 12 9.8l7.5-1.6M12 9.8v4.4M12 14.2 9 20.5M12 14.2l3 6.3" />
+          <circle cx="12" cy="4.2" r="1.9" />
+          <path d="M4.6 8.4 12 10l7.4-1.6" />
+          <path d="M12 10v4.3" />
+          <path d="M12 14.3 9.2 20.6" />
+          <path d="M12 14.3l2.8 6.3" />
         </svg>
       ),
       title: "Accessibility",
