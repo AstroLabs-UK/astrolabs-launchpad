@@ -125,13 +125,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             "logo": "https://www.astrolabs.uk/favicon.png",
             "image": "https://www.astrolabs.uk/og-image.png",
             "description": "AstroLabs & Co. is a UK-based web design studio specializing in high-performance, custom websites for local businesses. We offer transparent pricing, free hosting, and dedicated support.",
-            "disambiguatingDescription": "AstroLabs & Co. is an independent web design studio based in the United Kingdom. It is not affiliated with AstroLabs the Dubai business-expansion consultancy, nor with Astro Labs the cannabis cultivator.",
-            "knowsAbout": ["Web design", "Website development", "Web hosting", "Small business websites", "UK web design"],
+            "disambiguatingDescription": "AstroLabs & Co. is an independent web design studio based in Maidstone, Kent, United Kingdom, serving small businesses across the UK. It is not affiliated with AstroLabs the Dubai business-expansion consultancy, nor with Astro Labs the cannabis cultivator.",
+            "knowsAbout": ["Web design", "Website development", "Web hosting", "Small business websites", "UK web design", "Web accessibility", "WCAG 2.1 AA", "Website speed optimisation", "Local SEO"],
             "slogan": "Free hosting forever with every website",
             "email": "hello@astrolabs.uk",
 
             "address": {
               "@type": "PostalAddress",
+              "addressLocality": "Maidstone",
+              "addressRegion": "Kent",
               "addressCountry": "GB"
             },
             "geo": {
@@ -174,7 +176,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             "@type": "WebSite",
             "url": "https://www.astrolabs.uk",
             "name": "AstroLabs & Co.",
-            "description": "Professional UK Web Design Studio"
+            "alternateName": ["AstroLabs", "AstroLabs & Co", "AstroLabs and Co", "AstroLabs Co"],
+            "inLanguage": "en-GB",
+            "description": "AstroLabs & Co. is a UK web design studio building fast, accessible websites for small businesses, with free hosting forever."
           }
         ]),
       },

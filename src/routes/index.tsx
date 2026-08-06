@@ -41,6 +41,7 @@ const NAV = [
   // { label: "Portfolio", href: "#portfolio" },
   { label: "Pricing", href: "#pricing" },
   { label: "Contact", href: "#contact" },
+  { label: "Blog", href: "/blog" },
   { label: "Privacy", href: "/privacy" },
 ];
 
@@ -626,7 +627,7 @@ function Contact() {
               <input id="email" name="email" required type="email" placeholder="john@example.com" className="w-full px-4 py-3 rounded-lg border border-border bg-white/70 focus:outline-none focus:border-deep focus:bg-white transition" />
             </div>
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="plan" className="text-xs font-semibold text-navy/70 ml-1">Preferred Plan</label>
+              <label htmlFor="plan" className="text-xs font-semibold text-navy/70 ml-1">Preferred Plan (optional)</label>
               <select
                 id="plan"
                 name="plan"
@@ -635,8 +636,7 @@ function Contact() {
                 aria-label="Preferred plan"
                 className={`w-full px-4 py-3 rounded-lg border border-border bg-white/70 focus:outline-none focus:border-deep focus:bg-white transition ${plan === "" ? "text-foreground/50" : "text-foreground"}`}
               >
-                <option value="" disabled className="text-foreground/50">Select a plan (optional)</option>
-                <option value="N/A">N/A</option>
+                <option value="" className="text-foreground/50">Select a plan (optional)</option>
                 <option value="Launch">Launch - £299</option>
                 <option value="Standard">Standard - £399</option>
                 <option value="Pro">Pro - £699</option>
@@ -698,6 +698,11 @@ function Footer() {
                 </a>
               </li>
             ))}
+            <li>
+              <a href="/accessibility" className="hover:text-white transition-colors">
+                Accessibility
+              </a>
+            </li>
           </ul>
         </nav>
         <p className="text-xs text-white/60">© {new Date().getFullYear()} AstroLabs & Co. All rights reserved.</p>

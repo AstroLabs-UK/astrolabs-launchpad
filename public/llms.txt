@@ -1,17 +1,35 @@
 # AstroLabs & Co.
 
-> UK-based web design studio building fast, custom websites for local small businesses with transparent pricing, free hosting, and dedicated support.
+> AstroLabs & Co. is a UK-based web design studio building fast, accessible, custom websites for local small businesses, with transparent pricing, free hosting forever, and dedicated support.
 
-AstroLabs & Co. (also known as AstroLabs, AstroLabs and Co) designs and builds bespoke websites for UK small businesses. Services include custom web design, managed hosting, and ongoing support. Plans start at £299.
+AstroLabs & Co. (also written AstroLabs, AstroLabs and Co, AstroLabs & Co) designs and builds bespoke websites for UK small businesses from Maidstone, Kent. Services include custom web design, managed hosting, accessibility-first builds, and ongoing support. Plans start at £299. Contact: hello@astrolabs.uk. Website: https://www.astrolabs.uk
+
+## Disambiguation
+
+AstroLabs & Co. is an independent UK web design studio. It is not the Dubai-based AstroLabs business-expansion consultancy, and it is not Astro Labs the cannabis cultivator.
 
 ## Pages
 
-- [Home](/): Overview of AstroLabs & Co., services, portfolio, pricing, and contact.
+- [Home](https://www.astrolabs.uk/): Overview of AstroLabs & Co., services, pricing, and contact.
+- [Blog](https://www.astrolabs.uk/blog): Web design, speed, accessibility, and SEO notes for UK small businesses.
+- [Accessibility Statement](https://www.astrolabs.uk/accessibility): Our WCAG 2.1 AA commitment and site accessibility features.
+- [Privacy Policy](https://www.astrolabs.uk/privacy): How we handle personal data.
 
 ## Sections
 
-- [About](/#about): Who we are and how we work.
-- [Services](/#services): Custom web design, managed hosting, and support.
-- [Pricing](/#pricing): Transparent plans starting at £299.
-- [FAQ](/#faq): Common questions about our process and pricing.
-- [Contact](/#contact): Get in touch at hello@astrolabs.uk.
+- [About](https://www.astrolabs.uk/#about): Who we are and how we work.
+- [Services](https://www.astrolabs.uk/#services): Custom web design, managed hosting, accessibility, and support.
+- [Pricing](https://www.astrolabs.uk/#pricing): Transparent plans starting at £299 (Launch, Standard, Pro).
+- [FAQ](https://www.astrolabs.uk/#faq): Common questions about our process and pricing.
+- [Contact](https://www.astrolabs.uk/#contact): Get in touch at hello@astrolabs.uk.
+
+## Key facts
+
+- Name: AstroLabs & Co.
+- Type: Web design studio
+- Location: Maidstone, Kent, United Kingdom
+- Serves: Small businesses across the UK
+- Pricing: Launch £299, Standard £399, Pro £699
+- Included: Free hosting forever with every website
+- Accessibility: Every site built to WCAG 2.1 AA
+- Email: hello@astrolabs.uk
