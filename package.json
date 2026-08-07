@@ -13,6 +13,8 @@
   },
   "dependencies": {
     "@cloudflare/vite-plugin": "^1.25.5",
+    "@dropinblog/react-core": "^1.1.0",
+    "@dropinblog/react-tanstack-start": "^1.1.0",
     "@hookform/resolvers": "^5.2.2",
     "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-alert-dialog": "^1.1.15",
