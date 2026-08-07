@@ -22,7 +22,9 @@ import { resolveBlogData } from '@dropinblog/react-tanstack-start';
  */
 export const fetchBlogData = createServerFn({ method: 'GET' })
   .inputValidator((splat: string) => splat)
-  .handler(({ data }) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  .handler(async ({ data }): Promise<any> => {
     const origin = new URL(getRequestUrl()).origin;
-    return resolveBlogData(data, { blogUrl: `${origin}/blog` });
+    const result = await resolveBlogData(data, { blogUrl: `${origin}/blog` });
+    return result as unknown as Record<string, unknown>;
   });
