@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { createStartServerClient } from '@dropinblog/react-tanstack-start';
+import { getDropInBlogCredentials } from '@/lib/dropinblog.server';
 
 // Author RSS feed: /blog/feed/author/$slug
 export const Route = createFileRoute('/blog/feed/author/$slug')({
@@ -7,7 +8,8 @@ export const Route = createFileRoute('/blog/feed/author/$slug')({
     handlers: {
       GET: async ({ params, request }) => {
         const origin = new URL(request.url).origin;
-        const client = createStartServerClient({ blogUrl: `${origin}/blog` });
+        const { blogId, apiKey } = await getDropInBlogCredentials();
+        const client = createStartServerClient({ blogId, apiKey, blogUrl: `${origin}/blog` });
         const data = await client.fetchAuthorFeed(params.slug);
         const feedXml = (data as { feed?: string }).feed ?? data.body_html ?? '';
 
