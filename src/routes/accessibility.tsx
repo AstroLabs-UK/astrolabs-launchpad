@@ -124,10 +124,18 @@ function AccessibilityPage() {
       </a>
     <main id="main-content" className="min-h-dvh px-6 py-16">
       <div className="mx-auto max-w-3xl">
-        <a href="/" className="mb-8 inline-flex items-center gap-2.5" aria-label="Back to AstroLabs & Co. home">
-          <img src={logo} alt="AstroLabs & Co. logo" width={32} height={32} className="h-8 w-8" />
-          <span className="font-display font-bold text-navy">AstroLabs & Co.</span>
-        </a>
+        <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
+          <a href="/" className="inline-flex items-center gap-2.5" aria-label="Back to AstroLabs & Co. home">
+            <img src={logo} alt="AstroLabs & Co. logo" width={32} height={32} className="h-8 w-8" />
+            <span className="font-display font-bold text-navy">AstroLabs & Co.</span>
+          </a>
+          <a
+            href="/"
+            className="inline-block rounded-lg bg-deep px-4 py-2 text-sm font-medium text-white transition hover:bg-navy"
+          >
+            Back to home
+          </a>
+        </div>
 
         <h1 className="font-display text-3xl md:text-4xl font-bold text-navy">Accessibility Statement</h1>
         <p className="mt-2 text-sm text-foreground/60">Last updated: August 2026</p>
