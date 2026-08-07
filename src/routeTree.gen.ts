@@ -11,10 +11,15 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as PrivacyRouteImport } from './routes/privacy'
-import { Route as BlogRouteImport } from './routes/blog'
 import { Route as AccessibilityRouteImport } from './routes/accessibility'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BlogIndexRouteImport } from './routes/blog/index'
+import { Route as BlogSitemapDotxmlRouteImport } from './routes/blog/sitemap[.]xml'
+import { Route as BlogFeedRouteImport } from './routes/blog/feed'
+import { Route as BlogSplatRouteImport } from './routes/blog/$'
 import { Route as ApiPublicContactRouteImport } from './routes/api/public/contact'
+import { Route as BlogFeedCategorySlugRouteImport } from './routes/blog/feed.category.$slug'
+import { Route as BlogFeedAuthorSlugRouteImport } from './routes/blog/feed.author.$slug'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -24,11 +29,6 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BlogRoute = BlogRouteImport.update({
-  id: '/blog',
-  path: '/blog',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AccessibilityRoute = AccessibilityRouteImport.update({
@@ -41,70 +41,133 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogSitemapDotxmlRoute = BlogSitemapDotxmlRouteImport.update({
+  id: '/blog/sitemap.xml',
+  path: '/blog/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogFeedRoute = BlogFeedRouteImport.update({
+  id: '/blog/feed',
+  path: '/blog/feed',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogSplatRoute = BlogSplatRouteImport.update({
+  id: '/blog/$',
+  path: '/blog/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiPublicContactRoute = ApiPublicContactRouteImport.update({
   id: '/api/public/contact',
   path: '/api/public/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogFeedCategorySlugRoute = BlogFeedCategorySlugRouteImport.update({
+  id: '/category/$slug',
+  path: '/category/$slug',
+  getParentRoute: () => BlogFeedRoute,
+} as any)
+const BlogFeedAuthorSlugRoute = BlogFeedAuthorSlugRouteImport.update({
+  id: '/author/$slug',
+  path: '/author/$slug',
+  getParentRoute: () => BlogFeedRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/accessibility': typeof AccessibilityRoute
-  '/blog': typeof BlogRoute
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/blog/$': typeof BlogSplatRoute
+  '/blog/feed': typeof BlogFeedRouteWithChildren
+  '/blog/sitemap.xml': typeof BlogSitemapDotxmlRoute
+  '/blog/': typeof BlogIndexRoute
   '/api/public/contact': typeof ApiPublicContactRoute
+  '/blog/feed/author/$slug': typeof BlogFeedAuthorSlugRoute
+  '/blog/feed/category/$slug': typeof BlogFeedCategorySlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/accessibility': typeof AccessibilityRoute
-  '/blog': typeof BlogRoute
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/blog/$': typeof BlogSplatRoute
+  '/blog/feed': typeof BlogFeedRouteWithChildren
+  '/blog/sitemap.xml': typeof BlogSitemapDotxmlRoute
+  '/blog': typeof BlogIndexRoute
   '/api/public/contact': typeof ApiPublicContactRoute
+  '/blog/feed/author/$slug': typeof BlogFeedAuthorSlugRoute
+  '/blog/feed/category/$slug': typeof BlogFeedCategorySlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/accessibility': typeof AccessibilityRoute
-  '/blog': typeof BlogRoute
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/blog/$': typeof BlogSplatRoute
+  '/blog/feed': typeof BlogFeedRouteWithChildren
+  '/blog/sitemap.xml': typeof BlogSitemapDotxmlRoute
+  '/blog/': typeof BlogIndexRoute
   '/api/public/contact': typeof ApiPublicContactRoute
+  '/blog/feed/author/$slug': typeof BlogFeedAuthorSlugRoute
+  '/blog/feed/category/$slug': typeof BlogFeedCategorySlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/accessibility'
-    | '/blog'
     | '/privacy'
     | '/sitemap.xml'
+    | '/blog/$'
+    | '/blog/feed'
+    | '/blog/sitemap.xml'
+    | '/blog/'
     | '/api/public/contact'
+    | '/blog/feed/author/$slug'
+    | '/blog/feed/category/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/accessibility'
-    | '/blog'
     | '/privacy'
     | '/sitemap.xml'
+    | '/blog/$'
+    | '/blog/feed'
+    | '/blog/sitemap.xml'
+    | '/blog'
     | '/api/public/contact'
+    | '/blog/feed/author/$slug'
+    | '/blog/feed/category/$slug'
   id:
     | '__root__'
     | '/'
     | '/accessibility'
-    | '/blog'
     | '/privacy'
     | '/sitemap.xml'
+    | '/blog/$'
+    | '/blog/feed'
+    | '/blog/sitemap.xml'
+    | '/blog/'
     | '/api/public/contact'
+    | '/blog/feed/author/$slug'
+    | '/blog/feed/category/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AccessibilityRoute: typeof AccessibilityRoute
-  BlogRoute: typeof BlogRoute
   PrivacyRoute: typeof PrivacyRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  BlogSplatRoute: typeof BlogSplatRoute
+  BlogFeedRoute: typeof BlogFeedRouteWithChildren
+  BlogSitemapDotxmlRoute: typeof BlogSitemapDotxmlRoute
+  BlogIndexRoute: typeof BlogIndexRoute
   ApiPublicContactRoute: typeof ApiPublicContactRoute
 }
 
@@ -124,13 +187,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/blog': {
-      id: '/blog'
-      path: '/blog'
-      fullPath: '/blog'
-      preLoaderRoute: typeof BlogRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/accessibility': {
       id: '/accessibility'
       path: '/accessibility'
@@ -145,6 +201,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/sitemap.xml': {
+      id: '/blog/sitemap.xml'
+      path: '/blog/sitemap.xml'
+      fullPath: '/blog/sitemap.xml'
+      preLoaderRoute: typeof BlogSitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/feed': {
+      id: '/blog/feed'
+      path: '/blog/feed'
+      fullPath: '/blog/feed'
+      preLoaderRoute: typeof BlogFeedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/$': {
+      id: '/blog/$'
+      path: '/blog/$'
+      fullPath: '/blog/$'
+      preLoaderRoute: typeof BlogSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/public/contact': {
       id: '/api/public/contact'
       path: '/api/public/contact'
@@ -152,27 +236,48 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiPublicContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/feed/category/$slug': {
+      id: '/blog/feed/category/$slug'
+      path: '/category/$slug'
+      fullPath: '/blog/feed/category/$slug'
+      preLoaderRoute: typeof BlogFeedCategorySlugRouteImport
+      parentRoute: typeof BlogFeedRoute
+    }
+    '/blog/feed/author/$slug': {
+      id: '/blog/feed/author/$slug'
+      path: '/author/$slug'
+      fullPath: '/blog/feed/author/$slug'
+      preLoaderRoute: typeof BlogFeedAuthorSlugRouteImport
+      parentRoute: typeof BlogFeedRoute
+    }
   }
 }
+
+interface BlogFeedRouteChildren {
+  BlogFeedAuthorSlugRoute: typeof BlogFeedAuthorSlugRoute
+  BlogFeedCategorySlugRoute: typeof BlogFeedCategorySlugRoute
+}
+
+const BlogFeedRouteChildren: BlogFeedRouteChildren = {
+  BlogFeedAuthorSlugRoute: BlogFeedAuthorSlugRoute,
+  BlogFeedCategorySlugRoute: BlogFeedCategorySlugRoute,
+}
+
+const BlogFeedRouteWithChildren = BlogFeedRoute._addFileChildren(
+  BlogFeedRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AccessibilityRoute: AccessibilityRoute,
-  BlogRoute: BlogRoute,
   PrivacyRoute: PrivacyRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  BlogSplatRoute: BlogSplatRoute,
+  BlogFeedRoute: BlogFeedRouteWithChildren,
+  BlogSitemapDotxmlRoute: BlogSitemapDotxmlRoute,
+  BlogIndexRoute: BlogIndexRoute,
   ApiPublicContactRoute: ApiPublicContactRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
