@@ -291,6 +291,9 @@ function Hero() {
           <a href="#services" className="px-7 py-3.5 rounded-lg bg-white text-deep font-medium border border-steel/40 hover:border-deep hover:-translate-y-0.5 transition-all">
             Our Services
           </a>
+          <a href="/blog" className="px-7 py-3.5 rounded-lg bg-white text-deep font-medium border border-steel/40 hover:border-deep hover:-translate-y-0.5 transition-all">
+            Read the Blog
+          </a>
         </div>
       </div>
     </section>
