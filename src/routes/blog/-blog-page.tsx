@@ -2,19 +2,52 @@ import { Link } from '@tanstack/react-router';
 import type { ErrorComponentProps } from '@tanstack/react-router';
 import { DropInBlogContent } from '@dropinblog/react-core';
 import type { RenderedResponse } from '@dropinblog/react-core';
+import logo from '@/assets/astrolabs-logo.png';
+import AccessibilityWidget from '@/components/AccessibilityWidget';
+
+function BackToHomeButton({ className = '' }: { className?: string }) {
+  return (
+    <a
+      href="/"
+      className={`inline-block rounded-lg bg-deep px-6 py-3 font-medium text-white transition hover:bg-navy ${className}`}
+    >
+      Back to home
+    </a>
+  );
+}
 
 /**
- * Renders the server-rendered blog HTML. `DropInBlogContent` injects the body
- * HTML and executes any inline scripts it contains. SEO tags, inline styles and
- * external scripts are emitted from each route's `head()` (see index.tsx / $.tsx)
- * and rendered by <HeadContent /> and <Scripts /> in your __root.tsx.
- *
- * This file lives in your app so you can wrap it with your own layout, classes,
- * or container element.
+ * Renders the server-rendered blog HTML wrapped in the AstroLabs site layout.
  */
 export function BlogPage({ data }: { data: RenderedResponse }) {
-  return <DropInBlogContent bodyHtml={data.body_html ?? ''} />;
+  return (
+    <>
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-md focus:bg-deep focus:text-white"
+      >
+        Skip to main content
+      </a>
+      <main id="main-content" className="min-h-dvh px-6 py-16">
+        <div className="mx-auto max-w-3xl">
+          <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
+            <a href="/" className="inline-flex items-center gap-2.5" aria-label="Back to AstroLabs & Co. home">
+              <img src={logo} alt="AstroLabs & Co. logo" width={32} height={32} className="h-8 w-8" />
+              <span className="font-display font-bold text-navy">AstroLabs & Co.</span>
+            </a>
+            <BackToHomeButton className="px-4 py-2 text-sm" />
+          </div>
+
+          <DropInBlogContent bodyHtml={data.body_html ?? ''} />
+
+          <BackToHomeButton className="mt-12" />
+        </div>
+      </main>
+      <AccessibilityWidget />
+    </>
+  );
 }
+
 
 /**
  * Shown when a post/category/author isn't found (the rendered API returned 404,
