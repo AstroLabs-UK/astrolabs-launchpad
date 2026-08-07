@@ -17,7 +17,8 @@ async function readEnvVar(key: string): Promise<string | undefined> {
   if (fromProcess) return fromProcess;
 
   try {
-    const mod = (await import("cloudflare:workers")) as unknown as {
+    const specifier = "cloudflare:workers";
+    const mod = (await import(/* @vite-ignore */ specifier)) as unknown as {
       env?: Record<string, string | undefined>;
     };
     const fromBinding = mod?.env?.[key];
