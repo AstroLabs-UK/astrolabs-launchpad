@@ -380,3 +380,18 @@ body.a11y-no-styling :focus-visible {
 /* Reduced motion also stops smooth scrolling */
 body.a11y-reduce-motion { scroll-behavior: auto !important; }
 html:has(body.a11y-reduce-motion) { scroll-behavior: auto !important; }
+
+/* Blog article typography */
+.prose-astro h2 { font-family: var(--font-display, inherit); font-size: 1.5rem; font-weight: 700; color: var(--color-navy, #4A5170); margin-top: 2rem; margin-bottom: .75rem; }
+.prose-astro h3 { font-family: var(--font-display, inherit); font-size: 1.25rem; font-weight: 600; color: var(--color-navy, #4A5170); margin-top: 1.5rem; margin-bottom: .5rem; }
+.prose-astro p { margin: 1rem 0; line-height: 1.75; }
+.prose-astro a { color: #3D4260; text-decoration: underline; }
+.prose-astro ul, .prose-astro ol { margin: 1rem 0 1rem 1.25rem; line-height: 1.75; }
+.prose-astro ul { list-style: disc; }
+.prose-astro ol { list-style: decimal; }
+.prose-astro blockquote { border-left: 3px solid #8BA7C0; padding-left: 1rem; margin: 1.5rem 0; font-style: italic; }
+.prose-astro pre { background: #1A1A2E; color: #F5F7FA; padding: 1rem; border-radius: .75rem; overflow-x: auto; margin: 1.5rem 0; }
+.prose-astro code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .9em; }
+.prose-astro :not(pre) > code { background: rgba(139,167,192,.2); padding: .15em .4em; border-radius: .35rem; }
+.prose-astro img { border-radius: 1rem; margin: 1.5rem 0; max-width: 100%; height: auto; }
+.prose-astro hr { border-color: rgba(139,167,192,.4); margin: 2rem 0; }

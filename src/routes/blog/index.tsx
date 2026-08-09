@@ -1,12 +1,14 @@
 import { createFileRoute } from '@tanstack/react-router';
 import logo from '@/assets/astrolabs-logo.png';
 import AccessibilityWidget from '@/components/AccessibilityWidget';
+import { getPosts, formatDate } from '@/lib/blog';
 
 const title = 'Blog - AstroLabs & Co. Web Design Studio';
 const description =
-  'Insights on accessible, fast web design from AstroLabs & Co., a UK-based web design studio. Articles coming soon.';
+  'Insights on accessible, fast web design from AstroLabs & Co., a UK-based web design studio.';
 
 export const Route = createFileRoute('/blog/')({
+  loader: () => ({ posts: getPosts() }),
   head: () => ({
     meta: [
       { title },
@@ -21,6 +23,8 @@ export const Route = createFileRoute('/blog/')({
 });
 
 function BlogPage() {
+  const { posts } = Route.useLoaderData();
+
   return (
     <>
       <a
@@ -46,22 +50,43 @@ function BlogPage() {
 
           <h1 className="font-display text-4xl font-bold text-navy">Blog</h1>
           <p className="mt-4 text-lg text-body/80">
-            We are putting together articles on accessible, fast and thoughtfully designed websites.
-            Nothing published just yet, so check back soon.
+            Notes on accessible, fast and thoughtfully designed websites for UK small businesses.
           </p>
 
-          <div className="mt-10 rounded-2xl border border-primary/30 bg-white/60 p-8">
-            <h2 className="font-display text-xl font-semibold text-navy">Coming soon</h2>
-            <p className="mt-2 text-body/80">
-              Want to be told when the first post goes live? Get in touch and we will let you know.
-            </p>
-            <a
-              href="/#contact"
-              className="mt-6 inline-block rounded-lg bg-deep px-6 py-3 font-medium text-white transition hover:bg-navy"
-            >
-              Contact us
-            </a>
-          </div>
+          {posts.length === 0 ? (
+            <div className="mt-10 rounded-2xl border border-primary/30 bg-white/60 p-8">
+              <h2 className="font-display text-xl font-semibold text-navy">Coming soon</h2>
+              <p className="mt-2 text-body/80">
+                Nothing published just yet. Check back soon for the first article.
+              </p>
+              <a
+                href="mailto:hello@astrolabs.uk"
+                className="mt-6 inline-block rounded-lg bg-deep px-6 py-3 font-medium text-white transition hover:bg-navy"
+              >
+                Contact us
+              </a>
+            </div>
+          ) : (
+            <ul className="mt-10 space-y-6">
+              {posts.map((post: (typeof posts)[number]) => (
+                <li key={post.slug}>
+                  <a
+                    href={`/blog/${post.slug}`}
+                    className="block rounded-2xl border border-primary/30 bg-white/60 p-6 transition hover:-translate-y-0.5 hover:border-deep"
+                  >
+                    <p className="text-xs font-medium uppercase tracking-wide text-deep">
+                      {post.category}
+                    </p>
+                    <h2 className="mt-2 font-display text-xl font-semibold text-navy">{post.title}</h2>
+                    <p className="mt-1 text-sm text-body/60">
+                      {formatDate(post.date)} · {post.author}
+                    </p>
+                    <p className="mt-3 text-body/80">{post.description}</p>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
 
           <a
             href="/"

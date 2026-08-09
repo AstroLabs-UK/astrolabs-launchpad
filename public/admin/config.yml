@@ -1,0 +1,64 @@
+backend:
+  name: github
+  repo: OWNER/REPO # change to your GitHub user/organisation and repository name
+  branch: main
+  base_url: https://www.astrolabs.uk
+  auth_endpoint: api/public/auth
+
+# Local writing without GitHub: run `npx decap-server` and set this to true
+local_backend: false
+
+publish_mode: editorial_workflow # gives you Draft / In review / Ready states
+
+media_folder: public/uploads
+public_folder: /uploads
+
+site_url: https://www.astrolabs.uk
+display_url: https://www.astrolabs.uk
+logo_url: https://www.astrolabs.uk/favicon.png
+
+collections:
+  - name: blog
+    label: Blog posts
+    label_singular: Blog post
+    folder: content/blog
+    create: true
+    slug: "{{slug}}"
+    path: "{{slug}}"
+    extension: md
+    format: frontmatter
+    preview_path: blog/{{fields.slug}}
+    summary: "{{title}} - {{date | date('YYYY-MM-DD')}}"
+    sortable_fields: [date, title]
+    editor:
+      preview: true
+    fields:
+      - { name: title, label: Title, widget: string }
+      - {
+          name: slug,
+          label: Slug (URL),
+          widget: string,
+          hint: "Lowercase words separated by hyphens, e.g. accessible-web-design",
+          pattern: ["^[a-z0-9]+(?:-[a-z0-9]+)*$", "Use lowercase letters, numbers and hyphens only"],
+        }
+      - { name: date, label: Publish date, widget: datetime, date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
+      - { name: author, label: Author, widget: string, default: "AstroLabs & Co." }
+      - {
+          name: category,
+          label: Category,
+          widget: select,
+          options: ["Web Design", "Accessibility", "Performance", "SEO", "Business", "Studio News"],
+          default: "Web Design",
+        }
+      - { name: tags, label: Tags, widget: list, required: false, default: [] }
+      - { name: description, label: Description (SEO summary), widget: text, hint: "Around 150 characters." }
+      - { name: image, label: Featured image, widget: image, required: false }
+      - { name: imageAlt, label: Featured image description, widget: string, required: false, hint: "Describes the image for screen readers." }
+      - { name: draft, label: Draft (hide from the live site), widget: boolean, default: false, required: false }
+      - {
+          name: body,
+          label: Content,
+          widget: markdown,
+          buttons: [bold, italic, code, link, heading-one, heading-two, heading-three, quote, bulleted-list, numbered-list],
+          editor_components: [image, code-block],
+        }
