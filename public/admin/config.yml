@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: OWNER/REPO # change to your GitHub user/organisation and repository name
+  repo: AstroLabs-UK/astrolabs-launchpad # change to your GitHub user/organisation and repository name
   branch: main
   base_url: https://www.astrolabs.uk
   auth_endpoint: api/public/auth
