@@ -77,7 +77,7 @@ function BlogPostPage() {
 
           {post.tags.length > 0 && (
             <ul className="mt-10 flex flex-wrap gap-2" aria-label="Tags">
-              {post.tags.map((tag) => (
+              {post.tags.map((tag: string) => (
                 <li
                   key={tag}
                   className="rounded-full border border-primary/40 bg-white/60 px-3 py-1 text-xs text-body/70"
