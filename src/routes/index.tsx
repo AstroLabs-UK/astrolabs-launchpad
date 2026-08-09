@@ -40,7 +40,7 @@ const NAV = [
   { label: "Services", href: "#services" },
   // { label: "Portfolio", href: "#portfolio" },
   { label: "Pricing", href: "#pricing" },
-  { label: "Contact", href: "#contact" },
+  { label: "Contact", href: "mailto:hello@astrolabs.uk" },
   { label: "Blog", href: "/blog" },
   { label: "Privacy", href: "/privacy" },
 ];
