@@ -1,13 +1,14 @@
 ---
 title: Welcome to the AstroLabs blog
-slug: welcome-to-the-astrolabs-blog
+slug: welcome
 date: 2026-08-09
 author: AstroLabs & Co.
 category: Studio News
 tags:
   - studio
   - web design
-description: A short hello from AstroLabs & Co. and a look at what we will be writing about on this blog.
+description: A short hello from AstroLabs & Co. and a look at what we will be
+  writing about on this blog.
 draft: false
 ---
 
