@@ -3,7 +3,7 @@ title: Local SEO Isn't Magic, It's Just Being Findable
 slug: local-seo-isnt-magic
 date: 2026-08-18
 author: AstroLabs & Co.
-category: Web Design
+category: SEO
 tags:
   - local SEO
   - small business
