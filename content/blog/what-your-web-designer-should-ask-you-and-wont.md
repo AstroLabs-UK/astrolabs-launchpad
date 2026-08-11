@@ -3,7 +3,7 @@ title: What Your Web Designer Should Ask You (And Won't)
 slug: what-your-web-designer-should-ask
 date: 2026-08-25
 author: AstroLabs & Co.
-category: Web Design
+category: Business
 tags:
   - web design
   - client strategy
