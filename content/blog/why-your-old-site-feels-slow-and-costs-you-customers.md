@@ -3,7 +3,7 @@ title: Why Your Old Site Feels Slow (And Costs You Customers)
 slug: why-your-old-site-feels-slow
 date: 2026-08-11
 author: AstroLabs & Co.
-category: Web Design
+category: Performance
 tags:
   - performance
   - web design
